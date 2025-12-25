@@ -3,6 +3,24 @@
   padding: 0;
   box-sizing: border-box;
 }
-html{
-  font-size: 16px;
+
+body {
+  font-family: Verdana, Geneva, sans-serif;
+  margin: 0;
+}
+
+@media (min-width: 1280px) {
+  #root {
+    background: url('/src/assets/desktop-bg.jpg') no-repeat right fixed;
+  }
+}
+
+@media (min-width: 767px) and (max-width: 1279px) {
+  #root {
+    background: url('/src/assets/tablet-bg.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+  }
 }
