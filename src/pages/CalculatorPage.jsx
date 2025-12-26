@@ -1,11 +1,11 @@
-import React from 'react';
-import CalculatorCalorieForm from '../components/CalculatorСalorieForm/CalculatorСalorieForm';
-import RightSideBar from '../components/RightSideBar/RightSideBar';
+import React from "react";
+import CalculatorCalorieForm from "../components/CalculatorСalorieForm/CalculatorСalorieForm";
+import RightSideBar from "../components/RightSideBar/RightSideBar";
+import Header from "../components/Header/Header";
 
 const CalculatorPage = () => {
   return (
     <div>
-      
       <div>
         <CalculatorCalorieForm />
       </div>
@@ -13,7 +13,9 @@ const CalculatorPage = () => {
       <div>
         <RightSideBar />
       </div>
-      
+      <div>
+        <Header />
+      </div>
     </div>
   );
 };
