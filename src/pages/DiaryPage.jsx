@@ -1,3 +1,5 @@
+import React from "react";
+import Header from "../components/Header/Header";
 import React, { useState } from 'react';
 import DiaryDateCalendar from '../components/DiaryDateСalendar/DiaryDateСalendar';
 import DiaryAddProductForm from '../components/DiaryAddProductForm/DiaryAddProductForm';
@@ -16,6 +18,7 @@ const DiaryPage = () => {
 
   return (
     <div>
+      <Header />
       <DiaryDateCalendar />
       <DiaryAddProductForm onAddProduct={handleAddProduct} />
       <DiaryProductsList 
