@@ -1,0 +1,110 @@
+.container {
+  position: absolute;
+  top: 293px;
+  left: 46px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.dateDisplay {
+  font-size: 32px;
+  font-weight: 800;
+  color: #000;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  letter-spacing: -0.5px;
+}
+
+.calendarWrapper {
+  position: relative;
+}
+
+.hiddenInput {
+  display: none !important;
+}
+
+.calendarButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: none;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #555;
+  transition: all 0.2s ease;
+  padding: 0;
+}
+
+.calendarButton:hover {
+  background-color: #e0e0e0;
+  transform: scale(1.05);
+}
+
+.calendarButton:active {
+  transform: scale(0.95);
+}
+
+.calendarButton:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Flatpickr Override Stilleri */
+:global(.flatpickr-calendar) {
+  margin-left: 250px;
+  margin-top: 300px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e5e7eb;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+:global(.flatpickr-day) {
+  border-radius: 6px;
+  border: none;
+  height: 40px;
+  line-height: 40px;
+  color: #374151;
+  font-weight: 500;
+}
+
+:global(.flatpickr-day:hover) {
+  background: #f3f4f6;
+  border: none;
+}
+
+:global(.flatpickr-day.selected) {
+  background: #3b82f6;
+  color: white;
+  border: none;
+}
+
+:global(.flatpickr-day.today) {
+  border: 2px solid #3b82f6;
+  background: transparent;
+  color: #3b82f6;
+}
+
+:global(.flatpickr-day.today:hover) {
+  background: #f3f4f6;
+}
+
+:global(.flatpickr-months) {
+  padding: 8px;
+}
+
+:global(.flatpickr-month) {
+  color: #111827;
+  font-weight: 600;
+}
+
+:global(.flatpickr-weekday) {
+  color: #6b7280;
+  font-weight: 600;
+  font-size: 0.9rem;
+}

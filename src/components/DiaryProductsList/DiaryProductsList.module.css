@@ -1,0 +1,128 @@
+.container {
+  position: absolute;
+  top: 488px;
+  left: 16px;
+  padding: 20px;
+  margin-top: 20px;
+  max-height: 600px; 
+  display: flex;
+  flex-direction: column;
+}
+
+.emptyMessage {
+  text-align: center;
+  color: #999;
+  padding: 40px 20px;
+  font-style: italic;
+}
+
+/* TABLO ALANI - SCROLL SADECE BURADA */
+.tableArea {
+  flex: 1; 
+  overflow: hidden; 
+  display: flex;
+  flex-direction: column;
+}
+
+.tableWrapper {
+  flex: 1; 
+  overflow-y: auto; 
+}
+
+/* Scrollbar SADECE tablo wrapper'ın içinde */
+.tableWrapper::-webkit-scrollbar {
+  width: 6px;
+}
+
+.tableWrapper::-webkit-scrollbar-track {
+  background: #f5f5f5;
+  border-radius: 3px;
+}
+
+.tableWrapper::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+.tableWrapper::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Tablo */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  min-height: 200px; /* Minimum yükseklik */
+}
+
+.table th {
+  padding: 16px;
+  text-align: left;
+  font-weight: 600;
+  color: #666;
+  font-size: 0.9rem;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.table td {
+  padding: 16px;
+}
+
+/* İlk 5 satır normal, 6. ve sonrası normal ama scroll'da */
+.row {
+  height: 60px; /* Her satırın sabit yüksekliği */
+}
+
+.row:hover {
+  background-color: #fafafa;
+}
+
+/* Hücre Stilleri */
+.productCell strong {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.amountCell {
+  font-weight: 700;
+  color: #333;
+}
+
+.totalCalorieCell {
+  color: #e65100;
+  font-weight: 700;
+}
+
+/* Silme Butonu */
+.deleteButton {
+  background: #ff4444;
+  color: white;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+  padding: 0;
+  line-height: 1;
+}
+
+.deleteButton:hover {
+  background: #ff0000;
+  transform: scale(1.1);
+}
+
+.deleteButton:active {
+  transform: scale(0.95);
+}
+
+.actionCell {
+  text-align: center;
+}

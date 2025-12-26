@@ -1,0 +1,38 @@
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid #eee;
+  background-color: #fff;
+}
+
+.productName {
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+  flex: 2;
+}
+
+.details {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex: 1;
+  justify-content: flex-end;
+}
+
+.grams {
+  font-size: 14px;
+  color: #666;
+  min-width: 60px;
+  text-align: right;
+}
+
+.calories {
+  font-size: 16px;
+  font-weight: 600;
+  color: #4a90e2;
+  min-width: 80px;
+  text-align: right;
+}
