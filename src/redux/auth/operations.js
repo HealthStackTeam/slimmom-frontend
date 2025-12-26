@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-axios.defaults.baseURL = ""; // Buraya render linki gelicek
+axios.defaults.baseURL = "https://slimmom-backend-h150.onrender.com"; // Buraya render linki gelicek
 
 const setAuthHeader = (token) => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -14,8 +14,8 @@ export const register = createAsyncThunk(
   "auth/register",
   async (credentials, thunkAPI) => {
     try {
-      const res = await axios.post("/", credentials); // Buraya end point gelicek
-      setAuthHeader(res.data.token);
+      const {data:res} = await axios.post("/register", credentials); // Buraya end point gelicek
+      setAuthHeader(res.data.accessToken);
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -26,8 +26,8 @@ export const login = createAsyncThunk(
   "auth/login",
   async (credentials, thunkAPI) => {
     try {
-      const res = await axios.post("/", credentials); // Buraya end point gelicek
-      setAuthHeader(res.data.token);
+      const {data:res} = await axios.post("/login", credentials); // Buraya end point gelicek
+      setAuthHeader(res.data.accessToken);
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -38,7 +38,7 @@ export const logout = createAsyncThunk(
   "auth/logout",
   async (__dirname, thunkAPI) => {
     try {
-      await axios.post("/"); // Buraya end point gelicek
+      await axios.post("/logout"); // Buraya end point gelicek
       clearAuthHeader();
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -56,7 +56,7 @@ export const refreshUser = createAsyncThunk(
     }
     try {
       setAuthHeader(persistedToken);
-      const res = await axios.get("/"); // Buraya end point gelicek
+      const {data:res} = await axios.get("/refresh"); // Buraya end point gelicek
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
