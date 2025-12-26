@@ -1,4 +1,3 @@
-import React from "react";
 import CalculatorCalorieForm from "../components/CalculatorСalorieForm/CalculatorСalorieForm";
 import RightSideBar from "../components/RightSideBar/RightSideBar";
 import Header from "../components/Header/Header";
