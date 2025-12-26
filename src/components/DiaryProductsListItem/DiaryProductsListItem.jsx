@@ -1,11 +1,25 @@
-import React from 'react'
+// DiaryProductsListItem.jsx
+import React from 'react';
+import styles from './DiaryProductsListItem.module.css';
 
-const DiaryProductsListItem = () => {
+const DiaryProductsListItem = ({ product, onDelete }) => {
   return (
-    <div>
+    <div className={styles.item}>
+      <div className={styles.productName}>
+        {product.name}
+      </div>
       
+      <div className={styles.details}>
+        <div className={styles.grams}>
+          {product.grams} g
+        </div>
+        
+        <div className={styles.calories}>
+          {product.calories} kcal
+        </div>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default DiaryProductsListItem
+export default DiaryProductsListItem;

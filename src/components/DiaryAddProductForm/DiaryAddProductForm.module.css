@@ -1,0 +1,166 @@
+/* Container */
+.container {
+  position: absolute;
+  top: 391px;
+  left: 16px;
+  padding: 24px;
+  margin: 20px 0;
+}
+/* Form Stilleri */
+.product_form{
+  display: flex;
+  gap: 48px;
+  justify-self: flex-start;
+}
+.formGroup {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #555;
+}
+
+.input {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #4CAF50;
+}
+
+/* Arama Önerileri */
+.suggestions {
+  position: absolute;
+  width: calc(100% - 2px);
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  max-height: 300px;
+  overflow-y: auto;
+  margin-top: 4px;
+  list-style: none;
+  padding: 0;
+  z-index: 10;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.suggestionItem {
+  padding: 12px 16px;
+  cursor: pointer;
+  border-bottom: 1px solid #f5f5f5;
+  transition: background-color 0.2s;
+}
+
+.suggestionItem:hover {
+  background-color: #f0f7ff;
+}
+
+.suggestionItem:last-child {
+  border-bottom: none;
+}
+
+.suggestionContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.productName {
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.productDetails {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.productCalories {
+  color: #ff6b6b;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.productCategory {
+  background: #e8f5e9;
+  color: #2e7d32;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+}
+
+.noResults {
+  position: absolute;
+  width: calc(100% - 2px);
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 16px;
+  margin-top: 4px;
+  color: #999;
+  text-align: center;
+  font-style: italic;
+  z-index: 10;
+}
+
+
+
+/* Miktar Input */
+.amountContainer {
+  display: flex;
+  align-items: center;
+}
+
+.amountInput {
+  flex: 1;
+  padding: 12px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px 0 0 8px;
+  font-size: 16px;
+  text-align: center;
+}
+/* YUVARLAK + BUTONU */
+.addButtonRound {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #ff9800;
+  color: white;
+  border: none;
+  font-size: 32px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(255, 152, 0, 0.4);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px auto 0 auto;
+  padding: 0;
+}
+
+.addButtonRound:hover:not(:disabled) {
+  background-color: #f57c00;
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(255, 152, 0, 0.6);
+}
+
+.addButtonRound:active:not(:disabled) {
+  transform: scale(0.95);
+}
+
+.addButtonRound:disabled {
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
