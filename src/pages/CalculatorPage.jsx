@@ -1,11 +1,21 @@
-import React from 'react'
+import React from 'react';
+import CalculatorCalorieForm from '../components/CalculatorСalorieForm/CalculatorСalorieForm';
+import RightSideBar from '../components/RightSideBar/RightSideBar';
 
 const CalculatorPage = () => {
   return (
     <div>
       
-    </div>
-  )
-}
+      <div>
+        <CalculatorCalorieForm />
+      </div>
 
-export default CalculatorPage
+      <div>
+        <RightSideBar />
+      </div>
+      
+    </div>
+  );
+};
+
+export default CalculatorPage;
