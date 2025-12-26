@@ -1,0 +1,107 @@
+/* for test */
+
+.container {
+  padding: 20px 0;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #212121;
+  margin-bottom: 40px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.inputsWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  flex: 1;
+}
+
+.input {
+  border: none;
+  border-bottom: 1px solid #E0E0E0;
+  width: 100%;
+  padding: 5px 0;
+  font-size: 14px;
+  color: #212121;
+  outline: none;
+  background: transparent;
+}
+
+.input:focus {
+  border-bottom: 1px solid #FC842D;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  color: #9B9FAA;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.radioTitle {
+  color: #9B9FAA;
+  font-weight: 700;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.radios {
+  display: flex;
+  gap: 20px;
+}
+
+.radioLabel {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.radioInput {
+  accent-color: #FC842D;
+}
+
+.radioText {
+  color: #9B9FAA;
+  font-weight: 400;
+}
+
+.radioInput:checked + .radioText {
+  color: #FC842D;
+  font-weight: 700;
+}
+
+.submitBtn {
+  width: 180px;
+  padding: 13px 0;
+  background-color: #FC842D;
+  color: #fff;
+  border: 2px solid #FC842D;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: 0px 4px 10px rgba(252, 132, 45, 0.5);
+  transition: all 0.3s;
+  align-self: center;
+}
+
+.submitBtn:hover {
+  background-color: #fff;
+  color: #FC842D;
+}
