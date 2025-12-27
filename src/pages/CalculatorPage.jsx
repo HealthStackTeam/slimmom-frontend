@@ -12,9 +12,6 @@ const CalculatorPage = () => {
       <div>
         <RightSideBar />
       </div>
-      <div>
-        <Header />
-      </div>
     </div>
   );
 };

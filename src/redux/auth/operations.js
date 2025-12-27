@@ -1,65 +1,60 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
 
-axios.defaults.baseURL = "https://slimmom-backend-h150.onrender.com"; // Buraya render linki gelicek
-
+axios.defaults.baseURL = 'https://slimmom-backend-h150.onrender.com'; // Buraya render linki gelicek
+axios.defaults.withCredentials = true;
 const setAuthHeader = (token) => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 const clearAuthHeader = () => {
-  axios.defaults.headers.common.Authorization = "";
+  axios.defaults.headers.common.Authorization = '';
 };
 
 export const register = createAsyncThunk(
-  "auth/register",
+  'auth/register',
   async (credentials, thunkAPI) => {
     try {
-      const {data:res} = await axios.post("/register", credentials); // Buraya end point gelicek
+      const { data: res } = await axios.post('/auth/register', credentials, {
+        withCredentials: true,
+      }); // Buraya end point gelicek
       setAuthHeader(res.data.accessToken);
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
-  }
+  },
 );
 export const login = createAsyncThunk(
-  "auth/login",
+  'auth/login',
   async (credentials, thunkAPI) => {
     try {
-      const {data:res} = await axios.post("/login", credentials); // Buraya end point gelicek
+      const { data: res } = await axios.post('/auth/login', credentials); // Buraya end point gelicek
       setAuthHeader(res.data.accessToken);
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
-  }
+  },
 );
 export const logout = createAsyncThunk(
-  "auth/logout",
+  'auth/logout',
   async (__dirname, thunkAPI) => {
     try {
-      await axios.post("/logout"); // Buraya end point gelicek
+      await axios.post('/logout',); // Buraya end point gelicek
       clearAuthHeader();
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
-  }
+  },
 );
 export const refreshUser = createAsyncThunk(
-  "auth/refreshUser",
+  'auth/refreshUser',
   async (_, thunkAPI) => {
-    const state = thunkAPI.getState();
-    const persistedToken = state.auth.token;
-
-    if (persistedToken === null) {
-      return thunkAPI.rejectWithValue("Unable to fetch user");
-    }
     try {
-      setAuthHeader(persistedToken);
-      const {data:res} = await axios.get("/refresh"); // Buraya end point gelicek
+      const { data: res } = await axios.get('/auth/refresh');
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
-  }
+  },
 );
