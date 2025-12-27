@@ -9,7 +9,7 @@ import { refreshUser } from "./redux/auth/operations.js";
 import { selectIsRefreshing } from "./redux/auth/selectors";
 
 const MainPage = lazy(() => import("./pages/MainPage"));
-const CalculaterPage = lazy(() => import("./pages/CalculatorPage"));
+const CalculatorPage = lazy(() => import("./pages/CalculatorPage"));
 const LoginPage = lazy(() => import("./pages/LoginPage"));
 const RegistrationPage = lazy(() => import("./pages/RegistrationPage"));
 const DiaryPage = lazy(() => import("./pages/DiaryPage"));
@@ -34,7 +34,7 @@ function App() {
             path="/register"
             element={
               <RestrictedRoute
-                redirectTo="/calculater"
+                redirectTo="/calculator"
                 component={<RegistrationPage />}
               />
             }
@@ -43,17 +43,17 @@ function App() {
             path="/login"
             element={
               <RestrictedRoute
-                redirectTo="/calculater"
+                redirectTo="/calculator"
                 component={<LoginPage />}
               />
             }
           />
           <Route
-            path="/calculater"
+            path="/calculator"
             element={
               <PrivateRoute
                 redirectTo="/login"
-                component={<CalculaterPage />}
+                component={<CalculatorPage />}
               />
             }
           />

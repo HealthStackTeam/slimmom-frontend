@@ -1,0 +1,9 @@
+.loginForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    border: 1px solid #711212;
+
+    background-color: #119227;
+}
