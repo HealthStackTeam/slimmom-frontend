@@ -7,6 +7,7 @@ import { Routes, Route } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { refreshUser } from "./redux/auth/operations.js";
 import { selectIsRefreshing } from "./redux/auth/selectors";
+import { Toaster } from "react-hot-toast";
 
 const MainPage = lazy(() => import("./pages/MainPage"));
 const CalculatorPage = lazy(() => import("./pages/CalculatorPage"));
@@ -64,7 +65,8 @@ function App() {
             }
           />
         </Routes>
-      </Suspense>
+        </Suspense>
+      <Toaster position="top-right"/>
     </>
   );
 }
