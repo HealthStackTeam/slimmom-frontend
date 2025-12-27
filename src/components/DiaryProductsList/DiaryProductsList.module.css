@@ -256,15 +256,3 @@
 .table tbody tr:hover td {
   border-bottom-color: #ffcc80;
 }
-
-/* GENİŞLİK HESAPLAMASI */
-/* 
-1. Ürün: 240px
-2. Ürün-Gram boşluk: 50px
-3. Gram: 106px
-4. Gram-Kalori boşluk: 33px
-5. Kalori: 106px
-6. Kalori-Buton boşluk: 20px
-7. Buton Alanı: 176px (buton 12px ama alan 176px)
-TOPLAM: 240 + 50 + 106 + 33 + 106 + 20 + 176 = 731px ✓
-*/
