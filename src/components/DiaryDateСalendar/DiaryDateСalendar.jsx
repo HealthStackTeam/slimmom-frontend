@@ -1,12 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Flatpickr from 'react-flatpickr';
 import { Calendar } from 'lucide-react';
 import 'flatpickr/dist/themes/material_blue.css';
 import styles from './DiaryDateСalendar.module.css';
 
 const DiaryDateCalendar = ({ onDateChange, initialDate = new Date() }) => {
-  const [selectedDate, setSelectedDate] = useState(initialDate);
-
   const formatDate = (date) => {
     const day = String(date.getDate()).padStart(2, '0');
     const month = String(date.getMonth() + 1).padStart(2, '0');
@@ -16,7 +14,6 @@ const DiaryDateCalendar = ({ onDateChange, initialDate = new Date() }) => {
 
   const handleDateChange = (dates) => {
     const newDate = dates[0];
-    setSelectedDate(newDate);
     if (onDateChange) {
       onDateChange(newDate);
     }
@@ -25,11 +22,11 @@ const DiaryDateCalendar = ({ onDateChange, initialDate = new Date() }) => {
   return (
     <div className={styles.container}>
       <div className={styles.dateDisplay}>
-        {formatDate(selectedDate)}
+        {formatDate(initialDate)}
       </div>
       
       <Flatpickr
-        value={selectedDate}
+        value={initialDate}
         onChange={handleDateChange}
         options={{
           dateFormat: 'd/m/Y',

@@ -2,11 +2,11 @@
   position: absolute;
   top: 488px;
   left: 16px;
-  padding: 20px;
-  margin-top: 20px;
-  max-height: 600px; 
   display: flex;
   flex-direction: column;
+  width: 731px;
+  height: auto;
+  background: white;
 }
 
 .emptyMessage {
@@ -14,22 +14,48 @@
   color: #999;
   padding: 40px 20px;
   font-style: italic;
+  font-size: 16px;
+  font-family: Verdana, sans-serif;
+  border-bottom: 2px solid #f5f5f5;
 }
 
-/* TABLO ALANI - SCROLL SADECE BURADA */
-.tableArea {
-  flex: 1; 
-  overflow: hidden; 
+.totalCalories {
+  margin-bottom: 16px;
+  padding: 12px 0;
+  font-size: 18px;
+  color: #212121;
+  font-family: Verdana, sans-serif;
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #f5f5f5;
+  width: 731px;
 }
 
+.totalCalories strong {
+  font-size: 18px;
+  font-weight: 700;
+  color: #f57c00;
+}
+
+/* TABLO ALANI  */
+.tableArea {
+  width: 731px;
+  height: 250px; 
+  overflow: hidden; 
+  position: relative;
+  border: none; 
+}
+
+/* SCROLL WRAPPER */
 .tableWrapper {
-  flex: 1; 
+  width: 100%;
+  height: 100%;
   overflow-y: auto; 
+  overflow-x: hidden; 
 }
 
-/* Scrollbar SADECE tablo wrapper'ın içinde */
+/* SCROLLBAR STİLLERİ */
 .tableWrapper::-webkit-scrollbar {
   width: 6px;
 }
@@ -48,74 +74,162 @@
   background: #a8a8a8;
 }
 
-/* Tablo */
+/* TABLO */
 .table {
-  width: 100%;
+  width: 731px;
   border-collapse: collapse;
-  min-height: 200px; /* Minimum yükseklik */
+  table-layout: fixed;
 }
 
+
 .table th {
-  padding: 16px;
+  padding: 0;
   text-align: left;
   font-weight: 600;
-  color: #666;
-  font-size: 0.9rem;
-  position: sticky;
-  top: 0;
-  z-index: 10;
+  color: #333;
+  font-size: 14px;
+  font-family: Verdana, sans-serif;
+  height: 34px; 
+  vertical-align: bottom;
+  padding-bottom: 16px; 
+  border-bottom: 2px solid #eee;
+}
+
+/* BAŞLIK SÜTUN GENİŞLİKLERİ */
+.table th:nth-child(1) { /* Ürün */
+  width: 240px;
+  padding-left: 0;
+}
+
+.table th:nth-child(2) { /* Gram */
+  width: 106px;
+  padding-left: 50px; 
+}
+
+.table th:nth-child(3) { /* Kalori */
+  width: 106px;
+  padding-left: 33px; 
+}
+
+.table th:nth-child(4) { /* Silme Butonu */
+  width: 176px;
+  padding-left: 20px;
+}
+
+/* SATIRLAR VE HÜCRELER */
+.table tbody tr {
+  height: 50px;
 }
 
 .table td {
-  padding: 16px;
+  padding: 0;
+  border-bottom: 2px solid #f5f5f5;
+  height: 50px;
+  vertical-align: middle;
+  position: relative;
 }
 
-/* İlk 5 satır normal, 6. ve sonrası normal ama scroll'da */
-.row {
-  height: 60px; /* Her satırın sabit yüksekliği */
+/* HÜCRE İÇERİKLERİ */
+/* ÜRÜN HÜCRESİ */
+.productCell {
+  width: 240px;
+  height: 16px;
+  padding-left: 0;
+  padding-right: 50px;
+  display: flex;
+  align-items: center;
 }
 
-.row:hover {
-  background-color: #fafafa;
+.productCell > div {
+  width: 100%;
+  position: relative;
+  padding-bottom: 20px; 
 }
 
-/* Hücre Stilleri */
 .productCell strong {
   display: block;
-  margin-bottom: 4px;
+  font-size: 14px;
+  font-family: Verdana, sans-serif;
+  color: #212121;
+  font-weight: 400;
+  line-height: 16px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
+/* GRAM HÜCRESİ */
 .amountCell {
-  font-weight: 700;
-  color: #333;
+  width: 106px;
+  height: 16px;
+  padding-right: 33px;
+  font-size: 14px;
+  font-family: Verdana, sans-serif;
+  color: #212121;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding-bottom: 20px;
 }
 
+/* KALORİ HÜCRESİ */
 .totalCalorieCell {
-  color: #e65100;
-  font-weight: 700;
+  width: 106px;
+  height: 16px;
+  font-size: 14px;
+  font-family: Verdana, sans-serif;
+  color: #212121;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding-bottom: 20px;
 }
 
-/* Silme Butonu */
+.totalCalorieCell strong {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16px;
+}
+
+/* SİLME BUTONU HÜCRESİ */
+.actionCell {
+  width: 176px;
+  height: 16px;
+  text-align: left;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  display: flex;
+  align-items: center;
+}
+
+/* SİLME BUTONU */
 .deleteButton {
-  background: #ff4444;
-  color: white;
-  border: none;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
+  background: transparent;
+  color: #999;
+  border: 1px solid #ddd;
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
   cursor: pointer;
-  font-size: 20px;
-  font-weight: bold;
+  font-size: 10px;
+  font-weight: 400;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s;
+  transition: all 0.2s;
   padding: 0;
   line-height: 1;
+  margin-top: -7px;
+  font-family: Arial, sans-serif;
+  position: relative;
 }
 
 .deleteButton:hover {
-  background: #ff0000;
+  background: #ff4444;
+  color: white;
+  border-color: #ff4444;
   transform: scale(1.1);
 }
 
@@ -123,6 +237,34 @@
   transform: scale(0.95);
 }
 
-.actionCell {
-  text-align: center;
+/* X işareti için özel styling */
+.deleteButton::before {
+  content: "×";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 14px;
+  font-weight: 300;
 }
+
+/* SATIR HOVER EFFECT */
+.table tbody tr:hover {
+  background-color: #fff8e1;
+}
+
+.table tbody tr:hover td {
+  border-bottom-color: #ffcc80;
+}
+
+/* GENİŞLİK HESAPLAMASI */
+/* 
+1. Ürün: 240px
+2. Ürün-Gram boşluk: 50px
+3. Gram: 106px
+4. Gram-Kalori boşluk: 33px
+5. Kalori: 106px
+6. Kalori-Buton boşluk: 20px
+7. Buton Alanı: 176px (buton 12px ama alan 176px)
+TOPLAM: 240 + 50 + 106 + 33 + 106 + 20 + 176 = 731px ✓
+*/

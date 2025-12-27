@@ -2,68 +2,67 @@ import React from 'react';
 import styles from './DiaryProductsList.module.css';
 
 const DiaryProductsList = ({ products, onDeleteProduct }) => {
+  // Backend'den gelen toplam kaloriyi hesapla
   const totalCalories = products.reduce((sum, product) => 
-    sum + (product.totalCalories || 0), 0
+    sum + (product.calories || 0), 0
   );
-
-  // Her satır için hesaplanan yükseklik
-  const rowHeight = 60; // px
-  const headerHeight = 50; // px
-  const visibleRows = 5;
-  const maxTableHeight = headerHeight + (visibleRows * rowHeight);
 
   return (
     <div className={styles.container}>
       {products.length === 0 ? (
-        <p className={styles.emptyMessage}>No products have been added yet.</p>
+        <p className={styles.emptyMessage}>
+          No products added for this date.
+        </p>
       ) : (
-        <>
-          {/* TABLO ALANI - SADECE BURASI SCROLL EDİLECEK */}
-          <div className={styles.tableArea}>
-            <div 
-              className={styles.tableWrapper}
-              style={{ 
-                maxHeight: products.length > 5 ? `${maxTableHeight}px` : 'none'
-              }}
-            >
-              <table className={styles.table}>
-                <thead>
-                  <tr>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
+        <div className={styles.tableArea}>
+          <div className={styles.tableWrapper}>
+            <table className={styles.table}>
+              <thead>
+                <tr>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                {products.map((product) => (
+                  <tr key={product._id} className={styles.row}>
+                    {/* ÜRÜN ADI */}
+                    <td className={styles.productCell}>
+                      <div>
+                        <strong>
+                          {product.title || product.product?.title || "Unnamed Product"}
+                        </strong>
+                      </div>
+                    </td>
+                    
+                    {/* GRAM */}
+                    <td className={styles.amountCell}>
+                      {product.weight || product.amount || 0}g
+                    </td>
+                    
+                    {/* KALORİ */}
+                    <td className={styles.totalCalorieCell}>
+                      <strong>{product.calories?.toFixed(0) || "0"} kcal</strong>
+                    </td>
+                    
+                    {/* SİLME BUTONU */}
+                    <td className={styles.actionCell}>
+                      <button 
+                        onClick={() => onDeleteProduct(product._id)}
+                        className={styles.deleteButton}
+                        title="Delete"
+                        aria-label="Delete product"
+                      >
+                      </button>
+                    </td>
                   </tr>
-                </thead>
-                <tbody>
-                  {products.map((product, index) => (
-                    <tr key={index} className={styles.row}>
-                      <td className={styles.productCell}>
-                        <div>
-                          <strong>{product.title}</strong>
-                        </div>
-                      </td>
-                      <td className={styles.amountCell}>{product.amount}g</td>
-                      <td className={styles.totalCalorieCell}>
-                        <strong>{product.totalCalories.toFixed(2)} kcal</strong>
-                      </td>
-                      <td className={styles.actionCell}>
-                        <button 
-                          onClick={() => onDeleteProduct(index)}
-                          className={styles.deleteButton}
-                          title="Sil"
-                        >
-                          ✕
-                        </button>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+                ))}
+              </tbody>
+            </table>
           </div>
-        </>
+        </div>
       )}
     </div>
   );

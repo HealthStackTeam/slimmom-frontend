@@ -1,4 +1,3 @@
-// DiaryProductsListItem.jsx
 import React from 'react';
 import styles from './DiaryProductsListItem.module.css';
 
