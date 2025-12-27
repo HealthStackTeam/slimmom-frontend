@@ -1,20 +1,17 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import styles from './RightSideBar.module.css';
-
 import { selectNotAllowedProducts, selectDailyRate } from '../../redux/dailyRate/selectors';
 import { selectCaloriesConsumed, selectCaloriesLeft, selectCaloriesPercent } from '../../redux/diary/selectors';
 
 const RightSideBar = () => {
-  // pull data from redux store
   const dailyRate = useSelector(selectDailyRate);
   const notAllowedProducts = useSelector(selectNotAllowedProducts);
   const consumed = useSelector(selectCaloriesConsumed);
   const left = useSelector(selectCaloriesLeft);
   const percent = useSelector(selectCaloriesPercent);
 
-  // date formatting
-  const today = new Date().toLocaleDateString('en-GB'); // "DD/MM/YYYY" formatı
+  const today = new Date().toLocaleDateString('en-GB');
 
   return (
     <div className={styles.container}>
@@ -46,7 +43,7 @@ const RightSideBar = () => {
           <ul className={styles.foodList}>
             {notAllowedProducts.map((product, index) => (
               <li key={index} className={styles.foodItem}>
-                {product},&nbsp; 
+                {typeof product === 'object' ? product.title : product},&nbsp; 
               </li>
             ))}
           </ul>

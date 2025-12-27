@@ -1,0 +1,46 @@
+.pageContainer {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 1280px) {
+  .pageContainer {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.formSection {
+  padding: 0 20px;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .formSection {
+    padding: 0 32px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .formSection {
+    width: 60%;
+    padding-left: 16px;
+  }
+}
+
+.pageContainer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  background-image: "../assets/desktop-bg.jpg";
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: right top;
+}

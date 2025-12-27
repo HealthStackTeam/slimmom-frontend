@@ -1,3 +1,14 @@
+:root {
+  --white: #ffffff;
+  --orange: #fc842d;
+  --grey: #9b9faa;
+  --text-main: #212121;
+  --bg-grey: #f0f1f3;
+  --border-grey: #e0e0e0;
+  --font-main: 'Verdana', sans-serif;
+  --font-secondary: 'Gotham Pro', sans-serif;
+}
+
 *{
   margin: 0;
   padding: 0;
@@ -5,8 +16,22 @@
 }
 
 body {
-  font-family: Verdana, Geneva, sans-serif;
   margin: 0;
+  font-family: var(--font-main);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--text-main);
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+  padding: 0;
+}
+
+ul, ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 @media (min-width: 1280px) {

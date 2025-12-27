@@ -3,8 +3,16 @@ import { Formik, Form,Field } from 'formik'
 import { useDispatch } from 'react-redux'
 import { login } from '../../redux/auth/operations'
 import {useId} from "react"
+import { Formik, Form, Field, ErrorMessage } from 'formik'
+import * as Yup from 'yup'
+import { useDispatch } from 'react-redux'
+import { login } from '../../redux/auth/operations'
+import { NavLink } from 'react-router-dom'
+import { toast } from 'react-hot-toast'
 
 const LoginForm = () => {
+  const Schema = Yup.object().shape({ email: Yup.string().trim().email('Please enter a valid email').required('Email is required'), password: Yup.string().required('Password is required'), });
+
   const dispatch = useDispatch();
   const passwordFieldId = useId();
   const emailFieldId = useId();

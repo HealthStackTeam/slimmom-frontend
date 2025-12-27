@@ -1,8 +1,10 @@
 import css from './RegistrationForm.module.css'
-import { Formik, Form, Field } from 'formik'
+import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 import { useDispatch } from 'react-redux'
 import { register } from '../../redux/auth/operations'
+import { NavLink } from 'react-router-dom'
+import { toast } from 'react-hot-toast'
 
 const RegistrationForm = () => {
 
@@ -21,26 +23,34 @@ const RegistrationForm = () => {
 
   return (
     <div className={css.registerForm}>
-      <h1>Registration</h1>
+      <h1>Register</h1>
       <Formik
         initialValues={{ name: '', email: '', password: ''}}
         validationSchema={Schema}
         onSubmit={handleSubmit}
       >
         <Form className={css.form}>
-          <label className={css.registerLabel} htmlFor="name">
+          {/* <label className={css.registerLabel} htmlFor="name">
             Name *
-          </label>
-          <Field type="text" name="name" placeholder="Name" />
-          <label className={css.registerLabel} htmlFor="email">
+          </label> */}
+          <Field type="text" name="name" placeholder="Name *" />
+          <ErrorMessage name="name" component="div" className={css.error} />
+          {/* <label className={css.registerLabel} htmlFor="email">
             Email *
-          </label>
-          <Field type="email" name="email" placeholder="Email" />
-          <label className={css.registerLabel} htmlFor="password">
+          </label> */}
+          <Field type="email" name="email" placeholder="Email *" />
+          <ErrorMessage name="email" component="div" className={css.error} />
+          {/* <label className={css.registerLabel} htmlFor="password">
             Password *
-          </label>
-          <Field type="password" name="password" placeholder="Password" />
-          <button type="submit">Register</button>
+          </label> */}
+          <Field type="password" name="password" placeholder="Password *" />
+          <ErrorMessage name="password" component="div" className={css.error} />
+
+          <div>
+            <button type="submit">Register</button>
+            <NavLink to="/login">Log in</NavLink>
+          </div>
+
         </Form>
       </Formik>
 
