@@ -3,16 +3,17 @@ import { useDispatch } from 'react-redux';
 import { fetchDailyRate } from '../../redux/dailyRate/operations'; 
 import styles from './CalculatorСalorieForm.module.css';
 
-const CalculatorCalorieForm = () => {
+const CalculatorCalorieForm = ({ onSuccess }) => {
   const dispatch = useDispatch();
+  const bloodTypes = ['A', 'B', 'AB', 'O'];
 
-  // Form State
   const [formData, setFormData] = useState({
     height: '',
     age: '',
     weight: '',
     targetWeight: '', 
-    bloodType: '1',
+    bloodType: 'A',
+    gender: 'female',
   });
 
   const handleChange = (e) => {
@@ -22,16 +23,25 @@ const CalculatorCalorieForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     const payload = {
       height: Number(formData.height),
       age: Number(formData.age),
       weight: Number(formData.weight),
       targetWeight: Number(formData.targetWeight),
-      bloodType: Number(formData.bloodType),
-      gender: 'female', 
+      bloodType: formData.bloodType,
+      gender: formData.gender,
     };
 
-    dispatch(fetchDailyRate(payload));
+    dispatch(fetchDailyRate(payload))
+      .unwrap()
+      .then(() => {
+        if (onSuccess) {
+           onSuccess(); 
+        }
+      })
+      .catch(() => {
+      });
   };
 
   return (
@@ -39,6 +49,7 @@ const CalculatorCalorieForm = () => {
       <h2 className={styles.title}>Calculate your daily calorie intake right now</h2>
       <form className={styles.form} onSubmit={handleSubmit}>
         <div className={styles.inputsWrapper}>
+          
           <div className={styles.column}>
             <label className={styles.label}>
               Height *
@@ -88,16 +99,46 @@ const CalculatorCalorieForm = () => {
               />
             </label>
             
+            {/* CİNSİYET SEÇİMİ */}
+            <div className={styles.radioGroup}>
+              <p className={styles.radioTitle}>Gender *</p>
+              <div className={styles.radios}>
+                <label className={styles.radioLabel}>
+                  <input
+                    type="radio"
+                    name="gender"
+                    value="female"
+                    checked={formData.gender === 'female'}
+                    onChange={handleChange}
+                    className={styles.radioInput}
+                  />
+                  <span className={styles.radioText}>Female</span>
+                </label>
+                <label className={styles.radioLabel}>
+                  <input
+                    type="radio"
+                    name="gender"
+                    value="male"
+                    checked={formData.gender === 'male'}
+                    onChange={handleChange}
+                    className={styles.radioInput}
+                  />
+                  <span className={styles.radioText}>Male</span>
+                </label>
+              </div>
+            </div>
+
+            {/* KAN GRUBU SEÇİMİ */}
             <div className={styles.radioGroup}>
               <p className={styles.radioTitle}>Blood type *</p>
               <div className={styles.radios}>
-                {[1, 2, 3, 4].map((type) => (
+                {bloodTypes.map((type) => (
                   <label key={type} className={styles.radioLabel}>
                     <input
                       type="radio"
                       name="bloodType"
                       value={type}
-                      checked={formData.bloodType == type}
+                      checked={formData.bloodType === type}
                       onChange={handleChange}
                       className={styles.radioInput}
                     />
