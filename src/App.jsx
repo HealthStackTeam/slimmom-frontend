@@ -7,6 +7,7 @@ import { Routes, Route } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { refreshUser } from "./redux/auth/operations.js";
 import { selectIsRefreshing } from "./redux/auth/selectors";
+import Header from "./components/Header/Header.jsx";
 import { Toaster } from "react-hot-toast";
 
 const MainPage = lazy(() => import("./pages/MainPage"));
@@ -27,7 +28,8 @@ function App() {
     <strong>Refreshing user...</strong>
   ) : (
     <>
-      {/* Navbar Menü gelicek */}
+        {/* Navbar Menü gelicek */}
+        <Header />
       <Suspense fallback={null}>
         <Routes>
           <Route path="/" element={<MainPage />} />

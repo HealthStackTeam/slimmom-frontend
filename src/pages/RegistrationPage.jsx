@@ -4,7 +4,6 @@ import RegistrationForm from "../components/RegistrationForm/RegistrationForm";
 const RegistrationPage = () => {
   return (
     <div>
-      <Header />
       <RegistrationForm />
     </div>
   );

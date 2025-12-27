@@ -10,6 +10,11 @@ const RegistrationForm = () => {
 
   const dispatch = useDispatch();
 
+  const handleSubmit = (values,actions) => {
+    dispatch(register(values))
+    actions.resetForm()
+  }
+
   const Schema = Yup.object().shape({
     name: Yup.string().trim().required('Name is required'),
     email: Yup.string().trim().email('Please enter a valid email').required('Email is required'),
@@ -20,23 +25,9 @@ const RegistrationForm = () => {
     <div className={css.registerForm}>
       <h1>Register</h1>
       <Formik
-        initialValues={{ name: '', email: '', password: '' }}
+        initialValues={{ name: '', email: '', password: ''}}
         validationSchema={Schema}
-        onSubmit={async (values, { setSubmitting, resetForm }) => {
-          try {
-            await dispatch(register({
-              name: values.name.trim(),
-              email: values.email.trim(),
-              password: values.password,
-            }))
-            toast.success('Registration completed successfully!')
-            resetForm();
-          } catch (error) {
-            console.error('Registration error:', error);
-          } finally {
-            setSubmitting(false);
-          }
-        }}
+        onSubmit={handleSubmit}
       >
         <Form className={css.form}>
           {/* <label className={css.registerLabel} htmlFor="name">
