@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import CalculatorCalorieForm from '../components/CalculatorСalorieForm/CalculatorСalorieForm';
 import RightSideBar from '../components/RightSideBar/RightSideBar';
 import Modal from '../components/Modal/Modal';
-import DailyCalorieIntake from '../components/DailyCalorieIntake/DailyCalorieIntake';
 import styles from './CalculatorPage.module.css';
+import DailyCaloriesForm from '../components/DailyCaloriesForm/DailyCaloriesForm';
 
 const CalculatorPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -26,7 +26,7 @@ const CalculatorPage = () => {
 
       {isModalOpen && (
         <Modal onClose={closeModal}>
-           <DailyCalorieIntake onClose={closeModal} />
+           <DailyCaloriesForm onClose={closeModal} />
         </Modal>
       )}
     </div>

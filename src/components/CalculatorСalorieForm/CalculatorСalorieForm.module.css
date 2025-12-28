@@ -3,6 +3,7 @@
   flex-direction: column;
   align-items: center;
   padding-top: 32px;
+  padding-left: 16px;
 }
 
 @media (min-width: 768px) {
@@ -94,7 +95,8 @@
   transition: border-color 0.2s;
 }
 
-.input:focus, .input:not(:placeholder-shown) {
+.input:focus,
+.input:not(:placeholder-shown) {
   border-bottom: 1px solid var(--orange);
 }
 
@@ -134,7 +136,7 @@
   cursor: pointer;
 }
 
-.radioInput:checked + span {
+.radioInput:checked+span {
   color: var(--orange);
   font-weight: 700;
 }
@@ -152,6 +154,8 @@
   box-shadow: 0px 4px 10px rgba(252, 132, 45, 0.5);
   transition: all 0.3s;
   align-self: center;
+  display: block;
+  margin-left: auto;
 }
 
 @media (min-width: 768px) {

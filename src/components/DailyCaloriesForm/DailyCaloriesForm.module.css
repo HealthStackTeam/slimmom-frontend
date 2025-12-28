@@ -1,0 +1,23 @@
+.button {
+    display: inline-block;
+    background-color: #FC842D;
+    color: #FFFFFF;
+    font-family: 'Verdana', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 13px 24px;
+    border-radius: 30px;
+    text-decoration: none;
+    box-shadow: 0px 4px 10px rgba(252, 132, 45, 0.5);
+    transition: background-color 0.3s, color 0.3s;
+    cursor: pointer;
+    border: 2px solid #FC842D;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.button:hover {
+    background-color: #FFFFFF;
+    color: #FC842D;
+}
