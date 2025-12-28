@@ -1,10 +1,9 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
 import styles from './DailyCalorieIntake.module.css';
 import { selectDailyRate, selectNotAllowedProducts } from '../../redux/dailyRate/selectors';
 
-const DailyCalorieIntake = ({ onClose }) => {
+const DailyCalorieIntake = () => {
   const dailyRate = useSelector(selectDailyRate);
   const notAllowedProducts = useSelector(selectNotAllowedProducts);
 
@@ -35,9 +34,6 @@ const DailyCalorieIntake = ({ onClose }) => {
         </ol>
       </div>
 
-      <NavLink to="/register" className={styles.button} onClick={onClose}>
-        Start losing weight
-      </NavLink>
     </div>
   );
 };

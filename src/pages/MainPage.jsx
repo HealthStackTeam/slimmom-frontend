@@ -4,6 +4,7 @@ import Modal from "../components/Modal/Modal";
 import CalculatorCalorieForm from "../components/CalculatorСalorieForm/CalculatorСalorieForm";
 import DailyCalorieIntake from "../components/DailyCalorieIntake/DailyCalorieIntake";
 import RightSideBar from "../components/RightSideBar/RightSideBar";
+import DailyCaloriesForm from "../components/DailyCaloriesForm/DailyCaloriesForm";
 
 const MainPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -26,7 +27,7 @@ const MainPage = () => {
 
       {isModalOpen && (
         <Modal onClose={closeModal}>
-           <DailyCalorieIntake onClose={closeModal} />
+           <DailyCaloriesForm onClose={closeModal} />
         </Modal>
       )}
     </div>
