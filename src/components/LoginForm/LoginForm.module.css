@@ -25,16 +25,20 @@
     border: none;
     border-bottom: 1px solid #000000;
 } */
-.loginForm {
+.loginFormContainer {
     display: flex;
     flex-direction: column;
     align-items: left;
+    position: absolute;
+    top: 300px;
+    left: 50px;
+    gap: 20px;
 }
 
 .form {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 16px;
     max-width: 450px;
     padding: 24px;
 }
@@ -44,6 +48,11 @@
     color: rgba(252, 132, 45, 1);
     text-transform: uppercase;
     margin-bottom: 16px;
+}
+.inputContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
 input[type="email"],
@@ -58,7 +67,15 @@ input[type="password"] {
     background: transparent;
     max-width: 240px;
 }
-
+.error {
+    color: #ff6b6b;
+    font-size: 0.85rem;
+    padding-left: 10px;
+    margin-top: 5px;
+    height: 20px;
+    display: block;
+    animation: shake 0.3s ease-in-out;
+}
 .btnContainer {
     display: flex;
     align-items: center;
