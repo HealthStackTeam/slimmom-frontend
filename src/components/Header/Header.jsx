@@ -6,7 +6,7 @@ import styles from "./Header.module.css";
 import { selectIsLoggedIn } from "../../redux/auth/selectors.js";
 
 const Header = () => {
-  const { isLoggedIn } = useSelector(selectIsLoggedIn);
+  const  isLoggedIn  = useSelector(selectIsLoggedIn);
 
   return (
     <header className={styles.header}>

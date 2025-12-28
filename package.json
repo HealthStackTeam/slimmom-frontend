@@ -27,6 +27,7 @@
     "react-redux": "^9.2.0",
     "react-router-dom": "^7.11.0",
     "react-spinners": "^0.17.0",
+    "redux-persist": "^6.0.0",
     "yup": "^1.7.1"
   },
   "devDependencies": {

@@ -2,6 +2,10 @@ import React, { useEffect, useRef } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import styles from './DiaryAddProductForm.module.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchProductsByQuery } from '../../redux/products/operations';
+import { selectFilter } from '../../redux/filter/selectors';
+import { setFilter } from '../../redux/filter/slice';
 
 // Validation Schema
 const ProductSchema = Yup.object().shape({
@@ -16,6 +20,9 @@ const ProductSchema = Yup.object().shape({
 
 const DiaryAddProductForm = ({ onAddProduct, products = [] }) => {
   const suggestionsRef = useRef(null);
+  const dispatch = useDispatch();
+
+  const filter = useSelector(selectFilter)
 
   // Form başlangıç değerleri
   const initialValues = {
@@ -23,6 +30,11 @@ const DiaryAddProductForm = ({ onAddProduct, products = [] }) => {
     productId: '',
     amount: '',
   };
+
+  const handleNewChange = (e) => { 
+    dispatch(fetchProductsByQuery(e.target.value));
+  }
+
 
   // Form submit 
   const handleSubmit = (values, { resetForm, setFieldValue }) => {
@@ -88,14 +100,11 @@ const DiaryAddProductForm = ({ onAddProduct, products = [] }) => {
                 <Field type="hidden" name="productId" />
                 
                 {/* Arama Girişi */}
-                <Field
+                {/* <Field
                   type="text"
                   name="productSearch"
                   value={values.productSearch}
-                  onChange={(e) => {
-                    handleChange(e);
-                    setFieldValue('productId', '');
-                  }}
+                  onChange={(e)=>e.target.value}
                   onFocus={() => {
                     if (values.productSearch.length > 0 && !values.productId) {
                       const suggestions = document.querySelector(`.${styles.suggestions}`);
@@ -107,7 +116,11 @@ const DiaryAddProductForm = ({ onAddProduct, products = [] }) => {
                   placeholder="Enter product name"
                   className={styles.input}
                   autoComplete="off"
-                />
+                /> */}
+                <Field type="text" value={filter}
+                  onChange={(e)=>setFilter(e.target.value)}>
+                  
+                </Field>
                 
                 {/* Ürün Önerileri */}
                 {showSuggestions && filteredProducts.length > 0 && (

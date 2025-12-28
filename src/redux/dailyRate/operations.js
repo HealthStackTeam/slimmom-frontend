@@ -1,6 +1,10 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
+const setAuthHeader = (token) => {
+  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+}
+
 // Public
 export const fetchDailyRate = createAsyncThunk(
   "dailyRate/fetch",
@@ -20,9 +24,11 @@ export const fetchDailyRate = createAsyncThunk(
 export const fetchDailyRateUser = createAsyncThunk(
   "dailyRate/fetchUser",
   // userId
-  async ({ values }, thunkAPI) => {
+  async (values , thunkAPI) => {
+    console.log(values)
     try {
-      const { data } = await axios.post("/calories/public", values);
+      setAuthHeader(thunkAPI.getState().auth.token);
+      const { data } = await axios.post("/calories/private", values);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

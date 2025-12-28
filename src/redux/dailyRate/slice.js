@@ -35,6 +35,7 @@ const dailyRateSlice = createSlice({
       })
       // private
       .addCase(fetchDailyRateUser.fulfilled, (state, action) => {
+        console.log(action.payload);
         state.isLoading = false;
         state.dailyRate = action.payload.data.calorie;
         state.notAllowedProducts = action.payload.data.foods;

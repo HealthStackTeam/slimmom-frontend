@@ -77,7 +77,6 @@ const DiaryPage = () => {
 
   return (
     <div>
-      <Header />
       <DiaryDateCalendar 
         onDateChange={handleDateChange}
         initialDate={selectedDate}

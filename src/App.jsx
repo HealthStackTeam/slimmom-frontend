@@ -20,9 +20,11 @@ function App() {
   const dispatch = useDispatch();
   const isRefreshing = useSelector(selectIsRefreshing);
 
-  useEffect(() => {
+  
+ useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
+  
 
   return isRefreshing ? (
     <strong>Refreshing user...</strong>
@@ -64,7 +66,8 @@ function App() {
             path="/diary"
             element={
               <PrivateRoute redirectTo="/login" component={<DiaryPage />} />
-            }
+              }
+              
           />
         </Routes>
         </Suspense>

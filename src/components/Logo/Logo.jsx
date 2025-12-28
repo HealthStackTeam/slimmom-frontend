@@ -4,7 +4,7 @@ import styles from "./Logo.module.css";
 
 const Logo = () => {
   return (
-    <Link to="/diary" className={styles.logoWrapper}>
+    <Link to="/" className={styles.logoWrapper}>
       <img src={logoImg} alt="SlimMom Logo" className={styles.logoIcon} />
     </Link>
   );

@@ -3,6 +3,7 @@ import styles from "./Navigation.module.css";
 import UserInfo from "../UserInfo/UserInfo";
 
 const Navigation = ({ isLoggedIn }) => {
+  console.log(isLoggedIn);
   return (
     <nav className={styles.nav}>
       {isLoggedIn ? (

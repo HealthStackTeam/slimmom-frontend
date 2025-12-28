@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { fetchDailyRate } from '../../redux/dailyRate/operations'; 
 import styles from './CalculatorСalorieForm.module.css';
+import { selectIsLoggedIn } from '../../redux/auth/selectors';
+import { fetchDailyRateUser } from '../../redux/dailyRate/operations';
 
 const CalculatorCalorieForm = ({ onSuccess }) => {
   const dispatch = useDispatch();
+  const isLoggedIn = useSelector(selectIsLoggedIn)
   const bloodTypes = ['A', 'B', 'AB', 'O'];
 
   const [formData, setFormData] = useState({
@@ -32,8 +35,12 @@ const CalculatorCalorieForm = ({ onSuccess }) => {
       bloodType: formData.bloodType,
       gender: formData.gender,
     };
+    console.log(isLoggedIn);
 
-    dispatch(fetchDailyRate(payload))
+    if (isLoggedIn) {
+      dispatch(fetchDailyRateUser(payload))
+    } else {
+      dispatch(fetchDailyRate(payload))
       .unwrap()
       .then(() => {
         if (onSuccess) {
@@ -42,6 +49,9 @@ const CalculatorCalorieForm = ({ onSuccess }) => {
       })
       .catch(() => {
       });
+    }
+
+    
   };
 
   return (
