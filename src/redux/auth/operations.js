@@ -48,6 +48,10 @@ export const logout = createAsyncThunk(
 export const refreshUser = createAsyncThunk(
   'auth/refreshUser',
   async (_, thunkAPI) => {
+    const token = thunkAPI.getState().auth.accessToken;
+    if (token === null) {
+      return thunkAPI.rejectWithValue('No valid token');
+    }
     try {
       const { data: res } = await axios.get('/auth/refresh');
       return res.data;
