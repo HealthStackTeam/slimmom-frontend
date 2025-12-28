@@ -14,9 +14,7 @@ export const register = createAsyncThunk(
   'auth/register',
   async (credentials, thunkAPI) => {
     try {
-      const { data: res } = await axios.post('/auth/register', credentials, {
-        withCredentials: true,
-      }); // Buraya end point gelicek
+      const { data: res } = await axios.post('/auth/register', credentials); // Buraya end point gelicek
       setAuthHeader(res.data.accessToken);
       return res.data;
     } catch (error) {
@@ -40,7 +38,7 @@ export const logout = createAsyncThunk(
   'auth/logout',
   async (__dirname, thunkAPI) => {
     try {
-      await axios.post('/logout',); // Buraya end point gelicek
+      await axios.post('/auth/logout'); // Buraya end point gelicek
       clearAuthHeader();
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
