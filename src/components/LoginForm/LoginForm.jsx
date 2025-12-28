@@ -36,26 +36,41 @@ const LoginForm = () => {
   };
 
   return (
-    <div className={css.loginForm}>
+    <div className={css.loginFormContainer}>
       <Formik
         initialValues={{ email: '', password: '' }}
         onSubmit={handleSubmit}
+        validationSchema={Schema}
       >
-        <Form>
-          <label className={css.loginLabel} htmlFor="email">
-            Email
-          </label>
-          <Field type="email" name="email" id={emailFieldId} />
-          <label className={css.loginLabel} htmlFor="password">
-            Password
-          </label>
-          <Field
-            type="password"
-            name="password"
-            id={passwordFieldId}
-            placeholder="Password"
-          />
-          <button type="submit">Log in</button>
+        <Form className={css.form}>
+          <div className={css.inputContainer}>
+            <label className={css.loginLabel} htmlFor="email">
+              Email
+            </label>
+            <Field type="email" name="email" id={emailFieldId} />
+            <ErrorMessage name="email" component="span" className={css.error} />
+          </div>
+          <div className={css.inputContainer}>
+            <label className={css.loginLabel} htmlFor="password">
+              Password
+            </label>
+            <Field
+              type="password"
+              name="password"
+              id={passwordFieldId}
+            />
+            <ErrorMessage
+              name="password"
+              component="span"
+              className={css.error}
+            />
+          </div>
+
+          <div>
+            <button type="submit">Log in</button>
+            <NavLink to="/register">Register</NavLink>
+          </div>
+
         </Form>
       </Formik>
     </div>

@@ -9,6 +9,7 @@ import { refreshUser } from "./redux/auth/operations.js";
 import { selectIsRefreshing } from "./redux/auth/selectors";
 import Header from "./components/Header/Header.jsx";
 import { Toaster } from "react-hot-toast";
+import Loader from "./components/Loader/Loader.jsx";
 
 const MainPage = lazy(() => import("./pages/MainPage"));
 const CalculatorPage = lazy(() => import("./pages/CalculatorPage"));
@@ -27,12 +28,12 @@ function App() {
   
 
   return isRefreshing ? (
-    <strong>Refreshing user...</strong>
+    <strong><Loader /></strong>
   ) : (
     <>
         {/* Navbar Menü gelicek */}
         <Header />
-      <Suspense fallback={null}>
+      <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route
