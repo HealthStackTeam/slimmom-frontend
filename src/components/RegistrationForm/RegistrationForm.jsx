@@ -12,6 +12,13 @@ const RegistrationForm = () => {
 
   const handleSubmit = (values,actions) => {
     dispatch(register(values))
+      .unwrap()
+      .then(() => {
+        toast.success('Registration successful!')
+      })
+      .catch(() => {
+        toast.error('Registration failed. Please try again.')
+      });
     actions.resetForm()
   }
 
