@@ -9,7 +9,6 @@ const setAuthHeader = (token) => {
 export const fetchDiary = createAsyncThunk(
   "diary/fetch",
   async (credentials, thunkAPI) => {
-    console.log(credentials);
     try {
       setAuthHeader(thunkAPI.getState().auth.token);
       const { data:res } = await axios.post("/diary",{date:credentials});
@@ -39,10 +38,10 @@ export const addProduct = createAsyncThunk(
 export const deleteProduct = createAsyncThunk(
   "diary/deleteProduct",
   async (dailyId, thunkAPI) => {
+
     try {
       setAuthHeader(thunkAPI.getState().auth.token);
-      await axios.delete("/diary/", { data: { dailyId } });
-      return dailyId; 
+      await axios.delete(`/diary/${dailyId}`);
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

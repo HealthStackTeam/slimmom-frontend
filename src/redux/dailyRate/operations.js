@@ -25,7 +25,6 @@ export const fetchDailyRateUser = createAsyncThunk(
   "dailyRate/fetchUser",
   // userId
   async (values , thunkAPI) => {
-    console.log(values)
     try {
       setAuthHeader(thunkAPI.getState().auth.token);
       const { data } = await axios.post("/calories/private", values);

@@ -9,7 +9,7 @@ const RightSideBar = () => {
   const notAllowedProducts = useSelector(selectNotAllowedProducts);
   const consumed = useSelector(selectCaloriesConsumed);
   const left = useSelector(selectCaloriesLeft);
-  const percent = useSelector(selectCaloriesPercent);
+  const percent = useSelector(selectCaloriesPercent); 
 
   const today = new Date().toLocaleDateString('en-GB');
 
