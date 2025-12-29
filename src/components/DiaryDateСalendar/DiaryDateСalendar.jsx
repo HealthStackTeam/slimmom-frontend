@@ -30,7 +30,6 @@ const DiaryDateCalendar = ({ onDateChange, selectedDate = new Date() }) => {
         onChange={handleDateChange}
         options={{
           dateFormat: 'd/m/Y',
-          locale: 'tr',
           maxDate: new Date(),
           animate: true,
           disableMobile: true,
