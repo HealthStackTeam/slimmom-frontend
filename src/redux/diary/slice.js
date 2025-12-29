@@ -1,10 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchDiary, addProduct, deleteProduct } from "./operations";
+import {fetchDiary,addProduct, deleteProduct } from "./operations";
 
 const initialState = {
   products: [],
-  isLoading: false,
-  error: null,
 };
 
 const diarySlice = createSlice({
@@ -14,17 +12,10 @@ const diarySlice = createSlice({
   extraReducers: (builder) => {
     builder
       // fetch diary entries
-      .addCase(fetchDiary.pending, (state) => {
-        state.isLoading = true;
-      })
       .addCase(fetchDiary.fulfilled, (state, action) => {
-        state.isLoading = false;
         // backend: { data: [...] } 
+        console.log(action.payload);
         state.products = action.payload.data;
-      })
-      .addCase(fetchDiary.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.payload;
       })
       // add product to diary
       .addCase(addProduct.fulfilled, (state, action) => {

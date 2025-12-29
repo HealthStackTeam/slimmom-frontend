@@ -1,8 +1,16 @@
 import React from 'react';
 import styles from './DiaryProductsList.module.css';
+import { useSelector } from 'react-redux';
+import { selectDiaryProducts } from '../../redux/diary/selectors';
 
-const DiaryProductsList = ({ products = [], onDeleteProduct }) => {
+const DiaryProductsList = () => {
+
+  const products = useSelector(selectDiaryProducts);
+
+
   
+  console.log(products);
+
   return (
     <div className={styles.container}>
       <div className={styles.tableArea}>
@@ -28,7 +36,7 @@ const DiaryProductsList = ({ products = [], onDeleteProduct }) => {
                 <td>{product.calories || 0} kcal</td>
                 <td>
                   <button 
-                    onClick={() => onDeleteProduct(product.id || product._id)}
+                    
                     className={styles.deleteButton}
                   >
                     X

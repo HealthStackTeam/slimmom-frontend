@@ -29,15 +29,3 @@ export const fetchProductsByQuery = createAsyncThunk(
         }
     }
 );
-export const fetchAllProducts = createAsyncThunk(
-  "products/fetchAll",
-  async (_, thunkAPI) => {
-    try {
-      setAuthHeader(thunkAPI.getState().auth.token);
-      const { data } = await axios.get("/products"); // Tüm ürünler
-      return data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
