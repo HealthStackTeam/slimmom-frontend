@@ -1,13 +1,19 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
+const setAuthHeader = (token) => {
+  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+}
+
 // fetch diary entries
 export const fetchDiary = createAsyncThunk(
   "diary/fetch",
-  async (_, thunkAPI) => {
+  async (credentials, thunkAPI) => {
+    console.log(credentials);
     try {
-      const { data } = await axios.get("/diary");
-      return data; 
+      setAuthHeader(thunkAPI.getState().auth.token);
+      const { data:res } = await axios.post("/diary",{date:credentials});
+      return res.data; 
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -19,8 +25,9 @@ export const addProduct = createAsyncThunk(
   "diary/addProduct",
   async (productData, thunkAPI) => {
     try {
+      setAuthHeader(thunkAPI.getState().auth.token);
       // productData: { date, productId, weight }
-      const { data } = await axios.post("/diary", productData);
+      const { data } = await axios.post("/diary/add", productData);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -33,7 +40,8 @@ export const deleteProduct = createAsyncThunk(
   "diary/deleteProduct",
   async (dailyId, thunkAPI) => {
     try {
-      await axios.delete("/diary", { data: { dailyId } });
+      setAuthHeader(thunkAPI.getState().auth.token);
+      await axios.delete("/diary/", { data: { dailyId } });
       return dailyId; 
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
