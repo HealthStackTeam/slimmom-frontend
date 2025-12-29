@@ -15,11 +15,11 @@ const diarySlice = createSlice({
       .addCase(fetchDiary.fulfilled, (state, action) => {
         // backend: { data: [...] } 
         console.log(action.payload);
-        state.products = action.payload.data;
+        state.products = action.payload;
       })
       // add product to diary
       .addCase(addProduct.fulfilled, (state, action) => {
-        state.products.push(action.payload.data);
+        state.products.push(action.payload.data); 
       })
       // delete product from diary
       .addCase(deleteProduct.fulfilled, (state, action) => {
