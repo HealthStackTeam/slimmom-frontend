@@ -8,7 +8,7 @@
   margin: 20px 0;
 }
 
-.product_form {
+.form {
   display: flex;
   align-items: center;
   position: relative;
@@ -40,7 +40,7 @@
 }
 
 /* Search Input  */
-.input {
+.field {
   width: 240px;
   height: 17px;
   padding: 0;
@@ -54,27 +54,19 @@
   line-height: 17px;
 }
 
-.input:focus {
+.field:focus {
   border-bottom-color: #FFC107; 
 }
 
-.input::placeholder {
+.field::placeholder {
   color: #999;
   font-style: italic;
   line-height: 17px;
 }
 
-/* Miktar Container */
-.amountContainer {
-  display: flex;
-  align-items: center;
-  position: relative;
-  width: 107px;
-  height: 17px;
-}
 
 /* Miktar Input */
-.amountInput {
+.amountField {
   width: 107px;
   height: 17px;
   padding: 0;
@@ -88,111 +80,16 @@
   line-height: 17px;
 }
 
-.amountInput:focus {
+.amountField:focus {
   border-bottom-color: #FFC107;
 }
 
-.amountInput::placeholder {
+.amountField::placeholder {
   color: #999;
   line-height: 17px;
 }
-
-/* Unit Label */
-.unitLabel {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  color: #666;
-  font-size: 14px;
-  font-weight: 500;
-  pointer-events: none;
-  line-height: 17px;
-}
-
-/* Öneriler Listesi  */
-.suggestions {
-  display: none;
-  position: absolute;
-  top: 20px;
-  left: 0;
-  width: 240px;
-  background: white;
-  border: 1px solid #eee;
-  border-radius: 8px;
-  max-height: 300px;
-  overflow-y: auto;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
-  list-style: none;
-  padding: 0;
-}
-
-.suggestionItem {
-  padding: 12px 15px;
-  cursor: pointer;
-  border-bottom: 1px solid #f5f5f5;
-  transition: background-color 0.2s;
-}
-
-.suggestionItem:hover {
-  background-color: #f8f9fa;
-}
-
-.suggestionItem:last-child {
-  border-bottom: none;
-}
-
-.suggestionContent {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.productName {
-  font-weight: 500;
-  color: #333;
-  font-size: 14px;
-}
-
-.productDetails {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 12px;
-}
-
-.productCalories {
-  color: #ff6b6b;
-  font-weight: 600;
-}
-
-.productCategory {
-  background: #e8f5e9;
-  color: #2e7d32;
-  padding: 2px 8px;
-  border-radius: 12px;
-  font-weight: 500;
-}
-
-/* Sonuç yok mesajı */
-.noResults {
-  position: absolute;
-  top: 20px; 
-  left: 0;
-  width: 240px;
-  background: white;
-  border: 1px solid #eee;
-  border-radius: 8px;
-  padding: 15px;
-  color: #ff4444;
-  font-weight: 500;
-  text-align: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
-}
-
 /* Add Button */
-.addButtonRound {
+.button {
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -208,10 +105,13 @@
   justify-content: center;
   box-shadow: 0 4px 8px rgba(255, 215, 0, 0.3);
   flex-shrink: 0;
-  margin-left: 60px; 
+  margin-left: 60px;
+  padding: 0;
+  line-height: 1;
+  text-align: center;
 }
 
-.addButtonRound:hover {
+.button:hover {
   background-color: white;
   transform: scale(1.1);
   box-shadow: 0 6px 16px rgba(255, 152, 0, 0.6);

@@ -14,7 +14,7 @@
   flex: 2;
 }
 
-.details {
+.productDetails {
   display: flex;
   align-items: center;
   gap: 24px;
