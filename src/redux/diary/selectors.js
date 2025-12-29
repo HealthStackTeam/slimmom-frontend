@@ -8,7 +8,14 @@ export const selectDiaryIsLoading = (state) => state.diary.isLoading;
 export const selectCaloriesConsumed = createSelector(
   [selectDiaryProducts],
   (products) => {
-    return products.reduce((total, product) => total + (product.calories || 0), 0);
+
+    const caloriesArray = [];
+
+    for(const p of products) {
+     caloriesArray.push((p.weight/p.product.weight) * p.product.calories);
+    }
+    
+    return caloriesArray.reduce((total, cal) => total + cal, 0);
   }
 );
 
@@ -16,6 +23,7 @@ export const selectCaloriesConsumed = createSelector(
 export const selectCaloriesLeft = createSelector(
   [selectDailyRate, selectCaloriesConsumed],
   (dailyRate, consumed) => {
+    console.log(dailyRate, consumed);
     if (!dailyRate) return 0; // Hedef yoksa kalan da yoktur
     return dailyRate - consumed;
   }

@@ -24,7 +24,6 @@ const ProductSchema = Yup.object().shape({
 const DiaryAddProductForm = ({ selectedDate }) => {
   const [products, setProducts] = useState([]);
 
-  console.log(selectedDate);
 
   const dispatch = useDispatch();
 
@@ -38,8 +37,6 @@ const DiaryAddProductForm = ({ selectedDate }) => {
       productId: values.productId,
       weight: Number(values.weight),
     };
-
-    console.log(valuesToSend);
     dispatch(addProduct(valuesToSend));
     actions.resetForm();
   };

@@ -1,14 +1,17 @@
 import React from 'react';
 import styles from './DiaryProductsList.module.css';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectDiaryProducts } from '../../redux/diary/selectors';
+import { deleteProduct } from '../../redux/diary/operations';
 
 const DiaryProductsList = () => {
 
   const products = useSelector(selectDiaryProducts);
+  const dispatch = useDispatch();
 
-  
-  console.log(products);
+  const handleDeleteProduct = (productId) => {
+    dispatch(deleteProduct(productId));
+  }
 
   return (
     <div className={styles.container}>
@@ -23,17 +26,17 @@ const DiaryProductsList = () => {
             </tr>
           </thead>
           <tbody>
-            {products.map(({weight,product}) => (
+            {products.map(({_id,weight,product}) => (
               <tr key={product._id}>
                 <td>
                   {product.title}
                 </td>
-                <td>{product.weight}</td>
+                <td>{product.calories}kcal</td>
                 <td>{weight }g</td>
-                <td>{product.calories} kcal</td>
+                <td>{product.calories * (weight/100) }</td>
                 <td>
                   <button 
-                    
+                    onClick={()=> handleDeleteProduct(_id)}
                     className={styles.deleteButton}
                   >
                     X

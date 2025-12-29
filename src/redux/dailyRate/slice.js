@@ -3,9 +3,7 @@ import { fetchDailyRate, fetchDailyRateUser } from "./operations";
 
 const initialState = {
   dailyRate: null, 
-  notAllowedProducts: [], 
-  isLoading: false,
-  error: null,
+  notAllowedProducts: [],
 };
 
 const dailyRateSlice = createSlice({
@@ -20,18 +18,10 @@ const dailyRateSlice = createSlice({
   extraReducers: (builder) => {
     builder
       // public
-      .addCase(fetchDailyRate.pending, (state) => {
-        state.isLoading = true;
-        state.error = null;
-      })
       .addCase(fetchDailyRate.fulfilled, (state, action) => {
         state.isLoading = false;
         state.dailyRate = action.payload.data.calorie;
         state.notAllowedProducts = action.payload.data.foods;
-      })
-      .addCase(fetchDailyRate.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.payload;
       })
       // private
       .addCase(fetchDailyRateUser.fulfilled, (state, action) => {
