@@ -1,37 +1,47 @@
 import Header from "../components/Header/Header";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import DiaryDateCalendar from "../components/DiaryDateСalendar/DiaryDateСalendar";
 import DiaryAddProductForm from "../components/DiaryAddProductForm/DiaryAddProductForm";
 import DiaryProductsList from "../components/DiaryProductsList/DiaryProductsList";
 import { fetchDiary, addProduct, deleteProduct } from "../redux/diary/operations";
 import { selectDiaryProducts } from "../redux/diary/selectors";
-import { fetchAllProducts } from "../redux/products/operations";
-import { selectProducts } from "../redux/products/selectors";
+
 
 
 const DiaryPage = () => {
   const dispatch = useDispatch();
   const diaryProducts = useSelector(selectDiaryProducts);
-  const allProducts = useSelector(selectProducts);
+  
+  const [selectedDate, setSelectedDate] = useState(new Date());
   console.log('Redux State - Diary Products:', diaryProducts);
-  console.log('Redux State - All Products:', allProducts);
+  
+
+  useEffect(() => {
+    const dateString = selectedDate.toISOString().split('T')[0];
+    console.log('Fetching diary for date:', dateString);
+    dispatch(fetchDiary(dateString));
+  }, [dispatch, selectedDate]);
 
   useEffect(() => {
     dispatch(fetchDiary());
-    dispatch(fetchAllProducts());
   }, [dispatch]);
+
+  const handleDateChange = (newDate) => {
+    console.log('Date changed to:', newDate);
+    setSelectedDate(newDate);
+  };
   const handleAddProduct = (productData) => {
     console.log('Adding product:', productData);
     const diaryEntry = {
-      date: new Date().toISOString().split('T')[0],
+      date: selectedDate().toISOString().split('T')[0],
       productId: productData.productSearch,
       weight: Number(productData.amount),
     };
     console.log('Backend format:', diaryEntry);
     dispatch(addProduct(diaryEntry))
     .then(() => {
-      dispatch(fetchDiary());
+      dispatch(fetchDiary(selectedDate.toISOString().split('T')[0]));
     })
     .catch(error => {
       console.error('Failed to add product:', error);
@@ -45,26 +55,34 @@ const DiaryPage = () => {
       .unwrap()
       .then(() => {
         console.log('Product deleted successfully');
-        dispatch(fetchDiary());
+        dispatch(fetchDiary(selectedDate.toISOString().split('T')[0]));
       })
       .catch(error => {
         console.error('Failed to delete product:', error);
       });
   };
 
+  const filteredProducts = diaryProducts?.filter(product => {
+    if (!product || !product.date) return false;
+    const productDate = new Date(product.date);
+    return productDate.toDateString() === selectedDate.toDateString();
+  }) || [];
   return (
     
     <div>
       <DiaryDateCalendar 
+        onDateChange={handleDateChange}
+        selectedDate={selectedDate}
       />
       <DiaryAddProductForm 
        onAddProduct={handleAddProduct}
-       products={allProducts}
+       selectedDate={selectedDate}
       />
       
         <DiaryProductsList
-        products={diaryProducts}
+        products={filteredProducts}
         onDeleteProduct={handleDeleteProduct}
+        selectedDate={selectedDate}
         />
     </div>
   );
