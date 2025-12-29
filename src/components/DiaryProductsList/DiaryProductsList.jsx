@@ -7,7 +7,6 @@ const DiaryProductsList = () => {
 
   const products = useSelector(selectDiaryProducts);
 
-
   
   console.log(products);
 
@@ -24,16 +23,14 @@ const DiaryProductsList = () => {
             </tr>
           </thead>
           <tbody>
-            {products.map((product) => (
+            {products.map(({weight,product}) => (
               <tr key={product._id}>
                 <td>
-                  {product.title || 
-                   product.product?.title || 
-                   product.productName || 
-                   "Product"}
+                  {product.title}
                 </td>
-                <td>{product.weight || product.amount}g</td>
-                <td>{product.calories || 0} kcal</td>
+                <td>{product.weight}</td>
+                <td>{weight }g</td>
+                <td>{product.calories} kcal</td>
                 <td>
                   <button 
                     
