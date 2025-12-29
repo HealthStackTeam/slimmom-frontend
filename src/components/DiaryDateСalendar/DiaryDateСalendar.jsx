@@ -27,11 +27,10 @@ const DiaryDateCalendar = ({selectedDate,setSelectedDate}) => {
       </div>
       
       <Flatpickr
-        value={initialDate}
+        value={selectedDate}
         onChange={handleDateChange}
         options={{
           dateFormat: 'd/m/Y',
-          locale: 'tr',
           maxDate: new Date(),
           animate: true,
           disableMobile: true,
