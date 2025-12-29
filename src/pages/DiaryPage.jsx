@@ -15,10 +15,12 @@ const DiaryPage = () => {
   
   const [selectedDate, setSelectedDate] = useState(new Date());
   console.log('Redux State - Diary Products:', diaryProducts);
-  
+  const formatDateForAPI = (date) => {
+    return date.toISOString().split('T')[0];
+  };
 
   useEffect(() => {
-    const dateString = selectedDate.toISOString().split('T')[0];
+    const dateString = formatDateForAPI(selectedDate);
     console.log('Fetching diary for date:', dateString);
     dispatch(fetchDiary(dateString));
   }, [dispatch, selectedDate]);
@@ -34,14 +36,14 @@ const DiaryPage = () => {
   const handleAddProduct = (productData) => {
     console.log('Adding product:', productData);
     const diaryEntry = {
-      date: selectedDate().toISOString().split('T')[0],
+      date: formatDateForAPI(selectedDate),
       productId: productData.productSearch,
       weight: Number(productData.amount),
     };
     console.log('Backend format:', diaryEntry);
     dispatch(addProduct(diaryEntry))
     .then(() => {
-      dispatch(fetchDiary(selectedDate.toISOString().split('T')[0]));
+      dispatch(fetchDiary(formatDateForAPI(selectedDate)));
     })
     .catch(error => {
       console.error('Failed to add product:', error);
@@ -55,18 +57,12 @@ const DiaryPage = () => {
       .unwrap()
       .then(() => {
         console.log('Product deleted successfully');
-        dispatch(fetchDiary(selectedDate.toISOString().split('T')[0]));
+        dispatch(fetchDiary(formatDateForAPI(selectedDate)));
       })
       .catch(error => {
         console.error('Failed to delete product:', error);
       });
   };
-
-  const filteredProducts = diaryProducts?.filter(product => {
-    if (!product || !product.date) return false;
-    const productDate = new Date(product.date);
-    return productDate.toDateString() === selectedDate.toDateString();
-  }) || [];
   return (
     
     <div>
@@ -76,13 +72,11 @@ const DiaryPage = () => {
       />
       <DiaryAddProductForm 
        onAddProduct={handleAddProduct}
-       selectedDate={selectedDate}
       />
       
         <DiaryProductsList
-        products={filteredProducts}
+        products={diaryProducts || []}
         onDeleteProduct={handleDeleteProduct}
-        selectedDate={selectedDate}
         />
     </div>
   );
