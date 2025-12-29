@@ -1,60 +1,50 @@
 import Header from "../components/Header/Header";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import DiaryDateCalendar from "../components/DiaryDateСalendar/DiaryDateСalendar";
 import DiaryAddProductForm from "../components/DiaryAddProductForm/DiaryAddProductForm";
 import DiaryProductsList from "../components/DiaryProductsList/DiaryProductsList";
 import { fetchDiary, addProduct, deleteProduct } from "../redux/diary/operations";
-import { selectDiaryProducts, selectDiaryIsLoading } from "../redux/diary/selectors";
+import { selectDiaryProducts } from "../redux/diary/selectors";
+import { fetchAllProducts } from "../redux/products/operations";
+import { selectProducts } from "../redux/products/selectors";
 
 
 const DiaryPage = () => {
-  const dispatch = useDispatch()
-  
-  // Redux'tan verileri al
+  const dispatch = useDispatch();
   const diaryProducts = useSelector(selectDiaryProducts);
-  const isLoading = useSelector(selectDiaryIsLoading);
-  
-  const allProducts = []; 
-  
-  // Local state for selected date
-  const [selectedDate, setSelectedDate] = useState(new Date());
+  const allProducts = useSelector(selectProducts);
+  console.log('Redux State - Diary Products:', diaryProducts);
+  console.log('Redux State - All Products:', allProducts);
 
-  // Component mount olduğunda verileri çek
   useEffect(() => {
-    
     dispatch(fetchDiary());
-    
-    
+    dispatch(fetchAllProducts());
   }, [dispatch]);
-
-  // Ürün ekleme handler'ı
   const handleAddProduct = (productData) => {
+    console.log('Adding product:', productData);
     const diaryEntry = {
-      date: selectedDate.toISOString().split('T')[0], // YYYY-MM-DD
-      productId: productData.productId,
-      weight: productData.amount,
+      date: new Date().toISOString().split('T')[0],
+      productId: productData.productSearch,
+      weight: Number(productData.amount),
     };
-    
-    console.log('Adding to diary:', diaryEntry);
-    
+    console.log('Backend format:', diaryEntry);
     dispatch(addProduct(diaryEntry))
-      .then(() => {
-        // Başarılı olursa listeyi yenile
-        dispatch(fetchDiary());
-      })
-      .catch(error => {
-        console.error('Failed to add product:', error);
-      });
+    .then(() => {
+      dispatch(fetchDiary());
+    })
+    .catch(error => {
+      console.error('Failed to add product:', error);
+    });
+    
   };
 
-  // Ürün silme handler'ı - operations dailyId bekliyor
-  const handleDeleteProduct = (dailyId) => {
-    console.log('Deleting from diary:', dailyId);
-    
-    dispatch(deleteProduct(dailyId))
+  const handleDeleteProduct = (productId) => {
+    console.log('Deleting product ID:', productId);
+    dispatch(deleteProduct(productId))
+      .unwrap()
       .then(() => {
-        // Silme başarılı olursa listeyi yenile
+        console.log('Product deleted successfully');
         dispatch(fetchDiary());
       })
       .catch(error => {
@@ -62,33 +52,19 @@ const DiaryPage = () => {
       });
   };
 
-  // Tarih değişikliği handler'ı
-  const handleDateChange = (date) => {
-    setSelectedDate(date);
-  };
-
-  // Frontend'de tarihe göre filtreleme (geçici çözüm)
-  const filteredProducts = diaryProducts.filter(product => {
-    if (!product.date) return true;
-    const productDate = new Date(product.date).toDateString();
-    const selectedDateStr = selectedDate.toDateString();
-    return productDate === selectedDateStr;
-  });
-
   return (
+    
     <div>
       <DiaryDateCalendar 
-        onDateChange={handleDateChange}
-        initialDate={selectedDate}
       />
       <DiaryAddProductForm 
-        onAddProduct={handleAddProduct}
-        products={allProducts} 
+       onAddProduct={handleAddProduct}
+       products={allProducts}
       />
       
         <DiaryProductsList
-          products={filteredProducts} // Tarihe göre filtrelenmiş ürünler
-          onDeleteProduct={handleDeleteProduct}
+        products={diaryProducts}
+        onDeleteProduct={handleDeleteProduct}
         />
     </div>
   );

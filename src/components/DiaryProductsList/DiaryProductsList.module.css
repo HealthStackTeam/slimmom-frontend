@@ -7,35 +7,18 @@
   width: 731px;
   height: auto;
   background: white;
-}
-
-.emptyMessage {
-  text-align: center;
-  color: #999;
-  padding: 40px 20px;
-  font-style: italic;
-  font-size: 16px;
   font-family: Verdana, sans-serif;
-  border-bottom: 2px solid #f5f5f5;
 }
-
 .totalCalories {
   margin-bottom: 16px;
   padding: 12px 0;
   font-size: 18px;
   color: #212121;
-  font-family: Verdana, sans-serif;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-bottom: 2px solid #f5f5f5;
   width: 731px;
-}
-
-.totalCalories strong {
-  font-size: 18px;
-  font-weight: 700;
-  color: #f57c00;
 }
 
 /* TABLO ALANI  */
@@ -45,33 +28,6 @@
   overflow: hidden; 
   position: relative;
   border: none; 
-}
-
-/* SCROLL WRAPPER */
-.tableWrapper {
-  width: 100%;
-  height: 100%;
-  overflow-y: auto; 
-  overflow-x: hidden; 
-}
-
-/* SCROLLBAR STİLLERİ */
-.tableWrapper::-webkit-scrollbar {
-  width: 6px;
-}
-
-.tableWrapper::-webkit-scrollbar-track {
-  background: #f5f5f5;
-  border-radius: 3px;
-}
-
-.tableWrapper::-webkit-scrollbar-thumb {
-  background: #c1c1c1;
-  border-radius: 3px;
-}
-
-.tableWrapper::-webkit-scrollbar-thumb:hover {
-  background: #a8a8a8;
 }
 
 /* TABLO */
@@ -129,80 +85,7 @@
   position: relative;
 }
 
-/* HÜCRE İÇERİKLERİ */
-/* ÜRÜN HÜCRESİ */
-.productCell {
-  width: 240px;
-  height: 16px;
-  padding-left: 0;
-  padding-right: 50px;
-  display: flex;
-  align-items: center;
-}
 
-.productCell > div {
-  width: 100%;
-  position: relative;
-  padding-bottom: 20px; 
-}
-
-.productCell strong {
-  display: block;
-  font-size: 14px;
-  font-family: Verdana, sans-serif;
-  color: #212121;
-  font-weight: 400;
-  line-height: 16px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* GRAM HÜCRESİ */
-.amountCell {
-  width: 106px;
-  height: 16px;
-  padding-right: 33px;
-  font-size: 14px;
-  font-family: Verdana, sans-serif;
-  color: #212121;
-  font-weight: 400;
-  display: flex;
-  align-items: center;
-  position: relative;
-  padding-bottom: 20px;
-}
-
-/* KALORİ HÜCRESİ */
-.totalCalorieCell {
-  width: 106px;
-  height: 16px;
-  font-size: 14px;
-  font-family: Verdana, sans-serif;
-  color: #212121;
-  font-weight: 400;
-  display: flex;
-  align-items: center;
-  position: relative;
-  padding-bottom: 20px;
-}
-
-.totalCalorieCell strong {
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 16px;
-}
-
-/* SİLME BUTONU HÜCRESİ */
-.actionCell {
-  width: 176px;
-  height: 16px;
-  text-align: left;
-  padding-bottom: 20px;
-  padding-left: 20px;
-  display: flex;
-  align-items: center;
-}
 
 /* SİLME BUTONU */
 .deleteButton {
@@ -235,24 +118,4 @@
 
 .deleteButton:active {
   transform: scale(0.95);
-}
-
-/* X işareti için özel styling */
-.deleteButton::before {
-  content: "×";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 14px;
-  font-weight: 300;
-}
-
-/* SATIR HOVER EFFECT */
-.table tbody tr:hover {
-  background-color: #fff8e1;
-}
-
-.table tbody tr:hover td {
-  border-bottom-color: #ffcc80;
 }
