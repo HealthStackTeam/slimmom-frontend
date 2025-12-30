@@ -1,20 +1,26 @@
 import Flatpickr from 'react-flatpickr';
 import { Calendar } from 'lucide-react';
+import { useEffect, useMemo } from 'react';
 import 'flatpickr/dist/themes/material_blue.css';
 import styles from './DiaryDateСalendar.module.css';
 
 const DiaryDateCalendar = ({selectedDate,setSelectedDate}) => {
 
-  const initialDate = new Date();
+  const initialDate = useMemo(() => new Date(), []);
 
   const formatDate = (date) => {
     const day = String(date.getDate()).padStart(2, '0');
     const month = String(date.getMonth() + 1).padStart(2, '0');
     const year = date.getFullYear();
-    const newDate = `${year}-${month}-${day}`
-    setSelectedDate(newDate);
     return `${year}-${month}-${day}`;
   };
+
+  useEffect(() => {
+    if (!selectedDate) {
+      const initial = formatDate(initialDate);
+      setSelectedDate(initial);
+    }
+  }, [selectedDate, setSelectedDate, initialDate]);
 
   const handleDateChange = (dates) => {
     const newDate = dates[0];
