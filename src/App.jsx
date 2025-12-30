@@ -22,7 +22,19 @@ function App() {
   const isRefreshing = useSelector(selectIsRefreshing);
 
   useEffect(() => {
-    dispatch(refreshUser());
+    const persistedAuth = localStorage.getItem('persist:auth');
+    let token = null;
+    if (persistedAuth) {
+      try {
+        const authObj = JSON.parse(persistedAuth);
+        token = JSON.parse(authObj.token);
+      } catch (e) {
+        token = null;
+      }
+    }
+    if (token) {
+      dispatch(refreshUser());
+    }
   }, [dispatch]);
 
   return isRefreshing ? (
