@@ -1,15 +1,22 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import styles from './RightSideBar.module.css';
-import { selectNotAllowedProducts, selectDailyRate } from '../../redux/dailyRate/selectors';
-import { selectCaloriesConsumed, selectCaloriesLeft, selectCaloriesPercent } from '../../redux/diary/selectors';
+import {
+  selectNotAllowedProducts,
+  selectDailyRate,
+} from '../../redux/dailyRate/selectors';
+import {
+  selectCaloriesConsumed,
+  selectCaloriesLeft,
+  selectCaloriesPercent,
+} from '../../redux/diary/selectors';
 
 const RightSideBar = () => {
   const dailyRate = useSelector(selectDailyRate);
   const notAllowedProducts = useSelector(selectNotAllowedProducts);
   const consumed = useSelector(selectCaloriesConsumed);
   const left = useSelector(selectCaloriesLeft);
-  const percent = useSelector(selectCaloriesPercent); 
+  const percent = useSelector(selectCaloriesPercent);
 
   const today = new Date().toLocaleDateString('en-GB');
 
@@ -43,7 +50,7 @@ const RightSideBar = () => {
           <ul className={styles.foodList}>
             {notAllowedProducts.map((product, index) => (
               <li key={index} className={styles.foodItem}>
-                {typeof product === 'object' ? product.title : product},&nbsp; 
+                {typeof product === 'object' ? product.title : product},&nbsp;
               </li>
             ))}
           </ul>
