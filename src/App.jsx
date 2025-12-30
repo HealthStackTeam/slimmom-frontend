@@ -15,7 +15,7 @@ const MainPage = lazy(() => import("./pages/MainPage"));
 const CalculatorPage = lazy(() => import("./pages/CalculatorPage"));
 const LoginPage = lazy(() => import("./pages/LoginPage"));
 const RegistrationPage = lazy(() => import("./pages/RegistrationPage"));
-const DiaryPage = lazy(() => import("./pages/DiaryPage"));
+const DiaryPage = lazy(() => import("./pages/DiaryPage.jsx"));
 
 function App() {
   const dispatch = useDispatch();
