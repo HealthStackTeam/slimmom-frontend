@@ -23,11 +23,13 @@ function App() {
 
   useEffect(() => {
     const persistedAuth = localStorage.getItem('persist:auth');
+    console.log(persistedAuth);
     let token = null;
     if (persistedAuth) {
       try {
         const authObj = JSON.parse(persistedAuth);
         token = JSON.parse(authObj.token);
+        console.log(token);
       } catch (e) {
         token = null;
         console.log(e); // Geçersiz JSON durumunda hata yakala
