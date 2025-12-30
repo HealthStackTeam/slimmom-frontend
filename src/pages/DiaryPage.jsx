@@ -26,7 +26,7 @@ const DiaryPage = () => {
       
         <DiaryProductsList selectedDate={selectedDate}
       />
-      <RightSidebar />
+      <RightSidebar selectedDate={selectedDate} />
     </div>
   );
 };
