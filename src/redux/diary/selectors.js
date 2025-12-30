@@ -23,7 +23,6 @@ export const selectCaloriesConsumed = createSelector(
 export const selectCaloriesLeft = createSelector(
   [selectDailyRate, selectCaloriesConsumed],
   (dailyRate, consumed) => {
-    console.log(dailyRate, consumed);
     if (!dailyRate) return 0; // Hedef yoksa kalan da yoktur
     return dailyRate - consumed;
   }

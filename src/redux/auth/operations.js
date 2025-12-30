@@ -55,6 +55,7 @@ export const refreshUser = createAsyncThunk(
       clearAuthHeader(); // token yoksa header'ı temizle, cookie ile backend'e gitsin
     }
     try {
+      setAuthHeader(token);
       const { data: res } = await axios.get('/auth/refresh');
       if (res.data.accessToken) setAuthHeader(res.data.accessToken);
       return res.data;

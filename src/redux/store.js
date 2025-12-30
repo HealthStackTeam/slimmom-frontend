@@ -21,11 +21,23 @@ const authPersistConfig = {
   whitelist: ['token', 'user'], // user ve token localStorage'da saklanacak
 };
 
+const dailyRatePersistConfig = {
+  key: 'dailyRate',
+  storage,
+  whitelist: ['dailyRate', 'notAllowedProducts'],
+};
+
+const diaryPersistConfig = {
+  key: 'diary',
+  storage,
+  whitelist: ['products'],
+};
+
 export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
-    dailyRate: dailyRateReducer,
-    diary: diaryReducer,
+    dailyRate: persistReducer(dailyRatePersistConfig, dailyRateReducer),
+    diary: persistReducer(diaryPersistConfig, diaryReducer),
     filters: filterReducer,
   },
   middleware: (getDefaultMiddleware) =>

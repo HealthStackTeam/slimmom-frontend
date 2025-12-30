@@ -11,19 +11,19 @@ import {
   selectCaloriesPercent,
 } from '../../redux/diary/selectors';
 
-const RightSideBar = () => {
+const RightSideBar = ({selectedDate}) => {
   const dailyRate = useSelector(selectDailyRate);
   const notAllowedProducts = useSelector(selectNotAllowedProducts);
   const consumed = useSelector(selectCaloriesConsumed);
   const left = useSelector(selectCaloriesLeft);
   const percent = useSelector(selectCaloriesPercent);
 
-  const today = new Date().toLocaleDateString('en-GB');
+  
 
   return (
     <div className={styles.container}>
       <div className={styles.summaryContainer}>
-        <h3 className={styles.title}>Summary for {today}</h3>
+        <h3 className={styles.title}>Summary for {selectedDate}</h3>
         <ul className={styles.list}>
           <li className={styles.listItem}>
             <span>Left</span>
