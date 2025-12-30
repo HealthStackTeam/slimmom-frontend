@@ -22,23 +22,7 @@ function App() {
   const isRefreshing = useSelector(selectIsRefreshing);
 
   useEffect(() => {
-    const persistedAuth = localStorage.getItem('persist:auth');
-    let token = null;
-    let tokenExpire = null;
-    if (persistedAuth) {
-      try {
-        const authObj = JSON.parse(persistedAuth);
-        token = JSON.parse(authObj.token);
-        tokenExpire = JSON.parse(authObj.accessTokenValidUntil);
-      } catch (e) {
-        token = null;
-        tokenExpire = null;
-        console.error('Error parsing persisted auth data:', e);
-      }
-    }
-    if (token && tokenExpire && Date.now() > new Date(tokenExpire).getTime()) {
-      dispatch(refreshUser());
-    }
+    dispatch(refreshUser());
   }, [dispatch]);
 
   return isRefreshing ? (

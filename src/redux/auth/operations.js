@@ -49,15 +49,14 @@ export const refreshUser = createAsyncThunk(
   'auth/refreshUser',
   async (_, thunkAPI) => {
     const token = thunkAPI.getState().auth.token;
-    if (token) {
-      setAuthHeader(token);
-    } else {
-      clearAuthHeader(); // token yoksa header'ı temizle, cookie ile backend'e gitsin
+    
+    if (token === null) {
+      return thunkAPI.rejectWithValue('No token found');
     }
+
     try {
-      setAuthHeader(token);
+      
       const { data: res } = await axios.get('/auth/refresh');
-      if (res.data.accessToken) setAuthHeader(res.data.accessToken);
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
