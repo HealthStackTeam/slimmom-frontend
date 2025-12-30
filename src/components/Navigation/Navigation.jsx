@@ -1,6 +1,6 @@
-import { NavLink } from "react-router-dom";
-import styles from "./Navigation.module.css";
-import UserInfo from "../UserInfo/UserInfo";
+import { NavLink } from 'react-router-dom';
+import styles from './Navigation.module.css';
+import UserInfo from '../UserInfo/UserInfo';
 
 const Navigation = ({ isLoggedIn }) => {
   return (
@@ -23,7 +23,6 @@ const Navigation = ({ isLoggedIn }) => {
           >
             CALCULATOR
           </NavLink>
-          <UserInfo></UserInfo>
         </div>
       ) : (
         <div className={styles.publicNav}>
