@@ -5,7 +5,7 @@ import DiaryDateCalendar from '../components/DiaryDateСalendar/DiaryDateСalend
 import DiaryAddProductForm from '../components/DiaryAddProductForm/DiaryAddProductForm';
 import DiaryProductsList from '../components/DiaryProductsList/DiaryProductsList';
 import { fetchDiary } from '../redux/diary/operations';
-import RightSidebar from '../components/RightSidebar/RightSidebar';
+import RightSidebar from '../components/RightSideBar/RightSideBar';
 
 const DiaryPage = () => {
   const dispatch = useDispatch();
