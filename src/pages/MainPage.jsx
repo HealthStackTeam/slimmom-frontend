@@ -1,24 +1,23 @@
-import { useState } from "react";
-import Header from "../components/Header/Header";
-import Modal from "../components/Modal/Modal";
-import CalculatorCalorieForm from "../components/CalculatorСalorieForm/CalculatorСalorieForm";
-import DailyCalorieIntake from "../components/DailyCalorieIntake/DailyCalorieIntake";
-import RightSideBar from "../components/RightSideBar/RightSideBar";
-import DailyCaloriesForm from "../components/DailyCaloriesForm/DailyCaloriesForm";
+import { useState } from 'react';
+import Header from '../components/Header/Header';
+import Modal from '../components/Modal/Modal';
+import CalculatorCalorieForm from '../components/CalculatorСalorieForm/CalculatorСalorieForm';
+import DailyCalorieIntake from '../components/DailyCalorieIntake/DailyCalorieIntake';
+import RightSideBar from '../components/RightSideBar/RightSideBar';
+import DailyCaloriesForm from '../components/DailyCaloriesForm/DailyCaloriesForm';
 
 const MainPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  
-    const openModal = () => {
-      setIsModalOpen(true);
-    };
-  
-    const closeModal = () => {
-      setIsModalOpen(false);
-    };
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
   return (
-    
-      <div>
+    <div>
       <div>
         <CalculatorCalorieForm onSuccess={openModal} />
       </div>
@@ -27,11 +26,10 @@ const MainPage = () => {
 
       {isModalOpen && (
         <Modal onClose={closeModal}>
-           <DailyCaloriesForm onClose={closeModal} />
+          <DailyCaloriesForm onClose={closeModal} />
         </Modal>
       )}
     </div>
-    
   );
 };
 
