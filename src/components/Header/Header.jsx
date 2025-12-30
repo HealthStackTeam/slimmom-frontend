@@ -1,12 +1,12 @@
-import Logo from "../Logo/Logo.jsx";
-import Navigation from "../Navigation/Navigation.jsx";
-import UserInfo from "../UserInfo/UserInfo.jsx";
-import { useSelector } from "react-redux";
-import styles from "./Header.module.css";
-import { selectIsLoggedIn } from "../../redux/auth/selectors.js";
+import Logo from '../Logo/Logo.jsx';
+import Navigation from '../Navigation/Navigation.jsx';
+import UserInfo from '../UserInfo/UserInfo.jsx';
+import { useSelector } from 'react-redux';
+import styles from './Header.module.css';
+import { selectIsLoggedIn } from '../../redux/auth/selectors.js';
 
 const Header = () => {
-  const  isLoggedIn  = useSelector(selectIsLoggedIn);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
 
   return (
     <header className={styles.header}>

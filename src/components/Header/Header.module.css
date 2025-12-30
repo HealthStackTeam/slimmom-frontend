@@ -1,0 +1,27 @@
+.header {
+  width: 100%;
+  border-bottom: 2px solid #e0e0e0;
+  padding: 20px 0;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.leftSide {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.leftSide::after {
+  content: '';
+  height: 32px;
+  width: 2px;
+  background-color: #e0e0e0;
+  display: none;
+}
