@@ -9,7 +9,6 @@ const authSlice = createSlice({
       email: null,
     },
     token: null,
-    tokenExpire: null,
     isLoggedIn: false,
     isRefreshing: false,
   },
@@ -30,7 +29,6 @@ const authSlice = createSlice({
       .addCase(logout.fulfilled, (state) => {
         state.user = { name: null, email: null };
         state.token = null;
-        state.tokenExpire = null;
         state.isLoggedIn = false;
       })
       .addCase(refreshUser.pending, (state) => {
@@ -39,15 +37,11 @@ const authSlice = createSlice({
       .addCase(refreshUser.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.token = action.payload.accessToken;
-        state.tokenExpire = action.payload.accessTokenValidUntil || null;
         state.isLoggedIn = true;
         state.isRefreshing = false;
       })
       .addCase(refreshUser.rejected, (state) => {
         state.isRefreshing = false;
-        if (state.token) {
-          state.isLoggedIn = true;
-        }
       });
   },
 });
