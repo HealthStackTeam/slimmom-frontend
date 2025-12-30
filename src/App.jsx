@@ -20,8 +20,7 @@ const DiaryPage = lazy(() => import('./pages/DiaryPage'));
 function App() {
   const dispatch = useDispatch();
   const isRefreshing = useSelector(selectIsRefreshing);
-  alert(localStorage.getItem('persist:auth'));
-
+  console.log(localStorage.getItem('persist:auth'));
   useEffect(() => {
     const persistedAuth = localStorage.getItem('persist:auth');
     console.log(persistedAuth);
