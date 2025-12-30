@@ -17,13 +17,11 @@ const authSlice = createSlice({
       .addCase(register.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.token = action.payload.accessToken;
-        state.tokenExpire = action.payload.accessTokenValidUntil || null;
         state.isLoggedIn = true;
       })
       .addCase(login.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.token = action.payload.accessToken;
-        state.tokenExpire = action.payload.accessTokenValidUntil || null;
         state.isLoggedIn = true;
       })
       .addCase(logout.fulfilled, (state) => {
