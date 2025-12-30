@@ -5,7 +5,7 @@ import DiaryDateCalendar from "../components/DiaryDateСalendar/DiaryDateСalend
 import DiaryAddProductForm from "../components/DiaryAddProductForm/DiaryAddProductForm";
 import DiaryProductsList from "../components/DiaryProductsList/DiaryProductsList";
 import { fetchDiary } from "../redux/diary/operations";
-import RightSidebar from "../components/RightSidebar/RightSidebar";
+import RightSidebar from "../components/RightSideBar/RightSideBar.jsx";
 
 const DiaryPage = () => {
   const dispatch = useDispatch();
@@ -13,6 +13,7 @@ const DiaryPage = () => {
   const [selectedDate, setSelectedDate] = useState("");
 
   useEffect(() => {
+    if (!selectedDate) return; // prevent sending empty date to API
     dispatch(fetchDiary(selectedDate));
   },[dispatch,selectedDate])
   
