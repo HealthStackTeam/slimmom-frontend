@@ -22,7 +22,17 @@ function App() {
   const isRefreshing = useSelector(selectIsRefreshing);
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
+    const persistedAuth = localStorage.getItem('persist:auth');
+    let token = null;
+    if (persistedAuth) {
+      try {
+        const authObj = JSON.parse(persistedAuth);
+        token = JSON.parse(authObj.token);
+      } catch (e) {
+        token = null;
+        console.log(e); // Geçersiz JSON durumunda hata yakala
+      }
+    }
     if (token) {
       dispatch(refreshUser());
     }
