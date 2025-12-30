@@ -18,7 +18,7 @@ import storage from 'redux-persist/lib/storage';
 const authPersistConfig = {
   key: 'auth',
   storage,
-  whitelist: ['token', 'user'], // user ve token localStorage'da saklanacak
+  whitelist: ['token', 'user', 'tokenExpire'], // user, token ve tokenExpire localStorage'da saklanacak
 };
 
 const dailyRatePersistConfig = {
