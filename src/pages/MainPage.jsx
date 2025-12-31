@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { selectIsLoggedIn } from '../redux/auth/selectors';
 import Header from '../components/Header/Header';
 import Modal from '../components/Modal/Modal';
 import CalculatorCalorieForm from '../components/CalculatorСalorieForm/CalculatorСalorieForm';
@@ -8,6 +10,7 @@ import DailyCaloriesForm from '../components/DailyCaloriesForm/DailyCaloriesForm
 
 const MainPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -22,7 +25,7 @@ const MainPage = () => {
         <CalculatorCalorieForm onSuccess={openModal} />
       </div>
 
-      <RightSideBar />
+      {isLoggedIn && <RightSideBar />}
 
       {isModalOpen && (
         <Modal onClose={closeModal}>

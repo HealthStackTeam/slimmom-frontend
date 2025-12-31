@@ -35,7 +35,15 @@ function App() {
       <Header />
       <Suspense fallback={<Loader />}>
         <Routes>
-          <Route path="/" element={<MainPage />} />
+          <Route
+            path="/"
+            element={
+              <RestrictedRoute
+                redirectTo="/calculator"
+                component={<MainPage />}
+              />
+            }
+          />
           <Route
             path="/register"
             element={
