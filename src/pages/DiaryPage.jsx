@@ -6,7 +6,7 @@ import DiaryAddProductForm from '../components/DiaryAddProductForm/DiaryAddProdu
 import DiaryProductsList from '../components/DiaryProductsList/DiaryProductsList';
 import { fetchDiary } from '../redux/diary/operations';
 import RightSidebar from '../components/RightSideBar/RightSideBar';
-
+import styles from './DiaryPage.module.css';
 const DiaryPage = () => {
   const dispatch = useDispatch();
 
@@ -18,7 +18,7 @@ const DiaryPage = () => {
   }, [dispatch, selectedDate]);
 
   return (
-    <div>
+    <div className={styles.pageContainer}>
       <DiaryDateCalendar
         selectedDate={selectedDate}
         setSelectedDate={setSelectedDate}
