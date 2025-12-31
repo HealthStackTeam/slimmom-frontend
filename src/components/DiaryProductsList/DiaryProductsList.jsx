@@ -5,12 +5,15 @@ import { selectDiaryProducts } from '../../redux/diary/selectors';
 import { deleteProduct } from '../../redux/diary/operations';
 
 const DiaryProductsList = () => {
-
   const products = useSelector(selectDiaryProducts);
   const dispatch = useDispatch();
 
   const handleDeleteProduct = (productId) => {
     dispatch(deleteProduct(productId));
+  }
+
+  const calculateTotalCalories = (productCalories, weight) => {
+    return Math.round(productCalories * (weight / 100));
   }
 
   return (
@@ -26,24 +29,32 @@ const DiaryProductsList = () => {
             </tr>
           </thead>
           <tbody>
-            {products.map(({_id,weight,product}) => (
-              <tr key={product._id}>
-                <td>
-                  {product.title}
-                </td>
-                <td>{product.calories}kcal</td>
-                <td>{weight }g</td>
-                <td>{product.calories * (weight/100) }</td>
-                <td>
-                  <button 
-                    onClick={()=> handleDeleteProduct(_id)}
-                    className={styles.deleteButton}
-                  >
-                    X
-                  </button>
+            {products.length === 0 ? (
+              <tr>
+                <td colSpan="5" className={styles.emptyMessage}>
+                  No products added yet
                 </td>
               </tr>
-            ))}
+            ) : (
+              products.map(({_id, weight, product}) => (
+                <tr key={_id}>
+                  <td>
+                    {product.title}
+                  </td>
+                  <td>{weight}g</td>
+                  <td>{calculateTotalCalories(product.calories, weight)} kcal</td>
+                  <td>
+                    <button 
+                      onClick={() => handleDeleteProduct(_id)}
+                      className={styles.deleteButton}
+                      aria-label={`Delete ${product.title}`}
+                    >
+                      X
+                    </button>
+                  </td>
+                </tr>
+              ))
+            )}
           </tbody>
         </table>
       </div>

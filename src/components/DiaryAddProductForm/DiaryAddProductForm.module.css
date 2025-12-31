@@ -1,11 +1,10 @@
 /* Container */
 .container {
-  position: absolute;
-  top: 391px;
-  left: 16px;
-  background: white;
-  padding: 20px;
-  margin: 20px 0;
+  padding: 0;
+  margin-top: 60px;
+  color: #9B9FAA !important;
+  font-family: Verdana, sans-serif;
+  margin-left: 16px;
 }
 
 .form {
@@ -21,7 +20,7 @@
   flex-direction: column;
 }
 
-/* Ürün Arama Kutusu  */
+/* Ürün Arama Kutusu */
 .formGroup:first-child {
   width: 240px;
   height: 17px;
@@ -32,20 +31,19 @@
 .formGroup:last-child {
   width: 107px;
   height: 17px;
-  margin-left: 50px;
 }
 
 .label {
-  display: none; 
+  display: none;
 }
 
-/* Search Input  */
+/* Search Input */
 .field {
   width: 240px;
   height: 17px;
   padding: 0;
   border: none;
-  border-bottom: 2px solid #f5f5f5; 
+  border-bottom: 2px solid #f5f5f5;
   font-size: 16px;
   background: transparent;
   transition: border-color 0.3s;
@@ -55,23 +53,21 @@
 }
 
 .field:focus {
-  border-bottom-color: #FFC107; 
+  border-bottom-color: #FFC107;
 }
 
 .field::placeholder {
   color: #999;
-  font-style: italic;
   line-height: 17px;
 }
-
 
 /* Miktar Input */
 .amountField {
   width: 107px;
   height: 17px;
-  padding: 0;
+  padding-left: 40px;
   border: none;
-  border-bottom: 2px solid #f5f5f5; 
+  border-bottom: 2px solid #f5f5f5;
   font-size: 16px;
   background: transparent;
   text-align: left;
@@ -88,34 +84,84 @@
   color: #999;
   line-height: 17px;
 }
+
+/* Dropdown Styling */
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  max-height: 200px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  margin-top: 4px;
+  scrollbar-width: thin;
+  scrollbar-color: #FC842D #f5f5f5;
+}
+
+.dropdownItem {
+  padding: 10px 12px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #333;
+  border-bottom: 1px solid #f5f5f5;
+  transition: background-color 0.2s;
+  
+}
+
+.dropdownItem:last-child {
+  border-bottom: none;
+}
+
+.dropdownItem:hover {
+  background-color: #f5f5f5;
+}
+
 /* Add Button */
 .button {
-  width: 50px;
-  height: 50px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   background: #f57c00;
   color: white;
   border: none;
   font-size: 24px;
   font-weight: bold;
-  cursor: pointer;
-  transition: all 0.3s;
-  display: flex;
+  text-align: center;
+  line-height: 1;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 8px rgba(255, 215, 0, 0.3);
-  flex-shrink: 0;
   margin-left: 60px;
-  padding: 0;
-  line-height: 1;
-  text-align: center;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-right: 0;
+  padding-bottom: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(255, 215, 0, 0.3);
+  outline: none;
+  flex-shrink: 0;
+  flex-grow: 0;
 }
 
 .button:hover {
   background-color: white;
+  color: #f57c00;
   transform: scale(1.1);
   box-shadow: 0 6px 16px rgba(255, 152, 0, 0.6);
-  color: #f57c00;
+  border: 2px solid #f57c00;
+}
+.button:focus {
+  outline: 2px solid #FFC107;
+  outline-offset: 2px;
+}
+.button:active {
+  transform: scale(0.95);
 }
 
 /* Error Messages */

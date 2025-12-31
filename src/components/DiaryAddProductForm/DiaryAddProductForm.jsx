@@ -1,8 +1,6 @@
-// import { Formik, Form, Field, ErrorMessage } from 'formik';
-// import styles from './DiaryAddProductForm.module.css';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import styles from './DiaryAddProductForm.module.css';
-import { useId, useState } from 'react';
+import { useId, useState, useRef, useEffect } from 'react';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { addProduct } from '../../redux/diary/operations';
@@ -23,15 +21,28 @@ const ProductSchema = Yup.object().shape({
 
 const DiaryAddProductForm = ({ selectedDate }) => {
   const [products, setProducts] = useState([]);
-
-
+  const [showDropdown, setShowDropdown] = useState(false);
+  const [isSearching, setIsSearching] = useState(false);
+  const dropdownRef = useRef(null);
   const dispatch = useDispatch();
 
   const productNewId = useId();
   const weightId = useId();
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setShowDropdown(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
   const handleSubmit = (values, actions) => {
-    
     const valuesToSend = {
       date: selectedDate,
       productId: values.productId,
@@ -39,7 +50,16 @@ const DiaryAddProductForm = ({ selectedDate }) => {
     };
     dispatch(addProduct(valuesToSend));
     actions.resetForm();
+    setProducts([]);
+    setShowDropdown(false);
   };
+
+  const handleProductSelect = (productId, productTitle, setFieldValue) => {
+    setFieldValue('productId', productId);
+    setFieldValue('productSearch', productTitle);
+    setShowDropdown(false);
+  };
+  
 
   return (
     <div className={styles.container}>
@@ -55,7 +75,7 @@ const DiaryAddProductForm = ({ selectedDate }) => {
       >
         {({ setFieldValue, values }) => (
           <Form className={styles.form}>
-            <div className={styles.formGroup}>
+            <div className={styles.formGroup} ref={dropdownRef}>
               <label htmlFor={productNewId}></label>
               <Field
                 className={styles.field}
@@ -64,41 +84,87 @@ const DiaryAddProductForm = ({ selectedDate }) => {
                 id={productNewId}
                 placeholder="Enter product name"
                 value={values.productSearch}
-                onChange={(e) => {
+                autoComplete="off"
+                onChange={async (e) => {
                   const v = e.target.value;
                   setFieldValue('productSearch', v);
                   dispatch(setFilter(v));
-                  dispatch(fetchProductsByQuery(v)).then((action) => {
-                    setProducts(action.payload?.data || []);
-                  });
+                  
+                  if (v.length >= 2) {
+                    setIsSearching(true);
+                    setShowDropdown(true);
+                    try {
+                      const action = await dispatch(fetchProductsByQuery(v));
+                      setProducts(action.payload?.data || []);
+                    } catch (error) {
+                      console.error('Search error:', error);
+                      setProducts([]);
+                    } finally {
+                      setIsSearching(false);
+                    }
+                  } else {
+                    setProducts([]);
+                    setShowDropdown(false);
+                  }
+                }}
+                onFocus={() => {
+                  if (values.productSearch.length >= 2 && products.length > 0) {
+                    setShowDropdown(true);
+                  }
                 }}
               />
               <ErrorMessage name="productSearch" component="div" className={styles.error} />
+              
+              {/* Product Selection Dropdown */}
+              {showDropdown && (
+                <div className={styles.dropdown}>
+                  {isSearching ? (
+                    <div className={styles.dropdownItem}>Searching...</div>
+                  ) : products.length > 0 ? (
+                    <>
+                    
+                      {products.map(({ _id, title }) => (
+                        <div
+                          key={_id}
+                          value={_id}
+                          className={styles.dropdownItem}
+                          onClick={() => handleProductSelect(_id, title, setFieldValue)}
+                          onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#f5f5f5'}
+                          onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
+                        >
+                          {title}
+                        </div>
+                      ))}
+                    </>
+                  ) : values.productSearch.length >= 2 ? (
+                    <div className={styles.dropdownItem}>No products found</div>
+                  ) : null}
+                </div>
+              )}
+              
+              
+              
+              
             </div>
 
             <div className={styles.formGroup}>
               <label htmlFor={weightId}></label>
               <Field
-                className={styles.amountField}
-                type="number"
-                name="weight"
-                id={weightId}
-                placeholder="Grams"
-                min="1"
-                max="10000"
+               className={styles.amountField}
+               type="number"
+               name="weight"
+               id={weightId}
+               placeholder="Grams"
+               min="1"
+               max="10000"
+               onKeyPress={(e) => {
+                 if (!/[0-9]/.test(e.key)) {
+                    e.preventDefault();
+                   }
+                 }}
+               inputMode="numeric"
               />
               <ErrorMessage name="weight" component="div" className={styles.error} />
-            </div>
-
-            <div>
-              <Field as="select" name="productId">
-                <option value="">Select product</option>
-                {products.map(({ _id, title }) => (
-                  <option key={_id} value={_id}>
-                    {title}
-                  </option>
-                ))}
-              </Field>
             </div>
 
             <button className={styles.button} type="submit">
