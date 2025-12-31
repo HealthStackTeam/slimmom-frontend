@@ -1,7 +1,9 @@
 .header {
+  position: relative;
   width: 100%;
   /* border-bottom: 2px solid #e0e0e0; */
   padding: 20px 0;
+  z-index: 1;
 }
 
 .container {
