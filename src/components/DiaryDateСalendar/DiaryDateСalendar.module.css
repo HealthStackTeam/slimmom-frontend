@@ -1,19 +1,16 @@
 .container {
-  position: absolute;
-  top: 293px;
-  left: 46px;
   display: flex;
   align-items: center;
-  gap: 16px;
-  margin-bottom: 24px;
+  gap: 20px;
+  margin:147px 0 24px 16px;
 }
 
 .dateDisplay {
-  font-size: 32px;
-  font-weight: 800;
-  color: #000;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-  letter-spacing: -0.5px;
+  font-size: 34px;
+  font-weight: 700;
+  color: #212121;
+  font-family: Verdana, sans-serif;
+  letter-spacing: 0;
 }
 
 .calendarWrapper {
@@ -28,8 +25,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
+  width: 20px;
+  height: 20px;
   border: none;
   background-color: #f0f0f0;
   border-radius: 8px;
@@ -61,7 +58,7 @@
   border-radius: 12px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
   border: 1px solid #e5e7eb;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: Verdana, sans-serif;
 }
 
 :global(.flatpickr-day) {
@@ -69,7 +66,7 @@
   border: none;
   height: 40px;
   line-height: 40px;
-  color: #374151;
+  color: #FC842D;
   font-weight: 500;
 }
 
@@ -79,15 +76,15 @@
 }
 
 :global(.flatpickr-day.selected) {
-  background: #3b82f6;
+  background: #FC842D;
   color: white;
   border: none;
 }
 
 :global(.flatpickr-day.today) {
-  border: 2px solid #3b82f6;
+  border: 2px solid #FC842D;
   background: transparent;
-  color: #3b82f6;
+  color: #FC842D;
 }
 
 :global(.flatpickr-day.today:hover) {
@@ -97,14 +94,31 @@
 :global(.flatpickr-months) {
   padding: 8px;
 }
-
+:global(.flatpickr-prev-month) {
+  left: 0;
+  top:5px !important;
+}
+:global(.flatpickr-next-month) {
+  right: 0;
+  top:5px !important;
+}
 :global(.flatpickr-month) {
   color: #111827;
+  background-color: #FC842D !important; 
   font-weight: 600;
 }
-
+:global(.flatpickr-monthDropdown-months){
+  background-color: #FC842D !important; 
+}
+:global(.flatpickr-monthDropdown-month){
+  background-color: #FC842D !important; 
+}
+:global(.flatpickr-weekdays) {
+  background-color: #FC842D !important; 
+}
 :global(.flatpickr-weekday) {
   color: #6b7280;
   font-weight: 600;
   font-size: 0.9rem;
+  background-color: #FC842D !important; 
 }
