@@ -7,6 +7,7 @@ import DiaryProductsList from '../components/DiaryProductsList/DiaryProductsList
 import { fetchDiary } from '../redux/diary/operations';
 import RightSidebar from '../components/RightSideBar/RightSideBar';
 import styles from './DiaryPage.module.css';
+import { Link } from 'react-router-dom';
 const DiaryPage = () => {
   const dispatch = useDispatch();
 
@@ -19,13 +20,21 @@ const DiaryPage = () => {
 
   return (
     <div className={styles.pageContainer}>
-      <DiaryDateCalendar
-        selectedDate={selectedDate}
-        setSelectedDate={setSelectedDate}
-      />
-      <DiaryAddProductForm selectedDate={selectedDate} />
-
-      <DiaryProductsList selectedDate={selectedDate} />
+      <div className={styles.mainContent}>
+        <DiaryDateCalendar
+          selectedDate={selectedDate}
+          setSelectedDate={setSelectedDate}
+        />
+        <DiaryAddProductForm selectedDate={selectedDate} />
+        <DiaryProductsList selectedDate={selectedDate} />
+        <Link 
+          to="/diary/add"
+          className={styles.floatingButton}
+          aria-label="Add product"
+        >
+          +
+        </Link>
+      </div>
       <RightSidebar />
     </div>
   );

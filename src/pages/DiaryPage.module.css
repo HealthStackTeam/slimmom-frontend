@@ -1,8 +1,104 @@
 .pageContainer {
-  position: relative;
-  width: 100%;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
   background: white;
+}
+
+.mainContent {
+  width: 100%;
+  position: relative;
+}
+.floatingButton {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #f57c00;
+  color: white;
+  border: none;
+  font-size: 28px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 16px rgba(245, 124, 0, 0.4);
+  outline: none;
+  z-index: 1000;
+  padding: 0;
+  text-decoration: none !important; 
+  display: flex !important;
+}
+
+.floatingButton:hover {
+  background: white;
+  color: #f57c00;
+  transform: scale(1.1);
+  box-shadow: 0 8px 20px rgba(245, 124, 0, 0.6);
+  border: 2px solid #f57c00;
+  text-decoration: none !important; 
+}
+
+.floatingButton:active {
+  transform: scale(0.95);
+}
+
+.floatingButton:focus {
+  outline: 2px solid #FFC107;
+  outline-offset: 2px;
+  text-decoration: none !important;
+}
+
+.floatingButton:visited {
+  text-decoration: none !important; 
+}
+
+
+@media (min-width: 320px) and (max-width: 767px) {
+  .mainContent {
+    width: 100%;
+    padding: 0 16px;
+    display: flex;
+    flex-direction: column;
+    min-height: 80vh;
+  }
+  .floatingButton {
+    position: relative; 
+    margin: 40px auto 20px; 
+    display: flex;
+    align-self: center; 
+    left: auto !important; 
+    right: auto !important; 
+    bottom: auto !important; 
+  }
+}
+
+
+@media (min-width: 768px) {
+  .pageContainer {
+    padding: 0 20px;
+  }
+  .mainContent {
+    width: 610px;
+    height: auto;
+  }
+  .floatingButton{
+    display: none !important;
+  }
+}
+
+@media (min-width: 1280px) {
+  .pageContainer {
+    flex-direction: row;
+    padding: 0;
+  }
+  
+  .mainContent {
+    width: 60%;
+    padding: 0 50px 0 16px;
+  }
 }

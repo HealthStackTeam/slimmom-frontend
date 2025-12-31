@@ -1,7 +1,7 @@
 import { lazy, Suspense, useEffect } from 'react';
 import RestrictedRoute from './components/RestrictedRoute';
 import PrivateRoute from './components/PrivateRoute';
-
+import DiaryAddPage from './pages/DiaryAddPage.jsx';
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -87,6 +87,12 @@ function App() {
               <PrivateRoute redirectTo="/login" component={<DiaryPage />} />
             }
           />
+          <Route 
+             path="/diary/add" 
+             element={
+            <PrivateRoute redirectTo="/login" component={<DiaryAddPage />}/>
+            } 
+            />
         </Routes>
       </Suspense>
       <Toaster position="top-right" />

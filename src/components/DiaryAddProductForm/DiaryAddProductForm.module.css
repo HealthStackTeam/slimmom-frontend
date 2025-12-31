@@ -25,6 +25,7 @@
   width: 240px;
   height: 17px;
   margin-right: 50px;
+  
 }
 
 /* Miktar Kutusu */
@@ -174,4 +175,111 @@
   font-weight: 500;
   padding: 2px 0;
   white-space: nowrap;
+}
+
+.container.fullPage {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  display: block !important;
+}
+
+.form.fullPageForm {
+  flex-direction: column;
+  gap: 30px;
+  align-items: stretch;
+}
+
+.fullPageFormGroup{
+  margin-bottom: 50px;
+}
+
+.container.fullPage .field,
+.container.fullPage .amountField {
+  height: 50px;
+  font-size: 18px;
+  border: 2px solid #eee;
+  border-radius: 8px;
+  padding: 12px 15px;
+  background: white;
+  width: 100% !important;
+  border: none;
+}
+
+.container.fullPage .field:focus,
+.container.fullPage .amountField:focus {
+  border-color: #f57c00;
+  box-shadow: 0 0 0 3px rgba(245, 124, 0, 0.1);
+}
+
+
+.container.fullPage .button {
+  width: 100%;
+  height: 56px;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 20px 0 0;
+  padding: 0;
+}
+.fullPageError{
+ display: none;
+}
+
+@media (min-width: 320px) {
+  .container.fullPage {
+    display: block !important;
+  }
+  
+  
+  .container:not(.fullPage) {
+    display: none !important;
+  }
+}
+
+
+@media (min-width: 768px) {
+  
+  .container.fullPage {
+    display: none !important;
+  }
+  
+  
+  .container:not(.fullPage) {
+    display: block !important;
+  }
+}
+@media (min-width: 768px) {
+  .container {
+    margin-right: 60px;
+    margin-left: 16px;
+    display: flex;
+  }
+  
+  .form {
+    flex-wrap: nowrap;
+    
+  }
+  
+  
+  .field {
+    width: 240px;
+    font-size: 14px;
+  }
+  
+  .amountField {
+    width: 104px;
+    font-size: 14px;
+  }
+  
+  .button {
+    width: 48px;
+    height: 48px;
+    font-size: 26px;
+    margin-left: 87px;
+  }
+  
+  .dropdown {
+    max-height: 220px;
+  }
 }

@@ -19,13 +19,12 @@ const ProductSchema = Yup.object().shape({
     .integer('Must be a whole number'),
 });
 
-const DiaryAddProductForm = ({ selectedDate }) => {
+const DiaryAddProductForm = ({ selectedDate, onProductAdded, isFullPage = false }) => {
   const [products, setProducts] = useState([]);
   const [showDropdown, setShowDropdown] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
   const dropdownRef = useRef(null);
   const dispatch = useDispatch();
-
   const productNewId = useId();
   const weightId = useId();
 
@@ -48,10 +47,16 @@ const DiaryAddProductForm = ({ selectedDate }) => {
       productId: values.productId,
       weight: Number(values.weight),
     };
-    dispatch(addProduct(valuesToSend));
-    actions.resetForm();
-    setProducts([]);
-    setShowDropdown(false);
+     dispatch(addProduct(valuesToSend)).then(() => {
+      actions.resetForm();
+      setProducts([]);
+      setShowDropdown(false);
+      
+      // Eğer full page modundaysak
+      if (isFullPage && onProductAdded) {
+        onProductAdded(); // Sayfadan çık
+      }
+    });
   };
 
   const handleProductSelect = (productId, productTitle, setFieldValue) => {
@@ -62,7 +67,7 @@ const DiaryAddProductForm = ({ selectedDate }) => {
   
 
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container} ${isFullPage ? styles.fullPage : ''}`}>
       <Formik
         initialValues={{
           productSearch: '',
@@ -74,8 +79,8 @@ const DiaryAddProductForm = ({ selectedDate }) => {
         validationSchema={ProductSchema}
       >
         {({ setFieldValue, values }) => (
-          <Form className={styles.form}>
-            <div className={styles.formGroup} ref={dropdownRef}>
+          <Form className={`${styles.form} ${isFullPage ? styles.fullPageForm : ''}`}>
+            <div className={`${styles.formGroup} ${isFullPage ? styles.fullPageFormGroup : ''}`} ref={dropdownRef}>
               <label htmlFor={productNewId}></label>
               <Field
                 className={styles.field}
@@ -113,7 +118,7 @@ const DiaryAddProductForm = ({ selectedDate }) => {
                   }
                 }}
               />
-              <ErrorMessage name="productSearch" component="div" className={styles.error} />
+              <ErrorMessage name="productSearch" component="div" className={`${styles.error} ${isFullPage ? styles.fullPageError : ''}`} />
               
               {/* Product Selection Dropdown */}
               {showDropdown && (
@@ -164,7 +169,7 @@ const DiaryAddProductForm = ({ selectedDate }) => {
                  }}
                inputMode="numeric"
               />
-              <ErrorMessage name="weight" component="div" className={styles.error} />
+              <ErrorMessage name="weight" component="div" className={`${styles.error} ${isFullPage ? styles.fullPageError : ''}`} />
             </div>
 
             <button className={styles.button} type="submit">

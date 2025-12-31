@@ -122,3 +122,43 @@
   font-size: 0.9rem;
   background-color: #FC842D !important; 
 }
+@media (min-width: 320px ) {
+  .container {
+    width: 156px;
+    height: 20px;
+  }
+  
+  .dateDisplay {
+    font-size: 18px; 
+  }
+  
+  :global(.flatpickr-calendar) {
+    margin-left: 90px; 
+    margin-top: 250px;
+  }
+}
+@media (min-width: 768px) {
+   .container {
+    width: 259px;
+    height: 38px;
+  }
+  
+  .dateDisplay {
+    font-size: 34px;
+  }
+  
+  :global(.flatpickr-calendar) {
+    margin-left: 250px; 
+    margin-top: 250px;
+  }
+}
+@media (min-width: 1280px) {
+  .container {
+    margin: 147px 0 24px 16px;
+    gap: 20px;
+  }
+  :global(.flatpickr-calendar) {
+    margin-left: 250px;
+    margin-top: 300px;
+  }
+}
