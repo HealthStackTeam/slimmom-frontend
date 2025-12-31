@@ -39,6 +39,9 @@ ul, ol {
     background: url('/src/assets/desktop-bg.jpg') no-repeat right fixed;
     background-size: cover;
   }
+  .logged-in #root {
+    background: none !important;
+  }
 }
 
 @media (min-width: 767px) and (max-width: 1279px) {
@@ -48,5 +51,8 @@ ul, ol {
     background-position: center center;
     background-attachment: fixed;
     background-size: cover;
+  }
+  .logged-in #root {
+    background: none !important;
   }
 }

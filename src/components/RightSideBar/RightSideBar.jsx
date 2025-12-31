@@ -1,6 +1,8 @@
+
 import React from 'react';
 import { useSelector } from 'react-redux';
 import styles from './RightSideBar.module.css';
+import { selectIsLoggedIn } from '../../redux/auth/selectors';
 import {
   selectNotAllowedProducts,
   selectDailyRate,
@@ -17,11 +19,14 @@ const RightSideBar = ({selectedDate}) => {
   const consumed = useSelector(selectCaloriesConsumed);
   const left = useSelector(selectCaloriesLeft);
   const percent = useSelector(selectCaloriesPercent);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
 
-  
+  const containerClass = isLoggedIn
+    ? `${styles.container} ${styles.bgImage}`
+    : styles.container;
 
   return (
-    <div className={styles.container}>
+    <div className={containerClass}>
       <div className={styles.summaryContainer}>
         <h3 className={styles.title}>Summary for {selectedDate}</h3>
         <ul className={styles.list}>
