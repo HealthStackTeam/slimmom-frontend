@@ -1,4 +1,11 @@
 :root {
+  /* ...existing code... */
+}
+
+html, body, #root {
+  height: 100%;
+}
+:root {
   --white: #ffffff;
   --orange: #fc842d;
   --grey: #9b9faa;
@@ -36,17 +43,20 @@ ul, ol {
 
 @media (min-width: 1280px) {
   #root {
-    background: url('/src/assets/desktop-bg.jpg') no-repeat right fixed;
-    background-size: cover;
+    background: url('/src/assets/desktop-bg.jpg') no-repeat right bottom fixed;
+    background-size: auto;
+  }
+  .logged-in #root {
+    background: none !important;
   }
 }
 
 @media (min-width: 767px) and (max-width: 1279px) {
   #root {
-    background: url('/src/assets/tablet-bg.png');
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-attachment: fixed;
-    background-size: cover;
+    background: url('/src/assets/tablet-bg.png') no-repeat right bottom fixed;
+    background-size: auto;
+  }
+  .logged-in #root {
+    background: none !important;
   }
 }

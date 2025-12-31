@@ -6,7 +6,7 @@ import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { refreshUser } from './redux/auth/operations.js';
-import { selectIsRefreshing } from './redux/auth/selectors';
+import { selectIsRefreshing, selectIsLoggedIn } from './redux/auth/selectors';
 import Header from './components/Header/Header.jsx';
 import { Toaster } from 'react-hot-toast';
 import Loader from './components/Loader/Loader.jsx';
@@ -20,6 +20,16 @@ const DiaryPage = lazy(() => import('./pages/DiaryPage'));
 function App() {
   const dispatch = useDispatch();
   const isRefreshing = useSelector(selectIsRefreshing);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+
+  // Add/remove .logged-in class to body based on login state
+  useEffect(() => {
+    if (isLoggedIn) {
+      document.body.classList.add('logged-in');
+    } else {
+      document.body.classList.remove('logged-in');
+    }
+  }, [isLoggedIn]);
 
   useEffect(() => {
     dispatch(refreshUser());
@@ -35,7 +45,15 @@ function App() {
       <Header />
       <Suspense fallback={<Loader />}>
         <Routes>
-          <Route path="/" element={<MainPage />} />
+          <Route
+            path="/"
+            element={
+              <RestrictedRoute
+                redirectTo="/calculator"
+                component={<MainPage />}
+              />
+            }
+          />
           <Route
             path="/register"
             element={
