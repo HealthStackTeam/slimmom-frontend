@@ -23,6 +23,9 @@ function App() {
   const isRefreshing = useSelector(selectIsRefreshing);
   const isLoggedIn = useSelector(selectIsLoggedIn);
 
+  //token var mı diye kontrol etmek için state den çekiyoruz
+  const token = useSelector(state => state.auth.token);
+
   useEffect(() => {
     if (isLoggedIn) {
       document.body.classList.add('logged-in');
@@ -32,11 +35,16 @@ function App() {
   }, [isLoggedIn]);
 
   useEffect(() => {
-    dispatch(refreshUser()).then((action) => {
-      if (action.meta.requestStatus === 'fulfilled') {
-        dispatch(getDailyRate());
-      }
-    });
+    // token varsa refresh yoksa direkt if e girmiyor 
+    if (token) {
+      dispatch(refreshUser()).then((action) => {
+        // fullyfilled ve giriş yapılmışsa veriyi çekiyoruz
+        if (action.meta.requestStatus === 'fulfilled') {
+          dispatch(getDailyRate());
+        }
+      });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch]);
 
   return isRefreshing ? (
