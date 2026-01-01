@@ -1,3 +1,5 @@
+
+
 .loginFormContainer {
     display: flex;
     flex-direction: column;
@@ -18,7 +20,7 @@
 
 .loginFormContainer .form h2 {
     text-transform: uppercase;
-   color: var(--orange);
+    color: var(--orange);
     font-size: 24px;
     font-weight: 700;
     letter-spacing: 0.04em;
@@ -28,22 +30,38 @@
 
 .loginFormContainer .inputContainer {
     display: flex;
+    flex-direction: row;
+    gap: 8px;
+}
+
+.inputContainer .input {
+    display: flex;
     flex-direction: column;
     gap: 8px;
 }
+
 .loginFormContainer .inputContainer label {
     font-size: 14px;
     font-weight: 700;
     color: var(--grey);
     letter-spacing: 0.04em;
 }
-.loginFormContainer .inputContainer input{
+
+.loginFormContainer .inputContainer input {
     padding: 10px;
     border: transparent;
     border-bottom: 1px solid var(--grey);
     background: transparent;
     max-width: 240px;
 }
+
+.errorContainer {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
 .loginFormContainer .error {
     color: var(--error-color);
     font-size: 0.85rem;
@@ -80,7 +98,7 @@
     background-color: transparent;
     color: var(--orange);
     border: 2px solid var(--orange);
-     box-shadow: 0px 4px 10px rgba(252, 132, 45, 0.5);
+    box-shadow: 0px 4px 10px rgba(252, 132, 45, 0.5);
 }
 
 .btnContainer a {
@@ -99,14 +117,12 @@
 .btnContainer a:hover {
     background-color: var(--orange);
     color: var(--white);
-     box-shadow: 0px 4px 10px rgba(252, 132, 45, 0.5);
+    box-shadow: 0px 4px 10px rgba(252, 132, 45, 0.5);
     border: 2px solid var(--orange);
 }
-@media ((min-width: 767px) and (max-width: 1279px)) {
 
-}
-@media (max-width: 766px) {
-  
-   
-}
+@media ((min-width: 767px) and (max-width: 1279px)) {}
+
+@media (max-width: 766px) {}
+
 /* yesimbozkurt */
