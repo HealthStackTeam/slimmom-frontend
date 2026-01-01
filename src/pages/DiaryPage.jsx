@@ -15,7 +15,7 @@ const DiaryPage = () => {
 
   useEffect(() => {
     if (!selectedDate){ const today = new Date();
-      const formattedToday = `${String(today.getDate()).padStart(2, '0')}.${String(today.getMonth() + 1).padStart(2, '0')}.${today.getFullYear()}`;
+      const formattedToday = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
       setSelectedDate(formattedToday);
       return;
     }
