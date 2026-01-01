@@ -64,25 +64,27 @@
 .btnContainer .loginBtn {
     background-color: var(--orange);
     color: var(--white);
-    box-shadow: #FC842D80;
+    box-shadow: 0px 4px 10px rgba(252, 132, 45, 0.5);
     border: none;
-    padding: 13px 50px;
+    padding: 13px 60px;
     border-radius: 30px;
     font-weight: 700;
     cursor: pointer;
     font-size: 14px;
     border: 2px solid var(--orange);
+    transition: all 0.3s;
 }
 
 .loginBtn:hover {
     background-color: transparent;
     color: var(--orange);
     border: 2px solid var(--orange);
+     box-shadow: 0px 4px 10px rgba(252, 132, 45, 0.5);
 }
 
 .btnContainer a {
     text-align: center;
-    padding: 13px 37px;
+    padding: 13px 47px;
     border: 2px solid var(--orange);
     border-radius: 30px;
     color: var(--orange);
@@ -90,11 +92,19 @@
     font-weight: 700;
     cursor: pointer;
     font-size: 14px;
+    transition: all 0.3s;
 }
 
 .btnContainer a:hover {
     background-color: var(--orange);
     color: var(--white);
-    box-shadow: #FC842D80;
+     box-shadow: 0px 4px 10px rgba(252, 132, 45, 0.5);
     border: 2px solid var(--orange);
+}
+@media ((min-width: 767px) and (max-width: 1279px)) {
+
+}
+@media (max-width: 766px) {
+  
+   
 }

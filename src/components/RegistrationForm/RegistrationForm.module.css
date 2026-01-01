@@ -10,10 +10,10 @@
 
 .registerFormContainer .form {
     display: flex;
-        flex-direction: column;
-        gap: 16px;
-        max-width: 450px;
-        padding: 24px;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 450px;
+    padding: 24px;
 }
 
 .registerFormContainer h2 {
@@ -61,15 +61,15 @@
     box-shadow: #FC842D80;
     background-color: var(--orange);
     color: var(--white);
-    
     text-align: center;
-        padding: 13px 37px;
-        border: 2px solid var(--orange);
-        border-radius: 30px;
-        text-decoration: none;
-        font-weight: 700;
-        cursor: pointer;
-        font-size: 14px;
+    padding: 13px 47px;
+    border: 2px solid var(--orange);
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s;
 }
 
 .registerBtn:hover {
@@ -79,24 +79,17 @@
 }
 
 .btnContainer a {
-    /* text-align: center;
-   
-    
-
- 
-
-  
-     */
     color: rgba(252, 132, 45, 1);
-        text-decoration: none;
-        box-shadow: rgba(252, 132, 45, 0.5);
-        border: none;
-        padding: 13px 50px;
-        border-radius: 30px;
-        font-weight: 700;
-        cursor: pointer;
-        font-size: 14px;
-        border: 2px solid var(--orange);
+    text-decoration: none;
+    box-shadow: rgba(252, 132, 45, 0.5);
+    border: none;
+    padding: 13px 60px;
+    border-radius: 30px;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 14px;
+    border: 2px solid var(--orange);
+    transition: all 0.3s;
 }
 
 .btnContainer a:hover {
