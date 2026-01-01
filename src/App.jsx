@@ -6,6 +6,7 @@ import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { refreshUser } from './redux/auth/operations.js';
+import { getDailyRate } from './redux/dailyRate/operations.js';
 import { selectIsRefreshing, selectIsLoggedIn } from './redux/auth/selectors';
 import Header from './components/Header/Header.jsx';
 import { Toaster } from 'react-hot-toast';
@@ -22,7 +23,6 @@ function App() {
   const isRefreshing = useSelector(selectIsRefreshing);
   const isLoggedIn = useSelector(selectIsLoggedIn);
 
-  // Add/remove .logged-in class to body based on login state
   useEffect(() => {
     if (isLoggedIn) {
       document.body.classList.add('logged-in');
@@ -32,7 +32,11 @@ function App() {
   }, [isLoggedIn]);
 
   useEffect(() => {
-    dispatch(refreshUser());
+    dispatch(refreshUser()).then((action) => {
+      if (action.meta.requestStatus === 'fulfilled') {
+        dispatch(getDailyRate());
+      }
+    });
   }, [dispatch]);
 
   return isRefreshing ? (

@@ -4,6 +4,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { login } from '../../redux/auth/operations';
+import { getDailyRate } from '../../redux/dailyRate/operations';
 import { NavLink } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 
@@ -25,6 +26,8 @@ const LoginForm = () => {
       .unwrap()
       .then(() => {
         toast.success('Login successful!');
+        dispatch(getDailyRate()); 
+        localStorage.removeItem('calcData');
       })
       .catch(() => {
         toast.error(
@@ -37,7 +40,6 @@ const LoginForm = () => {
 
   return (
     <div className={css.loginFormContainer}>
-
       <Formik
         initialValues={{ email: '', password: '' }}
         onSubmit={handleSubmit}
@@ -75,7 +77,6 @@ const LoginForm = () => {
 
         </Form>
       </Formik>
-      {/* @yesimbozkurt */}
     </div>
   );
 };

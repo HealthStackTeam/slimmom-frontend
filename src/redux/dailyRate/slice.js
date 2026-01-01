@@ -1,9 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchDailyRate, fetchDailyRateUser } from "./operations";
+import { fetchDailyRate, fetchDailyRateUser, getDailyRate } from "./operations";
+import { logout, login } from "../auth/operations";
 
 const initialState = {
   dailyRate: null, 
   notAllowedProducts: [],
+  isLoading: false,
 };
 
 const dailyRateSlice = createSlice({
@@ -17,18 +19,29 @@ const dailyRateSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      // public
       .addCase(fetchDailyRate.fulfilled, (state, action) => {
-        state.isLoading = false;
         state.dailyRate = action.payload.data.calorie;
         state.notAllowedProducts = action.payload.data.foods;
       })
-      // private
+      
       .addCase(fetchDailyRateUser.fulfilled, (state, action) => {
-        console.log(action.payload);
-        state.isLoading = false;
         state.dailyRate = action.payload.data.calorie;
         state.notAllowedProducts = action.payload.data.foods;
+      })
+
+      .addCase(getDailyRate.fulfilled, (state, action) => {
+        state.dailyRate = action.payload.data.dailyCalorie || action.payload.data.calorie;
+        state.notAllowedProducts = action.payload.data.foods || [];
+      })
+
+      .addCase(login.fulfilled, (state) => {
+        state.dailyRate = null;
+        state.notAllowedProducts = [];
+      })
+
+      .addCase(logout.fulfilled, (state) => {
+        state.dailyRate = null;
+        state.notAllowedProducts = [];
       });
   },
 });
