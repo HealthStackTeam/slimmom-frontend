@@ -40,7 +40,7 @@ function App() {
       <Loader />
     </strong>
   ) : (
-    <>
+    <div className="App">
       {/* Navbar Menü gelicek */}
       <Header />
       <Suspense fallback={<Loader />}>
@@ -96,7 +96,7 @@ function App() {
         </Routes>
       </Suspense>
       <Toaster position="top-right" />
-    </>
+    </div>
   );
 }
 

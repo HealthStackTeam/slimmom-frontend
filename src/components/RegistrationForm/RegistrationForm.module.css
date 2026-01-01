@@ -98,3 +98,8 @@
     box-shadow: rgba(252, 132, 45, 0.5);
     border: 2px solid var(--orange);
 }
+@media ((min-width: 767px) and (max-width: 1279px)) {}
+
+@media (max-width: 766px) {}
+
+/* yesimbozkurt */

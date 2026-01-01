@@ -61,7 +61,7 @@ const RegistrationForm = () => {
 
         </Form>
       </Formik>
-
+      {/* @yesimbozkurt */}
     </div>
   )
 }
