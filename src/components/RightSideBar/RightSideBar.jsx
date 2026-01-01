@@ -25,6 +25,19 @@ const RightSideBar = ({selectedDate}) => {
     ? `${styles.container} ${styles.bgImage}`
     : styles.container;
 
+  // Format functions
+  const formatCalories = (value) => {
+    if (value === null || value === undefined) return '0';
+    // Yuvarla ve virgülden sonra 1 basamak göster
+    return Math.round(value * 10) / 10;
+  };
+
+  const formatPercent = (value) => {
+    if (value === null || value === undefined) return '0';
+    // Yüzdeyi tam sayı olarak göster
+    return Math.round(value);
+  };
+
   return (
     <div className={containerClass}>
       <div className={styles.summaryContainer}>
@@ -32,11 +45,11 @@ const RightSideBar = ({selectedDate}) => {
         <ul className={styles.list}>
           <li className={styles.listItem}>
             <span>Left</span>
-            <span>{left ? left : '0'} kcal</span>
+            <span>{formatCalories(left)} kcal</span>
           </li>
           <li className={styles.listItem}>
             <span>Consumed</span>
-            <span>{consumed ? consumed : '0'} kcal</span>
+            <span>{formatCalories(consumed)} kcal</span>
           </li>
           <li className={styles.listItem}>
             <span>Daily Rate</span>
@@ -44,7 +57,7 @@ const RightSideBar = ({selectedDate}) => {
           </li>
           <li className={styles.listItem}>
             <span>n% of normal</span>
-            <span>{percent ? percent : '0'} %</span>
+            <span>{formatPercent(percent)}%</span>
           </li>
         </ul>
       </div>
@@ -55,7 +68,8 @@ const RightSideBar = ({selectedDate}) => {
           <ul className={styles.foodList}>
             {notAllowedProducts.map((product, index) => (
               <li key={index} className={styles.foodItem}>
-                {typeof product === 'object' ? product.title : product},&nbsp;
+                {typeof product === 'object' ? product.title : product}
+                {index < notAllowedProducts.length - 1 && ','}
               </li>
             ))}
           </ul>

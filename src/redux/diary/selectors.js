@@ -1,5 +1,5 @@
 import { createSelector } from "@reduxjs/toolkit";
-import { selectDailyRate } from "../dailyRate/selectors"; // Önceki adımda yazdığımız dailyRate selector'ı
+import { selectDailyRate } from "../dailyRate/selectors";
 
 export const selectDiaryProducts = (state) => state.diary.products;
 export const selectDiaryIsLoading = (state) => state.diary.isLoading;
@@ -8,14 +8,16 @@ export const selectDiaryIsLoading = (state) => state.diary.isLoading;
 export const selectCaloriesConsumed = createSelector(
   [selectDiaryProducts],
   (products) => {
+    if (!products || products.length === 0) return 0;
 
-    const caloriesArray = [];
+     let totalCalories = 0;
 
     for(const p of products) {
-     caloriesArray.push((p.weight/p.product.weight) * p.product.calories);
+     const productCalories = (p.weight / 100) * p.product.calories;
+     totalCalories += productCalories;
     }
     
-    return caloriesArray.reduce((total, cal) => total + cal, 0);
+    return totalCalories;
   }
 );
 
@@ -23,7 +25,7 @@ export const selectCaloriesConsumed = createSelector(
 export const selectCaloriesLeft = createSelector(
   [selectDailyRate, selectCaloriesConsumed],
   (dailyRate, consumed) => {
-    if (!dailyRate) return 0; // Hedef yoksa kalan da yoktur
+    if (!dailyRate) return 0;
     return dailyRate - consumed;
   }
 );

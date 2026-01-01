@@ -2,6 +2,8 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
   min-height: 100vh;
   background: white;
 }
@@ -83,7 +85,7 @@
     padding: 0 20px;
   }
   .mainContent {
-    width: 610px;
+    width: calc(100% - 300px);
     height: auto;
   }
   .floatingButton{
@@ -99,6 +101,7 @@
   
   .mainContent {
     width: 60%;
+    max-width: 780px;
     padding: 0 50px 0 16px;
   }
 }

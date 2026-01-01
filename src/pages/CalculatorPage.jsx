@@ -7,7 +7,10 @@ import DailyCaloriesForm from '../components/DailyCaloriesForm/DailyCaloriesForm
 
 const CalculatorPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+  const getTodayDate = () => {
+    const today = new Date();
+    return `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+  };
   const openModal = () => {
     setIsModalOpen(true);
   };
@@ -22,7 +25,7 @@ const CalculatorPage = () => {
         <CalculatorCalorieForm onSuccess={openModal} />
       </div>
 
-      <RightSideBar />
+      <RightSideBar selectedDate={getTodayDate()} />
 
       {isModalOpen && (
         <Modal onClose={closeModal}>

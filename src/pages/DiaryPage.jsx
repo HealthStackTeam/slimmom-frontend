@@ -14,7 +14,11 @@ const DiaryPage = () => {
   const [selectedDate, setSelectedDate] = useState('');
 
   useEffect(() => {
-    if (!selectedDate) return; // prevent sending empty date to API
+    if (!selectedDate){ const today = new Date();
+      const formattedToday = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+      setSelectedDate(formattedToday);
+      return;
+    }
     dispatch(fetchDiary(selectedDate));
   }, [dispatch, selectedDate]);
 
@@ -35,7 +39,7 @@ const DiaryPage = () => {
           +
         </Link>
       </div>
-      <RightSidebar />
+      <RightSidebar selectedDate={selectedDate} />
     </div>
   );
 };
