@@ -6,6 +6,7 @@ import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { refreshUser } from './redux/auth/operations.js';
+import { getDailyRate } from './redux/dailyRate/operations.js';
 import { selectIsRefreshing, selectIsLoggedIn } from './redux/auth/selectors';
 import Header from './components/Header/Header.jsx';
 import { Toaster } from 'react-hot-toast';
@@ -22,7 +23,9 @@ function App() {
   const isRefreshing = useSelector(selectIsRefreshing);
   const isLoggedIn = useSelector(selectIsLoggedIn);
 
-  // Add/remove .logged-in class to body based on login state
+  //token var mı diye kontrol etmek için state den çekiyoruz
+  const token = useSelector(state => state.auth.token);
+
   useEffect(() => {
     if (isLoggedIn) {
       document.body.classList.add('logged-in');
@@ -32,7 +35,16 @@ function App() {
   }, [isLoggedIn]);
 
   useEffect(() => {
-    dispatch(refreshUser());
+    // token varsa refresh yoksa direkt if e girmiyor 
+    if (token) {
+      dispatch(refreshUser()).then((action) => {
+        // fullyfilled ve giriş yapılmışsa veriyi çekiyoruz
+        if (action.meta.requestStatus === 'fulfilled') {
+          dispatch(getDailyRate());
+        }
+      });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch]);
 
   return isRefreshing ? (

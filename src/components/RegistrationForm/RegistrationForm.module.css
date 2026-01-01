@@ -58,7 +58,7 @@
 }
 
 .registerFormContainer .error {
-    color: red;
+    color: var(--error-color);
     font-size: 0.85rem;
     padding-left: 10px;
     margin-top: 5px;

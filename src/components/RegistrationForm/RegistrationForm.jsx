@@ -1,26 +1,38 @@
-import css from './RegistrationForm.module.css'
-import { Formik, Form, Field, ErrorMessage } from 'formik'
-import * as Yup from 'yup'
-import { useDispatch } from 'react-redux'
-import { register } from '../../redux/auth/operations'
-import { NavLink } from 'react-router-dom'
-import { toast } from 'react-hot-toast'
+import css from './RegistrationForm.module.css';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
+import { useDispatch } from 'react-redux';
+import { NavLink } from 'react-router-dom';
+import { toast } from 'react-hot-toast';
+
+import { register } from '../../redux/auth/operations';
+import { fetchDailyRateUser } from '../../redux/dailyRate/operations';
 
 const RegistrationForm = () => {
-
   const dispatch = useDispatch();
 
-  const handleSubmit = (values,actions) => {
+  const handleSubmit = (values, actions) => {
     dispatch(register(values))
       .unwrap()
       .then(() => {
-        toast.success('Registration successful!')
+        toast.success('Registration successful!');
+
+        // kayıt başarılıysa, varsa bekleyen hesaplama verisini alıp işle
+        const storedCalcData = localStorage.getItem('calcData');
+        
+        if (storedCalcData) {
+          const calcData = JSON.parse(storedCalcData);
+          // kullanıcı adına kaloriyi kaydet
+          dispatch(fetchDailyRateUser(calcData));
+          // işlem bitince temizle
+          localStorage.removeItem('calcData'); 
+        }
       })
       .catch(() => {
-        toast.error('Registration failed. Please try again.')
+        toast.error('Registration failed. Please try again.');
       });
-    actions.resetForm()
-  }
+    actions.resetForm();
+  };
 
   const Schema = Yup.object().shape({
     name: Yup.string().trim().required('Name is required'),
@@ -30,7 +42,6 @@ const RegistrationForm = () => {
 
   return (
     <div className={css.registerFormContainer}>
-      
       <Formik
         initialValues={{ name: '', email: '', password: ''}}
         validationSchema={Schema}
@@ -38,6 +49,7 @@ const RegistrationForm = () => {
       >
         <Form className={css.form}>
           <h2>Register</h2>
+
           <div className={css.inputContainer}>
             <div className={css.input}>
               <label className={css.registerLabel} htmlFor="name">
@@ -74,16 +86,16 @@ const RegistrationForm = () => {
             </div>
           </div>
 
+
           <div className={css.btnContainer}>
             <button className={css.registerBtn} type="submit">Register</button>
             <NavLink to="/login">Log in</NavLink>
           </div>
-
         </Form>
       </Formik>
       {/* @yesimbozkurt */}
     </div>
-  )
-}
+  );
+};
 
-export default RegistrationForm
+export default RegistrationForm;

@@ -1,4 +1,6 @@
-html, body, #root {
+html,
+body,
+#root {
   height: 100%;
 }
 :root {
@@ -10,9 +12,10 @@ html, body, #root {
   --border-grey: #e0e0e0;
   --font-main: 'Verdana', sans-serif;
   --font-secondary: 'Gotham Pro', sans-serif;
+  --error-color: #ff3f3f;
 }
 
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -26,12 +29,19 @@ body {
   color: var(--text-main);
 }
 
-h1, h2, h3, h4, h5, h6, p {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
   margin: 0;
   padding: 0;
 }
 
-ul, ol {
+ul,
+ol {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -51,7 +61,6 @@ ul, ol {
   #root {
     background: url('/src/assets/tablet-bg.png') no-repeat right bottom fixed;
     background-size: cover;
-
   }
   .logged-in #root {
     background: none !important;
