@@ -41,13 +41,14 @@
 }
 
 .registerFormContainer .error {
-    color: red;
+    color: var(--error-color);
     font-size: 0.85rem;
     padding-left: 10px;
     margin-top: 5px;
     height: 20px;
     display: block;
     animation: shake 0.3s ease-in-out;
+    font-weight: 700;
 }
 
 .registerFormContainer .btnContainer {

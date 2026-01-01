@@ -90,7 +90,11 @@ const CalculatorCalorieForm = ({ onSuccess }) => {
                   id={heightFieldId}
                   className={css.input}
                 />
-                <ErrorMessage name="height" component="span" />
+                <ErrorMessage
+                  name="height"
+                  component="span"
+                  className={css.error}
+                />
               </label>
 
               <label htmlFor="age" className={css.label}>
@@ -101,7 +105,7 @@ const CalculatorCalorieForm = ({ onSuccess }) => {
                   id={ageFieldId}
                   className={css.input}
                 />
-                <ErrorMessage name="age" component="span" />
+                <ErrorMessage name="age" component="span" className={css.error} />
               </label>
 
               <label htmlFor="weight" className={css.label}>
@@ -112,7 +116,11 @@ const CalculatorCalorieForm = ({ onSuccess }) => {
                   id={weightFieldId}
                   className={css.input}
                 />
-                <ErrorMessage name="weight" component="span" />
+                <ErrorMessage
+                  name="weight"
+                  component="span"
+                  className={css.error}
+                />
               </label>
             </div>
             <div className={css.column}>
@@ -124,7 +132,11 @@ const CalculatorCalorieForm = ({ onSuccess }) => {
                   id={targetWeightFieldId}
                   className={css.input}
                 />
-                <ErrorMessage name="targetWeight" component="span" />
+                <ErrorMessage
+                  name="targetWeight"
+                  component="span"
+                  className={css.error}
+                />
               </label>
 
               {/* Gender Selection */}
