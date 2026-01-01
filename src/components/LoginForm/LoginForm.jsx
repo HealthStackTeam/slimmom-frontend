@@ -46,14 +46,20 @@ const LoginForm = () => {
         <Form className={css.form}>
           <h2>Log in</h2>
           <div className={css.inputContainer}>
-            <label className={css.loginLabel} htmlFor="email">
+            <div className={css.input}>
+              <label className={css.loginLabel} htmlFor="email">
               Email *
             </label>
             <Field type="email" name="email" id={emailFieldId} />
-            <ErrorMessage name="email" component="span" className={css.error} />
+            </div>
+            <div className={css.errorContainer}>
+               <ErrorMessage name="email" component="span" className={css.error} />
+            </div>
+           
           </div>
           <div className={css.inputContainer}>
-            <label className={css.loginLabel} htmlFor="password">
+            <div className={css.input}>
+              <label className={css.loginLabel} htmlFor="password">
               Password *
             </label>
             <Field
@@ -61,11 +67,16 @@ const LoginForm = () => {
               name="password"
               id={passwordFieldId}
             />
-            <ErrorMessage
+            </div>
+            
+            <div className={css.errorContainer}>
+              <ErrorMessage
               name="password"
               component="span"
               className={css.error}
             />
+            </div>
+            
           </div>
 
           <div className={css.btnContainer}>

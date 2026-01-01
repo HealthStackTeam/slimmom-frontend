@@ -40,6 +40,23 @@
     max-width: 240px;
 }
 
+.inputContainer {
+    display: flex;
+    flex-direction: row;
+}
+
+.inputContainer .input {
+    display: flex;
+    flex-direction: column;
+}
+
+.inputContainer .errorContainer {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
 .registerFormContainer .error {
     color: red;
     font-size: 0.85rem;
@@ -48,6 +65,7 @@
     height: 20px;
     display: block;
     animation: shake 0.3s ease-in-out;
+    font-weight: 700;
 }
 
 .registerFormContainer .btnContainer {
@@ -98,6 +116,7 @@
     box-shadow: rgba(252, 132, 45, 0.5);
     border: 2px solid var(--orange);
 }
+
 @media ((min-width: 767px) and (max-width: 1279px)) {}
 
 @media (max-width: 766px) {}
