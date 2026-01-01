@@ -29,32 +29,33 @@ const RegistrationForm = () => {
   });
 
   return (
-    <div className={css.registerForm}>
-      <h1>Register</h1>
+    <div className={css.registerFormContainer}>
+      
       <Formik
         initialValues={{ name: '', email: '', password: ''}}
         validationSchema={Schema}
         onSubmit={handleSubmit}
       >
         <Form className={css.form}>
-          {/* <label className={css.registerLabel} htmlFor="name">
+          <h2>Register</h2>
+          <label className={css.registerLabel} htmlFor="name">
             Name *
-          </label> */}
-          <Field type="text" name="name" placeholder="Name *" />
+          </label>
+          <Field type="text" name="name" />
           <ErrorMessage name="name" component="div" className={css.error} />
-          {/* <label className={css.registerLabel} htmlFor="email">
+          <label className={css.registerLabel} htmlFor="email">
             Email *
-          </label> */}
-          <Field type="email" name="email" placeholder="Email *" />
+          </label>
+          <Field type="email" name="email"  />
           <ErrorMessage name="email" component="div" className={css.error} />
-          {/* <label className={css.registerLabel} htmlFor="password">
+          <label className={css.registerLabel} htmlFor="password">
             Password *
-          </label> */}
-          <Field type="password" name="password" placeholder="Password *" />
+          </label>
+          <Field type="password" name="password" />
           <ErrorMessage name="password" component="div" className={css.error} />
 
-          <div>
-            <button type="submit">Register</button>
+          <div className={css.btnContainer}>
+            <button className={css.registerBtn} type="submit">Register</button>
             <NavLink to="/login">Log in</NavLink>
           </div>
 

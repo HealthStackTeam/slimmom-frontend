@@ -37,22 +37,24 @@ const LoginForm = () => {
 
   return (
     <div className={css.loginFormContainer}>
+
       <Formik
         initialValues={{ email: '', password: '' }}
         onSubmit={handleSubmit}
         validationSchema={Schema}
       >
         <Form className={css.form}>
+          <h2>Log in</h2>
           <div className={css.inputContainer}>
             <label className={css.loginLabel} htmlFor="email">
-              Email
+              Email *
             </label>
             <Field type="email" name="email" id={emailFieldId} />
             <ErrorMessage name="email" component="span" className={css.error} />
           </div>
           <div className={css.inputContainer}>
             <label className={css.loginLabel} htmlFor="password">
-              Password
+              Password *
             </label>
             <Field
               type="password"
@@ -66,8 +68,8 @@ const LoginForm = () => {
             />
           </div>
 
-          <div>
-            <button type="submit">Log in</button>
+          <div className={css.btnContainer}>
+            <button className={css.loginBtn} type="submit">Log in</button>
             <NavLink to="/register">Register</NavLink>
           </div>
 
