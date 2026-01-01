@@ -136,7 +136,7 @@
   cursor: pointer;
 }
 
-.radioInput:checked+span {
+.radioInput:checked + span {
   color: var(--orange);
   font-weight: 700;
 }
@@ -156,6 +156,16 @@
   align-self: center;
   display: block;
   margin-left: auto;
+}
+
+.error {
+  color: var(--error-color);
+  font-size: 0.85rem;
+  padding-left: 10px;
+  margin-top: 5px;
+  height: 20px;
+  display: block;
+  animation: shake 0.3s ease-in-out;
 }
 
 @media (min-width: 768px) {
