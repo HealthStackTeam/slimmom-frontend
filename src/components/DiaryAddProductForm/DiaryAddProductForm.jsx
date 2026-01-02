@@ -12,7 +12,7 @@ const ProductSchema = Yup.object().shape({
   productSearch: Yup.string()
     .required('Please enter a product name')
     .min(2, 'Too Short! Minimum 2 characters')
-    .max(50, 'Too Long! Maximum 50 characters'),
+    .max(100, 'Too Long! Maximum 100 characters'),
   weight: Yup.number()
     .required('Amount is required')
     .min(1, 'Minimum 1 gram')
