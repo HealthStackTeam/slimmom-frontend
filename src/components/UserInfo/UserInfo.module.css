@@ -1,3 +1,19 @@
+.avatar {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #fff;
+  border: 2.5px solid #fc842d;
+  color: #fc842d;
+  font-size: 20px;
+  font-weight: 700;
+  margin-right: 8px;
+  box-shadow: 0 2px 8px 0 rgba(252, 132, 45, 0.10);
+  user-select: none;
+}
 .container {
   display: flex;
   align-items: center;
@@ -12,15 +28,43 @@
 .name {
   color: #212121;
   font-family: 'Verdana', sans-serif;
+    border-right: 2px solid #e0e0e0;
+    padding-right: 20px;
 }
 
 .logoutBtn {
   color: #9b9faa;
   background: none;
   border: none;
-  border-left: 2px solid #e0e0e0;
   height: 32px;
-  padding-left: 15px;
+  padding-left: 8px;
+  padding-right: 8px;
   cursor: pointer;
   font-family: 'Verdana', sans-serif;
+  transition: color 0.3s;
+  position: relative;
+  outline: none;
+  overflow: hidden;
+}
+
+.logoutBtn::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #fc842d 0%, #ffb800 100%);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
+}
+
+.logoutBtn:hover, .logoutBtn:focus {
+  color: #fc842d;
+}
+
+.logoutBtn:hover::after, .logoutBtn:focus::after {
+  transform: scaleX(1);
 }
