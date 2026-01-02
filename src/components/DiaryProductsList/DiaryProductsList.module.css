@@ -17,7 +17,7 @@
   position: relative;
   border: none;
   scrollbar-width: thin;
-  scrollbar-color: #FC842D #f5f5f5;
+  scrollbar-color: #FC842D #e0e0e0;
 }
 
 /* Chrome, Edge, Safari için scrollbar */
@@ -55,9 +55,7 @@
 .table tbody tr {
   height: auto;
   min-height: 50px;
-  border-bottom: 2px solid #f5f5f5;
 }
-
 .table td {
   padding: 12px 8px;
   vertical-align: middle;
@@ -65,6 +63,8 @@
   word-break: break-word; 
   line-height: 1.4;
   overflow: visible; 
+  padding-bottom: 8px;
+  border-bottom: 1px solid #e0e0e0;
 }
 
 @media (max-width: 767px) {
@@ -74,18 +74,19 @@
   }
   
   .tableArea {
-    max-height: 350px;
+    max-height: 250px;
   }
   
  
   .table {
     table-layout: fixed;
     font-size: 13px; 
+    margin-bottom: 30px;
   }
   
   .table tbody tr {
     min-height: 45px; 
-    border-bottom: 1px solid #f5f5f5;
+    
   }
   
   .table td {
@@ -150,11 +151,11 @@
   .table {
     table-layout: fixed;
     font-size: 14px;
+    margin-bottom: 60px;
   }
   
   .table tbody tr {
     min-height: 55px;
-    border-bottom: 2px solid #f5f5f5;
   }
   
   .table td {
@@ -219,7 +220,6 @@
   
   .table tbody tr {
     min-height: 60px;
-    border-bottom: 2px solid #f5f5f5;
   }
   
   .table td {

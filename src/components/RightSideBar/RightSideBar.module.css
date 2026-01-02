@@ -131,7 +131,10 @@
   justify-content: space-between;
   font-size: 14px;
   color: var(--grey);
+  padding-bottom: 8px;
+  border-bottom: 1px solid #e0e0e0;
 }
+
 
 .listItem span:last-child {
   color: var(--text-main);
@@ -143,6 +146,11 @@
   gap: 10px;
   font-size: 14px;
   color: var(--grey);
+  list-style: none;
+}
+.foodItem {
+  padding-bottom: 8px;
+  border-bottom: 1px solid #e0e0e0;
 }
 
 .text {
