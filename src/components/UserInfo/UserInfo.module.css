@@ -26,7 +26,7 @@
 }
 
 .name {
-  color: #212121;
+  color: #fc842d;
   font-family: 'Verdana', sans-serif;
     border-right: 2px solid #e0e0e0;
     padding-right: 20px;
@@ -54,7 +54,7 @@
   bottom: 0;
   width: 100%;
   height: 2px;
-  background: linear-gradient(90deg, #fc842d 0%, #ffb800 100%);
+  background: linear-gradient(90deg, #fc842d 0%, #ff3c3c 100%);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -62,7 +62,7 @@
 }
 
 .logoutBtn:hover, .logoutBtn:focus {
-  color: #fc842d;
+  color: #fc2d2d;
 }
 
 .logoutBtn:hover::after, .logoutBtn:focus::after {
