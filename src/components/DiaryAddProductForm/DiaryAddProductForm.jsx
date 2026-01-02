@@ -2,6 +2,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import styles from './DiaryAddProductForm.module.css';
 import { useId, useState, useRef, useEffect } from 'react';
 import * as Yup from 'yup';
+import toast from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
 import { addProduct } from '../../redux/diary/operations';
 import { setFilter } from '../../redux/filter/slice';
@@ -19,7 +20,7 @@ const ProductSchema = Yup.object().shape({
     .integer('Must be a whole number'),
 });
 
-const DiaryAddProductForm = ({ selectedDate, onProductAdded, isFullPage = false }) => {
+const DiaryAddProductForm = ({ selectedDate, onProductAdded, onFormError, isFullPage = false }) => {
   const [products, setProducts] = useState([]);
   const [showDropdown, setShowDropdown] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
@@ -47,16 +48,53 @@ const DiaryAddProductForm = ({ selectedDate, onProductAdded, isFullPage = false 
       productId: values.productId,
       weight: Number(values.weight),
     };
-     dispatch(addProduct(valuesToSend)).then(() => {
+    
+    // GEÇERLİ ÜRÜN SEÇİLMİŞ Mİ KONTROLÜ
+  if (!products.some(p => p._id === values.productId)) {
+    const errorMsg = 'Please enter a product name!';
+    
+    if (isFullPage && onFormError) {
+      onFormError(errorMsg);
+    } else {
+      toast.error(errorMsg, {
+        duration: 4000,
+              position: isFullPage ? 'top-center' : 'top-right',
+              styles: {
+                background: '#ff4444',
+                color: '#fff',
+                padding: '16px',
+                borderRadius: '8px',
+                fontSize: '14px',
+              },
+      });
+    }
+    return;
+  }
+
+    dispatch(addProduct(valuesToSend)).then((result) => {
+    if (result.meta.requestStatus === 'fulfilled') {
+      // Başarılı ekleme
+      if (!isFullPage) {
+        toast.success('Product entry successful!!', {
+          duration: 2000,
+          position: 'top-right',
+          styles: {
+                background: '#4CAF50',
+                color: '#fff',
+                padding: '16px',
+                borderRadius: '8px',
+                fontSize: '14px',
+              },
+        });
+      }
       actions.resetForm();
       setProducts([]);
       setShowDropdown(false);
       
-      // Eğer full page modundaysak
       if (isFullPage && onProductAdded) {
-        onProductAdded(); // Sayfadan çık
+        onProductAdded();
       }
-    });
+    }});
   };
 
   const handleProductSelect = (productId, productTitle, setFieldValue) => {

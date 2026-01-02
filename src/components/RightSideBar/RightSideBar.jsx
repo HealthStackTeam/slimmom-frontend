@@ -27,16 +27,9 @@ const RightSideBar = ({ selectedDate }) => {
   // Format functions
   const formatCalories = (value) => {
     if (value === null || value === undefined) return '0';
-    // Yuvarla ve virgülden sonra 1 basamak göster
-    return Math.round(value * 10) / 10;
-  };
-
-  const formatPercent = (value) => {
-    if (value === null || value === undefined) return '0';
     // Yüzdeyi tam sayı olarak göster
     return Math.round(value);
   };
-
   return (
     <div className={containerClass}>
       <div className={styles.summaryContainer}>
@@ -57,20 +50,20 @@ const RightSideBar = ({ selectedDate }) => {
           <li className={styles.listItem}>
             <span>Left</span>
             <span className={left < 0 ? styles.negative : ''}>
-              {formatCalories(left)} kcal
+              {formatCalories(left) ? formatCalories(left) : '0'} kcal
             </span>
           </li>
           <li className={styles.listItem}>
             <span>Consumed</span>
-            <span>{formatCalories(consumed)} kcal</span>
+            <span>{formatCalories(consumed) ? formatCalories(consumed) : '0'} kcal</span>
           </li>
           <li className={styles.listItem}>
             <span>Daily Rate</span>
-            <span>{dailyRate ? dailyRate : '0'} kcal</span>
+            <span>{formatCalories(dailyRate) ? formatCalories(dailyRate) : '0'} kcal</span>
           </li>
           <li className={styles.listItem}>
-            <span>Consumption (%)</span>
-            <span>{formatPercent(percent)}%</span>
+            <span>n% of normal</span>
+            <span>{formatCalories(percent) ? formatCalories(percent) : '0'}%</span>
           </li>
         </ul>
       </div>
