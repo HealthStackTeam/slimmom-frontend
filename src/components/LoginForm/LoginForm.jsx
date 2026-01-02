@@ -26,13 +26,32 @@ const LoginForm = () => {
       .unwrap()
       .then(() => {
         toast.success('Login successful!');
-        dispatch(getDailyRate()); 
+        dispatch(getDailyRate());
         localStorage.removeItem('calcData');
       })
-      .catch(() => {
-        toast.error(
-          'Login failed. Please check your credentials and try again.',
-        );
+
+      .catch((error) => {
+        let status = error?.status;
+        if (!status && typeof error === 'string') {
+          try {
+            const parsed = JSON.parse(error);
+            status = parsed.status;
+          } catch {}
+        }
+        if (!status && error?.response?.status) {
+          status = error.response.status;
+        }
+        if (status === 404) {
+          toast.error('No account found with this email address.');
+        } else if (status === 401) {
+          toast.error('Incorrect password. Please try again.');
+        } else if (status === 500) {
+          toast.error('Server error. Please try again later.');
+        } else {
+          toast.error(
+            'Login failed. Please check your credentials and try again.',
+          );
+        }
       });
 
     actions.resetForm();
@@ -50,42 +69,41 @@ const LoginForm = () => {
           <div className={css.inputContainer}>
             <div className={css.input}>
               <label className={css.loginLabel} htmlFor="email">
-              Email *
-            </label>
-            <Field type="email" name="email" id={emailFieldId} />
+                Email *
+              </label>
+              <Field type="email" name="email" id={emailFieldId} />
             </div>
             <div className={css.errorContainer}>
-               <ErrorMessage name="email" component="span" className={css.error} />
+              <ErrorMessage
+                name="email"
+                component="span"
+                className={css.error}
+              />
             </div>
-           
           </div>
           <div className={css.inputContainer}>
             <div className={css.input}>
               <label className={css.loginLabel} htmlFor="password">
-              Password *
-            </label>
-            <Field
-              type="password"
-              name="password"
-              id={passwordFieldId}
-            />
+                Password *
+              </label>
+              <Field type="password" name="password" id={passwordFieldId} />
             </div>
-            
+
             <div className={css.errorContainer}>
               <ErrorMessage
-              name="password"
-              component="span"
-              className={css.error}
-            />
+                name="password"
+                component="span"
+                className={css.error}
+              />
             </div>
-            
           </div>
 
           <div className={css.btnContainer}>
-            <button className={css.loginBtn} type="submit">Log in</button>
+            <button className={css.loginBtn} type="submit">
+              Log in
+            </button>
             <NavLink to="/register">Register</NavLink>
           </div>
-
         </Form>
       </Formik>
     </div>

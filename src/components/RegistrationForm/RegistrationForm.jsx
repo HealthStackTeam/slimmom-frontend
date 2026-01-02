@@ -19,31 +19,56 @@ const RegistrationForm = () => {
 
         // kayıt başarılıysa, varsa bekleyen hesaplama verisini alıp işle
         const storedCalcData = localStorage.getItem('calcData');
-        
+
         if (storedCalcData) {
           const calcData = JSON.parse(storedCalcData);
           // kullanıcı adına kaloriyi kaydet
           dispatch(fetchDailyRateUser(calcData));
           // işlem bitince temizle
-          localStorage.removeItem('calcData'); 
+          localStorage.removeItem('calcData');
         }
       })
-      .catch(() => {
-        toast.error('Registration failed. Please try again.');
+      .catch((error) => {
+        let status = error?.status;
+        if (!status && typeof error === 'string') {
+          try {
+            const parsed = JSON.parse(error);
+            status = parsed.status;
+          } catch {}
+        }
+        if (!status && error?.response?.status) {
+          status = error.response.status;
+        }
+        if (status === 409) {
+          toast.error('This email is already registered.');
+        } else if (status === 400) {
+          toast.error(
+            'Invalid registration data. Please check your information.',
+          );
+        } else if (status === 500) {
+          toast.error('Server error. Please try again later.');
+        } else {
+          toast.error('Registration failed. Please try again.');
+        }
       });
     actions.resetForm();
   };
 
   const Schema = Yup.object().shape({
     name: Yup.string().trim().required('Name is required'),
-    email: Yup.string().trim().email('Please enter a valid email').required('Email is required'),
-    password: Yup.string().min(6, 'Password must be at least 6 characters').required('Password is required'),
+    email: Yup.string()
+      .trim()
+      .email('Please enter a valid email')
+      .required('Email is required'),
+    password: Yup.string()
+      .min(6, 'Password must be at least 6 characters')
+      .required('Password is required'),
   });
 
   return (
     <div className={css.registerFormContainer}>
       <Formik
-        initialValues={{ name: '', email: '', password: ''}}
+        initialValues={{ name: '', email: '', password: '' }}
         validationSchema={Schema}
         onSubmit={handleSubmit}
       >
@@ -70,7 +95,11 @@ const RegistrationForm = () => {
               <Field type="email" name="email" />
             </div>
             <div className={css.errorContainer}>
-              <ErrorMessage name="email" component="div" className={css.error} />
+              <ErrorMessage
+                name="email"
+                component="div"
+                className={css.error}
+              />
             </div>
           </div>
 
@@ -82,13 +111,18 @@ const RegistrationForm = () => {
               <Field type="password" name="password" />
             </div>
             <div className={css.errorContainer}>
-              <ErrorMessage name="password" component="div" className={css.error} />
+              <ErrorMessage
+                name="password"
+                component="div"
+                className={css.error}
+              />
             </div>
           </div>
 
-
           <div className={css.btnContainer}>
-            <button className={css.registerBtn} type="submit">Register</button>
+            <button className={css.registerBtn} type="submit">
+              Register
+            </button>
             <NavLink to="/login">Log in</NavLink>
           </div>
         </Form>
