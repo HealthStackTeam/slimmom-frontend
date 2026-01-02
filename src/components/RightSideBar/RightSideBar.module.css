@@ -1,3 +1,60 @@
+.negative {
+  color: #ff3c3c !important;
+  font-weight: 700;
+}
+
+.exclamationWrapper {
+  display: inline-block;
+  position: relative;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+.exclamation {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid #ff3c3c;
+  color: #ff3c3c;
+  font-size: 16px;
+  font-weight: 900;
+  box-shadow: 0 2px 8px 0 rgba(255, 60, 60, 0.10);
+  cursor: pointer;
+  transition: box-shadow 0.2s;
+}
+
+.exclamationWrapper:hover .exclamation,
+.exclamationWrapper:focus .exclamation {
+  box-shadow: 0 0 0 4px rgba(255, 60, 60, 0.15);
+}
+
+.tooltip {
+  display: none;
+  position: absolute;
+  left: 50%;
+  top: 120%;
+  transform: translateX(-50%);
+  min-width: 220px;
+  background: #fff;
+  color: #ff3c3c;
+  border: 1px solid #ff3c3c;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  box-shadow: 0 2px 8px 0 rgba(255, 60, 60, 0.10);
+  z-index: 10;
+  white-space: normal;
+}
+
+.exclamationWrapper:hover .tooltip,
+.exclamationWrapper:focus .tooltip {
+  display: block;
+}
 .bgImage {
   background: url('/src/assets/side-bar-leaves.png');
   background-repeat: no-repeat;

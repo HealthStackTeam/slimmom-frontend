@@ -134,6 +134,57 @@
   width: 18px;
   height: 18px;
   cursor: pointer;
+  border-radius: 50%;
+  transition: box-shadow 0.2s;
+  position: relative;
+  appearance: none;
+  outline: none;
+  border: 2px solid var(--border-grey);
+  background: #fff;
+  box-sizing: border-box;
+}
+
+.radioInput:checked {
+  border: 2px solid var(--orange);
+}
+
+.radioInput:hover,
+.radioInput:focus {
+  box-shadow: 0 0 0 4px rgba(252, 132, 45, 0.15);
+}
+
+.radioInput:hover::before,
+.radioInput:focus::before {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fc842d 60%, transparent 100%);
+  pointer-events: none;
+}
+
+.radioInput:checked::before {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #fc842d;
+  pointer-events: none;
+}
+
+.radioInput:hover,
+.radioInput:focus {
+  box-shadow: 0 0 0 4px rgba(252, 132, 45, 0.25);
 }
 
 .radioInput:checked + span {

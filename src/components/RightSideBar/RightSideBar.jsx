@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useSelector } from 'react-redux';
 import styles from './RightSideBar.module.css';
@@ -13,7 +12,7 @@ import {
   selectCaloriesPercent,
 } from '../../redux/diary/selectors';
 
-const RightSideBar = ({selectedDate}) => {
+const RightSideBar = ({ selectedDate }) => {
   const dailyRate = useSelector(selectDailyRate);
   const notAllowedProducts = useSelector(selectNotAllowedProducts);
   const consumed = useSelector(selectCaloriesConsumed);
@@ -41,11 +40,25 @@ const RightSideBar = ({selectedDate}) => {
   return (
     <div className={containerClass}>
       <div className={styles.summaryContainer}>
-        <h3 className={styles.title}>Summary for {selectedDate}</h3>
+        <h3 className={styles.title}>
+          Summary for {selectedDate}
+          {left < 0 && (
+            <span className={styles.exclamationWrapper}>
+              <span className={styles.exclamation}>!</span>
+              <span className={styles.tooltip}>
+                You have exceeded your daily calorie limit by{' '}
+                {Math.abs(formatCalories(left))} kcal. Please be careful with
+                your diet!
+              </span>
+            </span>
+          )}
+        </h3>
         <ul className={styles.list}>
           <li className={styles.listItem}>
             <span>Left</span>
-            <span>{formatCalories(left)} kcal</span>
+            <span className={left < 0 ? styles.negative : ''}>
+              {formatCalories(left)} kcal
+            </span>
           </li>
           <li className={styles.listItem}>
             <span>Consumed</span>
@@ -56,7 +69,7 @@ const RightSideBar = ({selectedDate}) => {
             <span>{dailyRate ? dailyRate : '0'} kcal</span>
           </li>
           <li className={styles.listItem}>
-            <span>n% of normal</span>
+            <span>Consumption (%)</span>
             <span>{formatPercent(percent)}%</span>
           </li>
         </ul>
