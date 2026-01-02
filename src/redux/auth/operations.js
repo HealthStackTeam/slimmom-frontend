@@ -18,7 +18,10 @@ export const register = createAsyncThunk(
       if (res.data.accessToken) setAuthHeader(res.data.accessToken);
       return res.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue({
+        status: error?.response?.status || null,
+        message: error?.message ? String(error.message) : String(error),
+      });
     }
   },
 );
@@ -30,7 +33,10 @@ export const login = createAsyncThunk(
       if (res.data.accessToken) setAuthHeader(res.data.accessToken);
       return res.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue({
+        status: error?.response?.status || null,
+        message: error?.message ? String(error.message) : String(error),
+      });
     }
   },
 );
@@ -41,7 +47,10 @@ export const logout = createAsyncThunk(
       await axios.post('/auth/logout'); // Buraya end point gelicek
       clearAuthHeader();
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue({
+        status: error?.response?.status || null,
+        message: error?.message ? String(error.message) : String(error),
+      });
     }
   },
 );
@@ -49,13 +58,12 @@ export const refreshUser = createAsyncThunk(
   'auth/refreshUser',
   async (_, thunkAPI) => {
     const token = thunkAPI.getState().auth.token;
-    
+
     if (token === null) {
       return thunkAPI.rejectWithValue('No token found');
     }
 
     try {
-      
       const { data: res } = await axios.get('/auth/refresh');
       return res.data;
     } catch (error) {

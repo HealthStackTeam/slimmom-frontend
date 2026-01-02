@@ -10,7 +10,7 @@ const Navigation = ({ isLoggedIn }) => {
           <NavLink
             to="/diary"
             className={({ isActive }) =>
-              isActive ? styles.active : styles.link
+              isActive ? `${styles.link} ${styles.activeLink}` : styles.link
             }
           >
             DIARY
@@ -18,7 +18,7 @@ const Navigation = ({ isLoggedIn }) => {
           <NavLink
             to="/calculator"
             className={({ isActive }) =>
-              isActive ? styles.active : styles.link
+              isActive ? `${styles.link} ${styles.activeLink}` : styles.link
             }
           >
             CALCULATOR
@@ -26,10 +26,20 @@ const Navigation = ({ isLoggedIn }) => {
         </div>
       ) : (
         <div className={styles.publicNav}>
-          <NavLink to="/login" className={styles.link}>
+          <NavLink
+            to="/login"
+            className={({ isActive }) =>
+              isActive ? `${styles.link} ${styles.activeLink}` : styles.link
+            }
+          >
             LOG IN
           </NavLink>
-          <NavLink to="/register" className={styles.link}>
+          <NavLink
+            to="/register"
+            className={({ isActive }) =>
+              isActive ? `${styles.link} ${styles.activeLink}` : styles.link
+            }
+          >
             REGISTRATION
           </NavLink>
         </div>
