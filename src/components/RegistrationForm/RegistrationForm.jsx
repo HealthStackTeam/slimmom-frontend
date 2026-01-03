@@ -34,7 +34,7 @@ const RegistrationForm = () => {
           try {
             const parsed = JSON.parse(error);
             status = parsed.status;
-          } catch {}
+          } catch { }
         }
         if (!status && error?.response?.status) {
           status = error.response.status;
@@ -78,7 +78,8 @@ const RegistrationForm = () => {
           <div className={css.inputContainer}>
             <div className={css.input}>
               <label className={css.registerLabel} htmlFor="name">
-                Name *
+                <span>Name *</span>
+                <ErrorMessage name="name" component="div" className={css.error} />
               </label>
               <Field type="text" name="name" />
             </div>
@@ -90,7 +91,12 @@ const RegistrationForm = () => {
           <div className={css.inputContainer}>
             <div className={css.input}>
               <label className={css.registerLabel} htmlFor="email">
-                Email *
+                <span>Email *</span>
+                <ErrorMessage
+                  name="email"
+                  component="div"
+                  className={css.error}
+                />
               </label>
               <Field type="email" name="email" />
             </div>
@@ -106,7 +112,12 @@ const RegistrationForm = () => {
           <div className={css.inputContainer}>
             <div className={css.input}>
               <label className={css.registerLabel} htmlFor="password">
-                Password *
+                <span>   Password *</span>
+                <ErrorMessage
+                  name="password"
+                  component="div"
+                  className={css.error}
+                />
               </label>
               <Field type="password" name="password" />
             </div>

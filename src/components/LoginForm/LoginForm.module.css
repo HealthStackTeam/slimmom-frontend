@@ -4,15 +4,15 @@
     align-items: left;
     position: absolute;
     top: 300px;
-    gap: 20px;
+    width: 100%;
 }
 
 .loginFormContainer .form {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 45px;
     max-width: 450px;
-    padding: 24px;
+    width: 100%;
 }
 
 .loginFormContainer .form h2 {
@@ -21,7 +21,6 @@
     font-size: 24px;
     font-weight: 700;
     letter-spacing: 0.04em;
-    margin-bottom: 55px;
 }
 
 
@@ -34,28 +33,34 @@
 .inputContainer .input {
     display: flex;
     flex-direction: column;
-    gap: 8px;
 }
 
-.loginFormContainer .inputContainer label {
+.inputContainer .input .error {
+    display: none;
+}
+
+.loginFormContainer .inputContainer label span {
     font-size: 14px;
     font-weight: 700;
     color: var(--grey);
     letter-spacing: 0.04em;
 }
 
+.loginLabel {
+    display: flex;
+    gap: 10px;
+}
+
 .loginFormContainer .inputContainer input {
-    padding: 10px;
     border: transparent;
     border-bottom: 1px solid var(--grey);
     background: transparent;
-    max-width: 240px;
+    padding: 10px;
 }
 
 .errorContainer {
     display: flex;
     align-items: center;
-    margin-top: 20px;
     margin-left: 20px;
 }
 
@@ -82,7 +87,7 @@
     color: var(--white);
     box-shadow: 0px 4px 10px rgba(252, 132, 45, 0.5);
     border: none;
-    padding: 13px 60px;
+    padding: 13px 57px;
     border-radius: 30px;
     font-weight: 700;
     cursor: pointer;
@@ -118,8 +123,63 @@
     border: 2px solid var(--orange);
 }
 
-@media ((min-width: 767px) and (max-width: 1279px)) {}
+@media ((min-width: 767px) and (max-width: 1279px)) {
+    .loginFormContainer {
+        top: 200px;
+    }
+        .loginFormContainer .form h2 {
+        font-size: 14px;
+    }
 
-@media (max-width: 766px) {}
+    .loginFormContainer .loginLabel {
+        font-size: 14px;
+    }
+
+    .loginFormContainer .form .error {
+        font-size: 0.75em;
+    }
+}
+
+@media (max-width: 766px) {
+    .loginFormContainer {
+        display: flex;
+        flex-direction: column;
+        top: 130px;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        width: 80%;
+    }
+
+    .loginFormContainer .form h2{
+        text-align: center;
+        font-size: 14px;
+    }
+
+    .loginFormContainer .btnContainer {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+        text-align: center;
+    }
+
+    .loginFormContainer .inputContainer {
+        width: 100%;
+    }
+
+    .inputContainer .input {
+        width: 100%;
+    }
+
+    .inputContainer .input .error {
+        display: block;
+        color: var(--error-color);
+        font-size: 0.75rem;
+    }
+
+    .errorContainer {
+        display: none;
+    }
+}
 
 /* yesimbozkurt */

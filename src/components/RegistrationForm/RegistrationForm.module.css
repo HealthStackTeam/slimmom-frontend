@@ -4,15 +4,14 @@
     align-items: left;
     position: absolute;
     top: 300px;
-    gap: 20px;
+    width: 100%;
 }
 
 .registerFormContainer .form {
     display: flex;
     flex-direction: column;
-    gap: 16px;
-    max-width: 450px;
-    padding: 24px;
+    gap: 45px;
+    width: 100%;
 }
 
 .registerFormContainer h2 {
@@ -21,14 +20,18 @@
     font-size: 24px;
     font-weight: 700;
     letter-spacing: 0.04em;
-    margin-bottom: 55px;
 }
 
-.registerFormContainer label {
+.registerFormContainer label span {
     font-size: 14px;
     font-weight: 700;
     color: var(--grey);
     letter-spacing: 0.04em;
+}
+
+.registerLabel {
+    display: flex;
+    gap: 10px;
 }
 
 .registerFormContainer input {
@@ -36,7 +39,6 @@
     border: transparent;
     border-bottom: 1px solid var(--grey);
     background: transparent;
-    max-width: 240px;
 }
 
 .inputContainer {
@@ -49,10 +51,13 @@
     flex-direction: column;
 }
 
+.inputContainer .input .error {
+    display: none;
+}
+
 .inputContainer .errorContainer {
     display: flex;
     align-items: center;
-    margin-top: 20px;
     margin-left: 20px;
 }
 
@@ -79,7 +84,7 @@
     background-color: var(--orange);
     color: var(--white);
     text-align: center;
-    padding: 13px 47px;
+    padding: 13px 57px;
     border: 2px solid var(--orange);
     border-radius: 30px;
     text-decoration: none;
@@ -116,8 +121,68 @@
     border: 2px solid var(--orange);
 }
 
-@media ((min-width: 767px) and (max-width: 1279px)) {}
+@media ((min-width: 767px) and (max-width: 1279px)) {
+    .registerFormContainer {
+        top: 200px;
+    }
 
-@media (max-width: 766px) {}
+    .registerFormContainer h2 {
+        font-size: 14px;
+    }
+
+    .registerFormContainer .registerLabel {
+        font-size: 14px;
+    }
+
+    .registerFormContainer .form .error {
+        font-size: 0.75em;
+    }
+}
+
+@media (max-width: 766px) {
+    .registerFormContainer {
+        display: flex;
+        flex-direction: column;
+        top: 130px;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        width: 80%;
+    }
+
+    .registerFormContainer .form h2 {
+        text-align: center;
+        font-size: 14px;
+    }
+
+    .registerFormContainer .registerLabel {
+        font-size: 14px;
+    }
+
+    .registerFormContainer .inputContainer {
+        width: 100%;
+    }
+
+    .inputContainer .input {
+        width: 100%;
+    }
+
+    .inputContainer .input .error {
+        display: block;
+        color: var(--error-color);
+        font-size: 0.75rem;
+    }
+
+    .registerFormContainer .btnContainer {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+        text-align: center;
+    }
+
+    .inputContainer .errorContainer {
+        display: none;
+    }
+}
 
 /* yesimbozkurt */

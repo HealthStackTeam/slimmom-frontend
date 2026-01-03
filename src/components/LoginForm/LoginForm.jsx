@@ -36,7 +36,7 @@ const LoginForm = () => {
           try {
             const parsed = JSON.parse(error);
             status = parsed.status;
-          } catch {}
+          } catch { }
         }
         if (!status && error?.response?.status) {
           status = error.response.status;
@@ -69,7 +69,11 @@ const LoginForm = () => {
           <div className={css.inputContainer}>
             <div className={css.input}>
               <label className={css.loginLabel} htmlFor="email">
-                Email *
+                <span>Email *</span><ErrorMessage
+                  name="email"
+                  component="span"
+                  className={css.error}
+                />
               </label>
               <Field type="email" name="email" id={emailFieldId} />
             </div>
@@ -84,7 +88,12 @@ const LoginForm = () => {
           <div className={css.inputContainer}>
             <div className={css.input}>
               <label className={css.loginLabel} htmlFor="password">
-                Password *
+                <span>Password *</span>
+                <ErrorMessage
+                  name="password"
+                  component="span"
+                  className={css.error}
+                />
               </label>
               <Field type="password" name="password" id={passwordFieldId} />
             </div>
