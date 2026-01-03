@@ -7,6 +7,7 @@ import { toast } from 'react-hot-toast';
 
 import { register } from '../../redux/auth/operations';
 import { fetchDailyRateUser } from '../../redux/dailyRate/operations';
+import { useState } from 'react';
 
 const RegistrationForm = () => {
   const dispatch = useDispatch();
@@ -34,7 +35,9 @@ const RegistrationForm = () => {
           try {
             const parsed = JSON.parse(error);
             status = parsed.status;
-          } catch { }
+          } catch { 
+            console.error('Error parsing error string as JSON:', error);
+          }
         }
         if (!status && error?.response?.status) {
           status = error.response.status;
@@ -64,6 +67,7 @@ const RegistrationForm = () => {
       .min(6, 'Password must be at least 6 characters')
       .required('Password is required'),
   });
+    const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
   return (
     <div className={css.registerFormContainer}>
@@ -119,7 +123,10 @@ const RegistrationForm = () => {
                   className={css.error}
                 />
               </label>
-              <Field type="password" name="password" />
+               <span className={css.passwordVisibilityToggle} onClick={() => setIsPasswordVisible(!isPasswordVisible)}>
+                              {isPasswordVisible ? '🙈' : '🐵'}
+                            </span>
+              <Field type={isPasswordVisible ? 'text' : 'password' } name="password" />
             </div>
             <div className={css.errorContainer}>
               <ErrorMessage

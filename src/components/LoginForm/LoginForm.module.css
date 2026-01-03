@@ -33,6 +33,13 @@
 .inputContainer .input {
     display: flex;
     flex-direction: column;
+    position: relative;
+}
+.passwordVisibilityToggle{
+    position: absolute;
+    right: 10px;
+    top: 35%;
+    cursor: pointer;
 }
 
 .inputContainer .input .error {

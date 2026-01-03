@@ -1,5 +1,5 @@
 import css from './LoginForm.module.css';
-import { useId } from 'react';
+import { useId, useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
@@ -21,6 +21,8 @@ const LoginForm = () => {
   const passwordFieldId = useId();
   const emailFieldId = useId();
 
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+
   const handleSubmit = (values, actions) => {
     dispatch(login(values))
       .unwrap()
@@ -36,7 +38,9 @@ const LoginForm = () => {
           try {
             const parsed = JSON.parse(error);
             status = parsed.status;
-          } catch { }
+          } catch { 
+            console.error('Error parsing error string as JSON:', error);
+          }
         }
         if (!status && error?.response?.status) {
           status = error.response.status;
@@ -95,7 +99,10 @@ const LoginForm = () => {
                   className={css.error}
                 />
               </label>
-              <Field type="password" name="password" id={passwordFieldId} />
+              <span className={css.passwordVisibilityToggle} onClick={() => setIsPasswordVisible(!isPasswordVisible)}>
+                {isPasswordVisible ? '🙈' : '🐵'}
+              </span>
+              <Field type={isPasswordVisible ? 'text' : 'password'} name="password" id={passwordFieldId} />
             </div>
 
             <div className={css.errorContainer}>
