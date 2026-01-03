@@ -11,6 +11,7 @@ import { selectIsRefreshing, selectIsLoggedIn } from './redux/auth/selectors';
 import Header from './components/Header/Header.jsx';
 import { Toaster } from 'react-hot-toast';
 import Loader from './components/Loader/Loader.jsx';
+import Layout from './components/Layout/Layout.jsx';
 
 const MainPage = lazy(() => import('./pages/MainPage'));
 const CalculatorPage = lazy(() => import('./pages/CalculatorPage'));
@@ -54,9 +55,10 @@ function App() {
   ) : (
     <div className="App">
       {/* Navbar Menü gelicek */}
-      <Header />
+      {/* <Header /> */}
       <Suspense fallback={<Loader />}>
-        <Routes>
+          <Routes>
+            <Route element={<Layout />}>
           <Route
             path="/"
             element={
@@ -104,7 +106,8 @@ function App() {
              element={
             <PrivateRoute redirectTo="/login" component={<DiaryAddPage />}/>
             } 
-            />
+              />
+            </Route>
         </Routes>
       </Suspense>
       <Toaster position="top-right" />
