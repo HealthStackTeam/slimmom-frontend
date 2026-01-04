@@ -1,22 +1,91 @@
-
-@media (min-width: 1024px) {
-  .burgerButton {
-    display: none;
+.exitButton {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  background: transparent;
+  border: none;
+  font-size: 2rem;
+  color: #fff;
+  cursor: pointer;
+  z-index: 2;
+  transition: color 0.2s;
+}
+.exitButton:hover {
+  color: #bfc8e2;
+}
+@keyframes slideDownMenu {
+  from {
+    transform: translateY(0);
+    opacity: 1;
   }
-  .menu {
-    display: none;
+  to {
+  }
+}
+@keyframes slideUpMenu {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
   }
 }
 
 
+@keyframes slideRightMenu {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInOverlay {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOutOverlay {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+
+@media (max-width: 767px) {
+  .menuContent {
+    width: 100vw;
+    height: 30vh;
+    left: 0;
+    right: auto;
+    bottom: 0;
+    top: auto;
+    background: rgba(38, 64, 97, 1);
+    border-radius: 24px 24px 0 0;
+    box-shadow: 0 -2px 16px rgba(38,64,97,0.12);
+    opacity: 1;
+    transform: translateY(0);
+    animation: slideUpMenu 0.7s cubic-bezier(0.77, 0, 0.18, 1);
+    transition: transform 0.7s cubic-bezier(0.77, 0, 0.18, 1);
+  }
+  .menuContent.menuContent-exit {
+    transform: translateY(100%);
+    animation: slideDownMenu 0.7s cubic-bezier(0.77, 0, 0.18, 1);
+    opacity: 0;
+  }
+}
 .burgerButton {
-  position: fixed;
-  top: 24px;
-  right: 24px;
-  z-index: 1100;
-  width: 40px;
-  height: 40px;
-  background: transparent;
   border: none;
   display: flex;
   align-items: center;
@@ -53,19 +122,21 @@
 
 .menu {
   position: fixed;
-  top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0,0,0,0.3);
+  background: rgba(0, 0, 0, 0.4);
   z-index: 1099;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.3s;
+  top: auto;
+  bottom: 0;
+  animation: fadeOutOverlay 0.7s cubic-bezier(0.77, 0, 0.18, 1) forwards;
 }
 .menu.open {
   opacity: 1;
   pointer-events: auto;
+  animation: fadeInOverlay 0.7s cubic-bezier(0.77, 0, 0.18, 1) forwards;
 }
 
 
@@ -74,21 +145,70 @@
   height: 100vh;
   box-shadow: 0 0 20px rgba(0,0,0,0.1);
   position: absolute;
-  transition: transform 0.4s cubic-bezier(.77,0,.18,1);
+  transition: transform 0.7s cubic-bezier(0.77, 0, 0.18, 1);
   overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.burgerNavList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: center;
+  justify-content: center;
+}
+.burgerNavLink {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: rgba(155, 159, 170, 1);
+  text-decoration: none;
+  padding: 12px 32px;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  transition: color 0.3s;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.burgerNavLink:hover {
+  color: #fff;
+}
+.burgerNavLink.activeLink {
+  color: #fff;
+  background: none;
+  box-shadow: none;
 }
 
 
 /* Tablet: slide from right, 30% width */
-@media (min-width: 768px) and (max-width: 1023px) {
+@media (min-width: 768px) and (max-width: 1279px) {
   .menuContent {
     width: 30vw;
+    height: 100vh;
     right: 0;
     top: 0;
-    transform: translateX(100%);
-  }
-  .menu.open .menuContent {
+    left: auto;
+    bottom: auto;
+    border-radius: 24px 0 0 24px;
+    box-shadow: -2px 0 16px rgba(38,64,97,0.12);
+    background: rgba(38, 64, 97, 1);
+    opacity: 1;
     transform: translateX(0);
+    animation: slideRightMenu 0.7s cubic-bezier(0.77, 0, 0.18, 1);
+    transition: transform 0.7s cubic-bezier(0.77, 0, 0.18, 1);
+  }
+  .menuContent.menuContent-exit {
+    transform: translateX(100%);
+    animation: slideLeftMenu 0.7s cubic-bezier(0.77, 0, 0.18, 1);
+    opacity: 0;
   }
 }
 
@@ -96,13 +216,23 @@
 @media (max-width: 767px) {
   .menuContent {
     width: 100vw;
-    height: 40vh;
+    height: 30vh;
     left: 0;
-    top: 0;
-    transform: translateY(-100%);
-  }
-  .menu.open .menuContent {
+    right: auto;
+    bottom: 0;
+    top: auto;
+    background: rgba(38, 64, 97, 1);
+    border-radius: 24px 24px 0 0;
+    box-shadow: 0 -2px 16px rgba(38,64,97,0.12);
+    opacity: 1;
     transform: translateY(0);
+    animation: slideUpMenu 0.7s cubic-bezier(0.77, 0, 0.18, 1);
+    transition: transform 0.7s cubic-bezier(0.77, 0, 0.18, 1);
+  }
+  .menuContent.menuContent-exit {
+    transform: translateY(100%);
+    animation: slideDownMenu 0.7s cubic-bezier(0.77, 0, 0.18, 1);
+    opacity: 0;
   }
 }
 

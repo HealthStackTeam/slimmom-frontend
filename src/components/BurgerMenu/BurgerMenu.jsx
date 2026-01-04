@@ -1,37 +1,107 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import styles from './BurgerMenu.module.css';
-import Navigation from '../Navigation/Navigation';
+
+import { NavLink } from 'react-router-dom';
 import { selectIsLoggedIn } from '../../redux/auth/selectors';
 
-const BurgerMenu = () => {
-  const [open, setOpen] = useState(false);
+const BurgerMenu = ({ open, onClose }) => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
+  const menuRef = useRef(null);
+  const [show, setShow] = useState(open);
+  const [exiting, setExiting] = useState(false);
 
-  const handleToggle = () => setOpen(!open);
-  const handleClose = () => setOpen(false);
+  // Handle open/close transitions
+  useEffect(() => {
+    if (open) {
+      setShow(true);
+      setExiting(false);
+    } else if (show) {
+      setExiting(true);
+      const timeout = setTimeout(() => {
+        setShow(false);
+        setExiting(false);
+      }, 700); // match CSS animation duration
+      return () => clearTimeout(timeout);
+    }
+  }, [open]);
+
+  // ESC ile kapatma
+  useEffect(() => {
+    if (!open) return;
+    const handleEsc = (e) => {
+      if (e.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', handleEsc);
+    return () => window.removeEventListener('keydown', handleEsc);
+  }, [open, onClose]);
+
+  // Dışarı tıklama ile kapatma
+  useEffect(() => {
+    if (!open) return;
+    const handleClick = (e) => {
+      if (menuRef.current && !menuRef.current.contains(e.target)) {
+        onClose();
+      }
+    };
+    document.addEventListener('mousedown', handleClick);
+    return () => document.removeEventListener('mousedown', handleClick);
+  }, [open, onClose]);
+
+  // Navigasyon ile kapatma
+  const handleNavClick = () => {
+    onClose();
+  };
+
+  if (!isLoggedIn || !show) return null;
 
   return (
-    <>
-      <button
-        className={styles.burgerButton}
-        aria-label="Open navigation menu"
-        onClick={handleToggle}
+    <div className={styles.menu + ' ' + (open ? styles.open : '')}>
+      <nav
+        className={
+          styles.menuContent + (exiting ? ' ' + styles.menuContentExit : '')
+        }
+        ref={menuRef}
+        onClick={(e) => e.stopPropagation()}
       >
-        <span className={styles.burgerIcon} />
-      </button>
-      <div
-        className={open ? `${styles.menu} ${styles.open}` : styles.menu}
-        onClick={handleClose}
-      >
-        <nav
-          className={styles.menuContent}
-          onClick={(e) => e.stopPropagation()}
+        <button
+          className={styles.exitButton}
+          type="button"
+          aria-label="Close menu"
+          onClick={onClose}
         >
-          <Navigation isLoggedIn={isLoggedIn} />
-        </nav>
-      </div>
-    </>
+          &#10005;
+        </button>
+        <ul className={styles.burgerNavList}>
+          <li>
+            <NavLink
+              to="/diary"
+              className={({ isActive }) =>
+                isActive
+                  ? `${styles.burgerNavLink} ${styles.activeLink}`
+                  : styles.burgerNavLink
+              }
+              onClick={handleNavClick}
+            >
+              DIARY
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/calculator"
+              className={({ isActive }) =>
+                isActive
+                  ? `${styles.burgerNavLink} ${styles.activeLink}`
+                  : styles.burgerNavLink
+              }
+              onClick={handleNavClick}
+            >
+              CALCULATOR
+            </NavLink>
+          </li>
+        </ul>
+      </nav>
+    </div>
   );
 };
 
