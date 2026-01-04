@@ -4,8 +4,7 @@ import { useEffect, useMemo } from 'react';
 import 'flatpickr/dist/themes/material_blue.css';
 import styles from './DiaryDateСalendar.module.css';
 
-const DiaryDateCalendar = ({selectedDate,setSelectedDate}) => {
-
+const DiaryDateCalendar = ({ selectedDate, setSelectedDate }) => {
   const initialDate = useMemo(() => new Date(), []);
 
   const formatDate = (date) => {
@@ -28,12 +27,20 @@ const DiaryDateCalendar = ({selectedDate,setSelectedDate}) => {
     setSelectedDate(date);
   };
 
+  // Kullanıcıya DD.MM.YYYY göster
+  const getDisplayDate = (dateStr) => {
+    if (!dateStr) return '';
+    const [year, month, day] = dateStr.split('-');
+    return `${day}.${month}.${year}`;
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.dateDisplay}>
-        {selectedDate ? selectedDate : formatDate(initialDate)}
+        {selectedDate
+          ? getDisplayDate(selectedDate)
+          : getDisplayDate(formatDate(initialDate))}
       </div>
-      
       <Flatpickr
         value={selectedDate}
         onChange={handleDateChange}
@@ -46,11 +53,7 @@ const DiaryDateCalendar = ({selectedDate,setSelectedDate}) => {
         }}
       >
         <div className={styles.calendarWrapper}>
-          <input
-            type="text"
-            data-input
-            className={styles.hiddenInput}
-          />
+          <input type="text" data-input className={styles.hiddenInput} />
           <button
             className={styles.calendarButton}
             data-toggle

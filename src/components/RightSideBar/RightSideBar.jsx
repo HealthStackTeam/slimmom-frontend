@@ -30,11 +30,18 @@ const RightSideBar = ({ selectedDate }) => {
     // Yüzdeyi tam sayı olarak göster
     return Math.round(value);
   };
+  // Kullanıcıya DD.MM.YYYY göster
+  const getDisplayDate = (dateStr) => {
+    if (!dateStr) return '';
+    const [year, month, day] = dateStr.split('-');
+    return `${day}.${month}.${year}`;
+  };
+
   return (
     <div className={containerClass}>
       <div className={styles.summaryContainer}>
         <h3 className={styles.title}>
-          Summary for {selectedDate}
+          Summary for {getDisplayDate(selectedDate)}
           {left < 0 && (
             <span className={styles.exclamationWrapper}>
               <span className={styles.exclamation}>!</span>
@@ -55,15 +62,21 @@ const RightSideBar = ({ selectedDate }) => {
           </li>
           <li className={styles.listItem}>
             <span>Consumed</span>
-            <span>{formatCalories(consumed) ? formatCalories(consumed) : '0'} kcal</span>
+            <span>
+              {formatCalories(consumed) ? formatCalories(consumed) : '0'} kcal
+            </span>
           </li>
           <li className={styles.listItem}>
             <span>Daily Rate</span>
-            <span>{formatCalories(dailyRate) ? formatCalories(dailyRate) : '0'} kcal</span>
+            <span>
+              {formatCalories(dailyRate) ? formatCalories(dailyRate) : '0'} kcal
+            </span>
           </li>
           <li className={styles.listItem}>
             <span>n% of normal</span>
-            <span>{formatCalories(percent) ? formatCalories(percent) : '0'}%</span>
+            <span>
+              {formatCalories(percent) ? formatCalories(percent) : '0'}%
+            </span>
           </li>
         </ul>
       </div>
