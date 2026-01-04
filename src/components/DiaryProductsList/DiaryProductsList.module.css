@@ -39,23 +39,21 @@
   background: #e6731f;
 }
 
-
 .table {
   width: 100%;
   border-collapse: collapse;
   table-layout: fixed; 
 }
 
-
 .table th {
   display: none;
 }
-
 
 .table tbody tr {
   height: auto;
   min-height: 50px;
 }
+
 .table td {
   padding: 12px 8px;
   vertical-align: middle;
@@ -65,205 +63,6 @@
   overflow: visible; 
   padding-bottom: 8px;
   border-bottom: 1px solid #e0e0e0;
-}
-
-@media (max-width: 767px) {
-  .container {
-    margin-top: 32px;
-    padding: 0;
-  }
-  
-  .tableArea {
-    max-height: 250px;
-  }
-  
- 
-  .table {
-    table-layout: fixed;
-    font-size: 13px; 
-    margin-bottom: 30px;
-  }
-  
-  .table tbody tr {
-    min-height: 45px; 
-    
-  }
-  
-  .table td {
-    padding: 8px 4px; 
-    font-size: 13px;
-    line-height: 1.3;
-  }
-  
-  
-  .table td:nth-child(1) { 
-    width: 40%;
-    max-width: 40%;
-    padding-left: 0;
-    padding-right: 8px;
-    white-space: nowrap; 
-    overflow: hidden;
-    text-overflow: ellipsis; 
-  }
-  
-  .table td:nth-child(2) { 
-    width: 20%;
-    max-width: 20%;
-    padding-left: 0;
-    padding-right: 8px;
-    text-align: center;
-    white-space: nowrap;
-  }
-  
-  .table td:nth-child(3) { 
-    width: 25%;
-    max-width: 25%;
-    padding-left: 0;
-    padding-right: 8px;
-    text-align: center;
-    white-space: nowrap;
-  }
-  
-  .table td:nth-child(4) { 
-    width: 15%;
-    max-width: 15%;
-    padding-left: 0;
-    text-align: center;
-  }
-  
-
-  .table tbody tr:hover {
-    background-color: #fff9e6;
-  }
-}
-
-@media (min-width: 768px) and (max-width: 1279px) {
-  .container {
-    width: 100%;
-    margin-top: 60px;
-    padding: 0;
-  }
-  
-  .tableArea {
-    max-height: 350px;
-  }
-  
-  .table {
-    table-layout: fixed;
-    font-size: 14px;
-    margin-bottom: 60px;
-  }
-  
-  .table tbody tr {
-    min-height: 55px;
-  }
-  
-  .table td {
-    padding: 12px 10px;
-    font-size: 14px;
-    line-height: 1.4;
-  }
-  
-  .table td:nth-child(1) { /* Ürün adı */
-    width: 45%;
-    max-width: 45%;
-    padding-left: 0;
-    padding-right: 15px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  
-  .table td:nth-child(2) { /* Gram */
-    width: 20%;
-    max-width: 20%;
-    text-align: center;
-    white-space: nowrap;
-  }
-  
-  .table td:nth-child(3) { /* Kalori */
-    width: 20%;
-    max-width: 20%;
-    text-align: center;
-    white-space: nowrap;
-  }
-  
-  .table td:nth-child(4) { /* Sil butonu */
-    width: 15%;
-    max-width: 15%;
-    text-align: center;
-    padding-right: 0;
-  }
-  
-  .table tbody tr:hover {
-    background-color: #fff9e6;
-  }
-}
-
-@media (min-width: 1280px) {
-  .container {
-    width: 100%;
-    max-width: 780px;
-    margin-top: 80px;
-    margin-left: 0;
-    padding: 0;
-  }
-  
-  .tableArea {
-    max-height: 400px;
-  }
-  
-  .table {
-    table-layout: fixed;
-    font-size: 14px;
-  }
-  
-  .table tbody tr {
-    min-height: 60px;
-  }
-  
-  .table td {
-    padding: 15px 12px;
-    font-size: 14px;
-    line-height: 1.4;
-  }
-  
-  /*SÜTUN GENİŞLİKLERİ */
-  .table td:nth-child(1) { /* Ürün adı */
-    width: 50%;
-    max-width: 50%;
-    padding-left: 0;
-    padding-right: 20px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  
-  .table td:nth-child(2) { /* Gram */
-    width: 18%;
-    max-width: 18%;
-    padding-left: 10px;
-    text-align: center;
-    white-space: nowrap;
-  }
-  
-  .table td:nth-child(3) { /* Kalori */
-    width: 18%;
-    max-width: 18%;
-    padding-left: 10px;
-    text-align: center;
-    white-space: nowrap;
-  }
-  
-  .table td:nth-child(4) { /* Sil butonu */
-    width: 14%;
-    max-width: 14%;
-    text-align: center;
-  }
-  
-  .table tbody tr:hover {
-    background-color: #fff9e6;
-  }
 }
 
 /* SİL BUTONU */
@@ -304,14 +103,6 @@
   transform: scale(0.95);
 }
 
-@media (max-width: 767px) {
-  .deleteButton {
-    width: 28px;
-    height: 28px;
-    font-size: 16px;
-  }
-}
-
 /* BOŞ LİSTE MESAJI */
 .emptyMessage {
   text-align: center;
@@ -324,9 +115,417 @@
   margin: 20px 0;
 }
 
-@media (min-width: 768px) {
+/* MODAL STYLES */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeIn 0.3s ease;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.modal {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 450px;
+  animation: slideIn 0.3s ease;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.modalContent {
+  padding: 30px;
+  text-align: center;
+}
+
+.modalTitle {
+  font-size: 22px;
+  font-weight: 700;
+  color: #212121;
+  margin-bottom: 15px;
+  font-family: Verdana, sans-serif;
+}
+
+.modalMessage {
+  font-size: 16px;
+  color: #666;
+  line-height: 1.5;
+  margin-bottom: 25px;
+  font-family: Verdana, sans-serif;
+}
+
+.modalMessage strong {
+  color: #212121;
+}
+
+.modalButtons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.cancelButton {
+  background: #f5f5f5;
+  border: none;
+  color: #666;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 120px;
+  font-family: Verdana, sans-serif;
+}
+
+.cancelButton:hover {
+  background: #e0e0e0;
+  color: #333;
+}
+
+.confirmButton {
+  background: #FC842D;
+  border: none;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 120px;
+  font-family: Verdana, sans-serif;
+}
+
+.confirmButton:hover {
+  background: #e6731f;
+  transform: translateY(-1px);
+}
+
+.confirmButton:active {
+  transform: translateY(0);
+}
+
+/* Modal Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+
+@media (max-width: 767px) {
+  
+  .container {
+    margin-top: 32px;
+    padding: 0;
+  }
+  
+  
+  .tableArea {
+    max-height: 250px;
+  }
+  
+  
+  .table {
+    table-layout: fixed;
+    font-size: 13px;
+    margin-bottom: 30px;
+  }
+  
+  .table tbody tr {
+    min-height: 45px;
+  }
+  
+  .table td {
+    padding: 8px 4px;
+    font-size: 13px;
+    line-height: 1.3;
+  }
+  
+  
+  .table td:nth-child(1) {
+    width: 40%;
+    max-width: 40%;
+    padding-left: 0;
+    padding-right: 8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .table td:nth-child(2) {
+    width: 20%;
+    max-width: 20%;
+    padding-left: 0;
+    padding-right: 8px;
+    text-align: center;
+    white-space: nowrap;
+  }
+  
+  .table td:nth-child(3) {
+    width: 25%;
+    max-width: 25%;
+    padding-left: 0;
+    padding-right: 8px;
+    text-align: center;
+    white-space: nowrap;
+  }
+  
+  .table td:nth-child(4) {
+    width: 15%;
+    max-width: 15%;
+    padding-left: 0;
+    text-align: center;
+  }
+  
+  .table tbody tr:hover {
+    background-color: #fff9e6;
+  }
+  
+ 
+  .deleteButton {
+    width: 28px;
+    height: 28px;
+    font-size: 16px;
+  }
+  
+  
+  .emptyMessage {
+    padding: 40px 15px;
+    font-size: 15px;
+  }
+  
+  
+  .modalOverlay {
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+  }
+  
+  .modal {
+    width: calc(100% - 32px);
+    max-width: 400px;
+    border-radius: 16px;
+    top: 200px;
+    position: absolute;
+    left: 15px;
+  }
+  
+  .modalContent {
+    padding: 24px 20px;
+  }
+  
+  .modalTitle {
+    font-size: 20px;
+    margin-bottom: 12px;
+  }
+  
+  .modalMessage {
+    font-size: 15px;
+    margin-bottom: 20px;
+  }
+  
+  .modalButtons {
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+  }
+  
+  .cancelButton,
+  .confirmButton {
+    width: 100%;
+    min-width: unset;
+    padding: 14px 20px;
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1279px) {
+  
+  .container {
+    width: 100%;
+    margin-top: 60px;
+    padding: 0;
+  }
+  
+ 
+  .tableArea {
+    max-height: 350px;
+  }
+  
+  
+  .table {
+    table-layout: fixed;
+    font-size: 14px;
+    margin-bottom: 60px;
+  }
+  
+  .table tbody tr {
+    min-height: 55px;
+  }
+  
+  .table td {
+    padding: 12px 10px;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+  
+  
+  .table td:nth-child(1) {
+    width: 45%;
+    max-width: 45%;
+    padding-left: 0;
+    padding-right: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .table td:nth-child(2) {
+    width: 20%;
+    max-width: 20%;
+    text-align: center;
+    white-space: nowrap;
+  }
+  
+  .table td:nth-child(3) {
+    width: 20%;
+    max-width: 20%;
+    text-align: center;
+    white-space: nowrap;
+  }
+  
+  .table td:nth-child(4) {
+    width: 15%;
+    max-width: 15%;
+    text-align: center;
+    padding-right: 0;
+  }
+  
+  .table tbody tr:hover {
+    background-color: #fff9e6;
+  }
+  
+  
   .emptyMessage {
     padding: 80px 40px;
     font-size: 18px;
+  }
+  
+  
+  .modalOverlay {
+    padding: 24px;
+  }
+  
+  .modal {
+    max-width: 90%;
+  }
+  
+  .modalContent {
+    padding: 28px 24px;
+  }
+}
+
+@media (min-width: 1280px) {
+  
+  .container {
+    width: 100%;
+    max-width: 780px;
+    margin-top: 80px;
+    margin-left: 0;
+    padding: 0;
+  }
+  
+  
+  .tableArea {
+    max-height: 400px;
+  }
+  
+  
+  .table {
+    table-layout: fixed;
+    font-size: 14px;
+  }
+  
+  .table tbody tr {
+    min-height: 60px;
+  }
+  
+  .table td {
+    padding: 15px 12px;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+  
+ 
+  .table td:nth-child(1) {
+    width: 50%;
+    max-width: 50%;
+    padding-left: 0;
+    padding-right: 20px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .table td:nth-child(2) {
+    width: 18%;
+    max-width: 18%;
+    padding-left: 10px;
+    text-align: center;
+    white-space: nowrap;
+  }
+  
+  .table td:nth-child(3) {
+    width: 18%;
+    max-width: 18%;
+    padding-left: 10px;
+    text-align: center;
+    white-space: nowrap;
+  }
+  
+  .table td:nth-child(4) {
+    width: 14%;
+    max-width: 14%;
+    text-align: center;
+  }
+  
+  .table tbody tr:hover {
+    background-color: #fff9e6;
+  }
+  
+  
+  .emptyMessage {
+    padding: 80px 40px;
+    font-size: 18px;
+  }
+  
+  .modalOverlay {
+    padding: 0;
   }
 }
