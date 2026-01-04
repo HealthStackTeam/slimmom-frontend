@@ -12,6 +12,17 @@ const BurgerMenu = ({ open, onClose }) => {
   const [show, setShow] = useState(open);
   const [exiting, setExiting] = useState(false);
 
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [open]);
+
   // Handle open/close transitions
   useEffect(() => {
     if (open) {
