@@ -7,6 +7,7 @@ import { login } from '../../redux/auth/operations';
 import { getDailyRate } from '../../redux/dailyRate/operations';
 import { NavLink } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
+import { CiRead, CiUnread } from 'react-icons/ci';
 
 const LoginForm = () => {
   const Schema = Yup.object().shape({
@@ -100,7 +101,7 @@ const LoginForm = () => {
                 />
               </label>
               <span className={css.passwordVisibilityToggle} onClick={() => setIsPasswordVisible(!isPasswordVisible)}>
-                {isPasswordVisible ? '🙈' : '🐵'}
+                {isPasswordVisible ? <CiRead /> : <CiUnread />}
               </span>
               <Field type={isPasswordVisible ? 'text' : 'password'} name="password" id={passwordFieldId} />
             </div>
