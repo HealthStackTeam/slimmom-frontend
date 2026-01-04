@@ -61,6 +61,7 @@ ol {
   #root {
     background: url('/src/assets/tablet-bg.png') no-repeat right bottom;
     background-size: cover;
+    background-position-y: 30px; /* header yüksekliği kadar aşağıdan başlat */
   }
   .logged-in #root {
     background: none !important;
