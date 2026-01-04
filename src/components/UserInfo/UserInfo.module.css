@@ -40,6 +40,7 @@
   padding-right: 8px;
   cursor: pointer;
   font-family: 'Verdana', sans-serif;
+  font-weight: 700;
   transition: color 0.3s;
   position: relative;
   outline: none;

@@ -58,14 +58,13 @@
 .bgImage {
   background: url('/src/assets/side-bar-leaves.png');
   background-repeat: no-repeat;
-  background-attachment: fixed;
   background-position: right bottom 50px;
   background-size: auto;
 }
 
 @media (min-width: 767px) and (max-width: 1279px) {
   .bgImage {
-    background: url('/src/assets/sidebar-leaves-rotate.png') no-repeat center center fixed;
+    background: url('/src/assets/sidebar-leaves-rotate.png') no-repeat center center;
     background-position: right bottom;
   }
 }

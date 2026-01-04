@@ -49,7 +49,7 @@ ol {
 
 @media (min-width: 1280px) {
   #root {
-    background: url('/src/assets/desktop-bg.jpg') no-repeat right bottom fixed;
+    background: url('/src/assets/desktop-bg.jpg') no-repeat right bottom;
     background-size: auto;
   }
   .logged-in #root {
@@ -59,7 +59,7 @@ ol {
 
 @media (min-width: 767px) and (max-width: 1279px) {
   #root {
-    background: url('/src/assets/tablet-bg.png') no-repeat right bottom fixed;
+    background: url('/src/assets/tablet-bg.png') no-repeat right bottom;
     background-size: cover;
   }
   .logged-in #root {
