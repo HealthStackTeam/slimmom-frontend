@@ -211,7 +211,7 @@ const DiaryAddProductForm = ({ selectedDate, onProductAdded, onFormError, isFull
             </div>
 
             <button className={styles.button} type="submit">
-              +
+              <span className={styles.btnSpan}>+</span> <span className={styles.btnSpans}>Add</span>
             </button>
           </Form>
         )}

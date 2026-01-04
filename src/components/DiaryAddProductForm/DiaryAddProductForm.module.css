@@ -235,12 +235,18 @@
   .container:not(.fullPage) {
     display: none !important;
   }
+  .btnSpan {
+   display: none; 
+ }
 }
 
-
 @media (min-width: 768px) {
-  
-  .container.fullPage {
+  .container {
+    margin-right: 60px;
+    margin-left: 16px;
+    display: flex;
+  }
+   .container.fullPage {
     display: none !important;
   }
   
@@ -248,14 +254,6 @@
   .container:not(.fullPage) {
     display: block !important;
   }
-}
-@media (min-width: 768px) {
-  .container {
-    margin-right: 60px;
-    margin-left: 16px;
-    display: flex;
-  }
-  
   .form {
     flex-wrap: nowrap;
     
@@ -278,6 +276,12 @@
     font-size: 26px;
     margin-left: 87px;
   }
+  .btnSpan {
+   display: flex; 
+ }
+  .btnSpans {
+   display: none; 
+ }
   
   .dropdown {
     max-height: 220px;
