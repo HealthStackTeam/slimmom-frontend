@@ -1,0 +1,15 @@
+.userInfoMobileWrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 8px;
+  scale: 0.9;
+  margin-top: 14px;
+}
+
+@media (min-width: 768px) {
+  .userInfoMobileWrapper {
+    display: none;
+  }
+}

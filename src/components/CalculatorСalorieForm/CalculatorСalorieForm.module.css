@@ -26,7 +26,6 @@
   line-height: 1.4;
   color: var(--text-main);
   margin-bottom: 32px;
-  text-align: center;
 }
 
 @media (min-width: 768px) {
