@@ -329,11 +329,11 @@
   
   .modal {
     width: calc(100% - 32px);
-    max-width: 400px;
+    max-width: 350px;
     border-radius: 16px;
     top: 200px;
     position: absolute;
-    left: 15px;
+    left: 20px;
   }
   
   .modalContent {
