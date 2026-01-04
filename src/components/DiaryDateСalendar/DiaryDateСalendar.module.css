@@ -124,7 +124,8 @@
 }
 @media (min-width: 320px ) {
   .container {
-    width: 156px;
+    margin-top: 40px;
+    width: 256px;
     height: 20px;
   }
   
@@ -139,7 +140,8 @@
 }
 @media (min-width: 768px) {
    .container {
-    width: 259px;
+    margin-top: 100px;
+    width: 360px;
     height: 38px;
   }
   
