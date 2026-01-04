@@ -1,0 +1,109 @@
+
+@media (min-width: 1024px) {
+  .burgerButton {
+    display: none;
+  }
+  .menu {
+    display: none;
+  }
+}
+
+
+.burgerButton {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 1100;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.burgerIcon {
+  width: 28px;
+  height: 3px;
+  background: #333;
+  border-radius: 2px;
+  position: relative;
+  display: block;
+}
+.burgerIcon::before,
+.burgerIcon::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 28px;
+  height: 3px;
+  background: #333;
+  border-radius: 2px;
+  transition: 0.3s;
+}
+.burgerIcon::before {
+  top: -9px;
+}
+.burgerIcon::after {
+  top: 9px;
+}
+
+
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.3);
+  z-index: 1099;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+.menu.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+
+.menuContent {
+  background: #fff;
+  height: 100vh;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+  position: absolute;
+  transition: transform 0.4s cubic-bezier(.77,0,.18,1);
+  overflow-y: auto;
+}
+
+
+/* Tablet: slide from right, 30% width */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .menuContent {
+    width: 30vw;
+    right: 0;
+    top: 0;
+    transform: translateX(100%);
+  }
+  .menu.open .menuContent {
+    transform: translateX(0);
+  }
+}
+
+/* Mobile: slide from top, 40% height */
+@media (max-width: 767px) {
+  .menuContent {
+    width: 100vw;
+    height: 40vh;
+    left: 0;
+    top: 0;
+    transform: translateY(-100%);
+  }
+  .menu.open .menuContent {
+    transform: translateY(0);
+  }
+}
+
+
