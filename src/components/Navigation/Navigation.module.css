@@ -3,13 +3,14 @@
   align-items: center;
   gap: 20px;
   background-color: transparent;
+  margin-top: 35px;
 }
 
 .authNav,
 .publicNav {
   display: flex;
   gap: 24px;
-  border-left: 2px solid #e0e0e0;
+  border-left: 2px solid var(--border-grey);
   padding-left: 20px;
   height: 32px;
 }
@@ -61,4 +62,16 @@
   transition: background 0.3s, color 0.3s;
   position: relative;
   z-index: 1;
+}
+@media (max-width: 1279px) {
+  .nav {
+    margin-right: 10px;
+  }
+.authNav,
+  .publicNav {
+    border-left: none;
+  }
+    .mobileNav  {
+      display: none;
+    }
 }

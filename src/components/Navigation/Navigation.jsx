@@ -1,11 +1,14 @@
 import { NavLink } from 'react-router-dom';
 import styles from './Navigation.module.css';
-import UserInfo from '../UserInfo/UserInfo';
+import { useMediaQuery } from 'react-responsive';
 
 const Navigation = ({ isLoggedIn }) => {
+  const isTabletOrMobile = useMediaQuery({ maxWidth: 1279 });
   return (
     <nav className={styles.nav}>
-      {isLoggedIn ? (
+      
+      {!isTabletOrMobile
+        ? (isLoggedIn ? (
         <div className={styles.authNav}>
           <NavLink
             to="/diary"
@@ -24,7 +27,7 @@ const Navigation = ({ isLoggedIn }) => {
             CALCULATOR
           </NavLink>
         </div>
-      ) : (
+      ) :  (
         <div className={styles.publicNav}>
           <NavLink
             to="/login"
@@ -43,7 +46,29 @@ const Navigation = ({ isLoggedIn }) => {
             REGISTRATION
           </NavLink>
         </div>
-      )}
+      ))
+        : (
+          <div className={isLoggedIn ? styles.mobileNav 
+          : styles.publicNav}>
+            <NavLink
+              to="/login"
+              className={({ isActive }) =>
+                isActive ? `${styles.link} ${styles.activeLink}` : styles.link
+              }
+            >
+              LOG IN
+            </NavLink>
+            <NavLink
+              to="/register"
+              className={({ isActive }) =>
+                isActive ? `${styles.link} ${styles.activeLink}` : styles.link
+              }
+            >
+              REGISTRATION
+            </NavLink>
+          </div>
+        )
+      }
     </nav>
   );
 };
