@@ -7,6 +7,7 @@ import { selectIsLoggedIn } from '../../redux/auth/selectors.js';
 import { useMediaQuery } from 'react-responsive';
 import BurgerMenu from '../BurgerMenu/BurgerMenu.jsx';
 import { useState } from 'react';
+import { FaBars } from 'react-icons/fa';
 
 const Header = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -34,7 +35,7 @@ const Header = () => {
                     className={styles.hamburger}
                     onClick={() => setShowBurgerMenu(true)}
                   >
-                    <img src="/src/assets/hamburger.svg" alt="Hamburger menu" />
+                    <FaBars />
                   </div>
                   <BurgerMenu
                     open={showBurgerMenu}

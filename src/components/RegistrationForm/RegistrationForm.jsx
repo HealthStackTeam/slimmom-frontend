@@ -8,6 +8,7 @@ import { toast } from 'react-hot-toast';
 import { register } from '../../redux/auth/operations';
 import { fetchDailyRateUser } from '../../redux/dailyRate/operations';
 import { useState } from 'react';
+import { CiRead, CiUnread } from 'react-icons/ci';
 
 const RegistrationForm = () => {
   const dispatch = useDispatch();
@@ -124,7 +125,7 @@ const RegistrationForm = () => {
                 />
               </label>
                <span className={css.passwordVisibilityToggle} onClick={() => setIsPasswordVisible(!isPasswordVisible)}>
-                              {isPasswordVisible ? '🙈' : '🐵'}
+                              {isPasswordVisible ? <CiRead /> : <CiUnread />}
                             </span>
               <Field type={isPasswordVisible ? 'text' : 'password' } name="password" />
             </div>
