@@ -5,7 +5,8 @@
   justify-content: flex-end;
   margin-bottom: 8px;
   scale: 0.9;
-  margin-top: 14px;
+  margin-top: 8px;
+  background-color: rgba(239, 241, 243, 1);
 }
 
 @media (min-width: 768px) {
