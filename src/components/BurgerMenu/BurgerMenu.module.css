@@ -1,3 +1,16 @@
+/* Show UserInfo only on tablet */
+.userInfoTabletOnly {
+  display: none;
+}
+@media (min-width: 768px) and (max-width: 1279px) {
+  .userInfoTabletOnly {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 32px;
+    margin-bottom: 32px;
+  }
+}
 .exitButton {
   position: absolute;
   top: 16px;
@@ -197,18 +210,39 @@
     top: 0;
     left: auto;
     bottom: auto;
-    border-radius: 24px 0 0 24px;
+    border-radius: 0;
     box-shadow: -2px 0 16px rgba(38,64,97,0.12);
     background: rgba(38, 64, 97, 1);
     opacity: 1;
     transform: translateX(0);
     animation: slideRightMenu 0.7s cubic-bezier(0.77, 0, 0.18, 1);
     transition: transform 0.7s cubic-bezier(0.77, 0, 0.18, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
   }
   .menuContent.menuContent-exit {
     transform: translateX(100%);
     animation: slideLeftMenu 0.7s cubic-bezier(0.77, 0, 0.18, 1);
     opacity: 0;
+  }
+  .userInfoTabletOnly {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 32px;
+    margin-bottom: 40px;
+  }
+  .burgerNavList {
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin: 0;
+    padding: 0;
   }
 }
 

@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import styles from './BurgerMenu.module.css';
+import UserInfo from '../UserInfo/UserInfo';
 
 import { NavLink } from 'react-router-dom';
 import { selectIsLoggedIn } from '../../redux/auth/selectors';
@@ -72,6 +73,10 @@ const BurgerMenu = ({ open, onClose }) => {
         >
           &#10005;
         </button>
+        {/* Tablet view: show avatar and name at top */}
+        <div className={styles.userInfoTabletOnly}>
+          <UserInfo />
+        </div>
         <ul className={styles.burgerNavList}>
           <li>
             <NavLink
