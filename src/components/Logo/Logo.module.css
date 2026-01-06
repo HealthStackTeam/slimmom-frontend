@@ -1,23 +1,15 @@
-.logoWrapper {
-  display: inline-block;
-  line-height: 0;
-}
-
-.logoIcon {
-  width: 167px;
-  height: 66px;
-  object-fit: contain;
-}
-
 @media (max-width: 767px) {
     .logoIcon {
-        width: 46px; 
-        height: auto;
+        width: 46px;
+        height: 44px;
     }
-
     .logoIconMobile {
         width: 46px;
         height: 44px;
-        object-fit: contain;
     }
+}
+
+.logoIcon {
+    width: 167px;
+    height: 66px;
 }

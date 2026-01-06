@@ -218,11 +218,20 @@
   animation: shake 0.3s ease-in-out;
 }
 
-@media (max-width: 1280px) {
+@media (max-width: 1279px) {
   .submitBtn {
     margin-left: 0;
+    margin-bottom: 16px;
   }
 }
+
+@media (max-width: 767px) {
+  .submitBtn {
+    margin-left: 0;
+    margin-bottom: 41px;
+  }
+}
+
 
 @media (min-width: 768px) {
   .submitBtn {
@@ -234,3 +243,4 @@
   background-color: var(--white);
   color: var(--orange);
 }
+

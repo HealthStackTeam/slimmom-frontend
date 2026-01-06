@@ -3,7 +3,7 @@
   align-items: center;
   gap: 20px;
   background-color: transparent;
-  margin-top: 35px;
+  margin-top: 10px;
 }
 
 .authNav,
@@ -11,7 +11,7 @@
   display: flex;
   gap: 24px;
   border-left: 2px solid var(--border-grey);
-  padding-left: 20px;
+  padding-left: 12px;
   height: 32px;
 }
 
@@ -27,7 +27,6 @@
   transition: color 0.3s ease;
   text-transform: uppercase;
   position: relative;
-  overflow: hidden;
 }
 
 .link::after {
@@ -74,4 +73,37 @@
   .mobileNav {
     display: none;
   }
+  .link::after {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .authNav, .publicNav{
+    gap: 12px;
+    padding-left: 8px;
+  }
+    .link {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--text-secondary);
+      transition: color 0.3s ease;
+      text-transform: uppercase;
+      position: relative;
+    }
+    .nav{
+      margin-right: 0;
+    }
+        .activeLink {
+          color: #fff !important;
+          background: linear-gradient(90deg, #fc842d 0%, #ffb800 100%);
+          border-radius: 20px;
+          box-shadow: 0 2px 8px 0 rgba(252, 132, 45, 0.15);
+          text-decoration: none;
+          padding: 6px 12px;
+          transition: background 0.3s, color 0.3s;
+          position: relative;
+          z-index: 1;
+        }
 }

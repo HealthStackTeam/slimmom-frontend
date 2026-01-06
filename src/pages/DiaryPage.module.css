@@ -63,7 +63,7 @@
 @media (min-width: 320px) and (max-width: 767px) {
   .mainContent {
     width: 100%;
-    padding: 0 16px;
+    padding: 0 20px;
     display: flex;
     flex-direction: column;
     margin-bottom: 32px;
@@ -82,11 +82,12 @@
 
 @media (min-width: 768px) {
   .pageContainer {
-    padding: 0 20px;
+    padding: 0;
   }
   .mainContent {
     width: 90%;
     height: auto;
+    padding: 0 32px;
   }
   .floatingButton{
     display: none !important;
