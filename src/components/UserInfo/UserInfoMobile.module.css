@@ -3,10 +3,11 @@
   height: 100%;
   display: flex;
   justify-content: flex-end;
+  padding: 4px;
   margin-bottom: 8px;
   scale: 0.9;
   margin-top: 8px;
-  background-color: rgba(239, 241, 243, 1);
+  background-color: var(--input-bg);
 }
 
 @media (min-width: 768px) {

@@ -20,6 +20,7 @@ body,
   --modal-bg: #ffffff;
   --table-hover: #fff9e6;
   --shadow-color: rgba(0, 0, 0, 0.1);
+  --mobile-user-info: rgba(239, 241, 243, 1);
 }
 
 /* DARK MODE */
@@ -34,6 +35,7 @@ body,
   --modal-bg: #212121;  
   --table-hover: #2f2f2f;
   --shadow-color: rgba(255, 255, 255, 0.1);
+  --mobile-user-info: rgb(39, 41, 43);
 }
 
 * {
