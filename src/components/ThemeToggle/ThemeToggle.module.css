@@ -22,7 +22,7 @@
   background-color: rgba(255, 255, 255, 0.1);
 }
 
-@media (min-width: 1280px) {
+@media (max-width: 767px) {
   .toggleBtn {
       margin-bottom: 5px;
   }
