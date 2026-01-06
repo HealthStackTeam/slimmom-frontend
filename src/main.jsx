@@ -8,6 +8,7 @@ import App from './App';
 import './index.css';
 import axios from 'axios';
 import { refreshUser, logout } from './redux/auth/operations';
+import { ThemeProvider } from './context/ThemeContext';
 
 axios.interceptors.response.use(
   (response) => response,
@@ -15,10 +16,14 @@ axios.interceptors.response.use(
     const originalRequest = error.config;
 
     if (originalRequest.url.includes('/auth/refresh')) {
-        return Promise.reject(error);
+      return Promise.reject(error);
     }
 
-    if (error.response && error.response.status === 401 && !originalRequest._retry) {
+    if (
+      error.response &&
+      error.response.status === 401 &&
+      !originalRequest._retry
+    ) {
       originalRequest._retry = true;
 
       try {
@@ -39,7 +44,7 @@ axios.interceptors.response.use(
     }
 
     return Promise.reject(error);
-  }
+  },
 );
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -47,7 +52,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <BrowserRouter>
-          <App />
+          <ThemeProvider>
+            <App />
+          </ThemeProvider>
         </BrowserRouter>
       </PersistGate>
     </Provider>

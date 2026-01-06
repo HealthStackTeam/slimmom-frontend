@@ -152,7 +152,7 @@
 }
 
 .button:hover {
-  background-color: white;
+  background-color: var(--background-main);
   color: #f57c00;
   transform: scale(1.1);
   box-shadow: 0 6px 16px rgba(255, 152, 0, 0.6);
@@ -202,7 +202,7 @@
   border: 2px solid #eee;
   border-radius: 8px;
   padding: 12px 15px;
-  background: white;
+  background: var(--background-main);
   width: 100% !important;
   border: none;
 }

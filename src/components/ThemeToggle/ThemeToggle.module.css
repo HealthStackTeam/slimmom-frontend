@@ -1,0 +1,29 @@
+.toggleBtn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  width: 32px;
+  height: 32px; 
+  border-radius: 50%; 
+  transition: background-color 0.2s, transform 0.2s;
+  color: inherit;
+}
+
+.toggleBtn:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  transform: scale(1.05);
+}
+
+:global([data-theme='dark']) .toggleBtn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+@media (min-width: 1280px) {
+  .toggleBtn {
+      margin-bottom: 5px;
+  }
+}
