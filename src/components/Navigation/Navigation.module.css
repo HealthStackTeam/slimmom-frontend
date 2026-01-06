@@ -23,13 +23,12 @@
   font-size: 14px;
   font-weight: 700;
   letter-spacing: 0.04em;
-  color: #9b9faa;
+  color: var(--text-secondary);
   transition: color 0.3s ease;
   text-transform: uppercase;
   position: relative;
   overflow: hidden;
 }
-
 
 .link::after {
   content: '';
@@ -45,7 +44,7 @@
 }
 
 .link:hover {
-  color: #212121;
+  color: var(--text-main);
 }
 
 .link:hover::after {
@@ -53,7 +52,7 @@
 }
 
 .activeLink {
-  color: #fff;
+  color: #fff !important;
   background: linear-gradient(90deg, #fc842d 0%, #ffb800 100%);
   border-radius: 20px;
   box-shadow: 0 2px 8px 0 rgba(252, 132, 45, 0.15);
@@ -63,15 +62,16 @@
   position: relative;
   z-index: 1;
 }
+
 @media (max-width: 1279px) {
   .nav {
     margin-right: 10px;
   }
-.authNav,
+  .authNav,
   .publicNav {
     border-left: none;
   }
-    .mobileNav  {
-      display: none;
-    }
+  .mobileNav {
+    display: none;
+  }
 }

@@ -8,6 +8,7 @@ import { useMediaQuery } from 'react-responsive';
 import BurgerMenu from '../BurgerMenu/BurgerMenu.jsx';
 import { useState } from 'react';
 import { FaBars } from 'react-icons/fa';
+import ThemeToggle from '../ThemeToggle/ThemeToggle.jsx';
 
 const Header = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -19,14 +20,16 @@ const Header = () => {
       {isTabletOrMobile ? (
         <div className={styles.container}>
           <Logo className={styles.logo} />
+          
           <div className={styles.rightSide}>
+            <ThemeToggle />
+
             <div className={styles.desktopNav}>
               <Navigation isLoggedIn={isLoggedIn} />
             </div>
+            
             <div className={styles.userAndHamburger}>
-              {' '}
               <div className={styles.user}>
-                {' '}
                 <UserInfo isLoggedIn={isLoggedIn} />
               </div>
               {isLoggedIn && (
@@ -54,7 +57,9 @@ const Header = () => {
               <Navigation isLoggedIn={isLoggedIn} />
             </div>
           </div>
+          
           <div className={styles.rightSide}>
+            <ThemeToggle />
             <UserInfo isLoggedIn={isLoggedIn} />
           </div>
         </div>

@@ -2,7 +2,7 @@
 .pageContainer {
   width: 100%;
   min-height: 100vh;
-  background: white;
+  background: var(--background-main);
   padding: 0 16px;
 }
 

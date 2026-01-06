@@ -3,16 +3,37 @@ body,
 #root {
   height: 100%;
 }
+
 :root {
   --white: #ffffff;
   --orange: #fc842d;
   --grey: #9b9faa;
   --text-main: #212121;
+  --text-secondary: #9b9faa;
   --bg-grey: #f0f1f3;
   --border-grey: #e0e0e0;
   --font-main: 'Verdana', sans-serif;
   --font-secondary: 'Gotham Pro', sans-serif;
   --error-color: #ff3f3f;
+  --input-bg: #ffffff;
+  --input-text: #212121;
+  --modal-bg: #ffffff;
+  --table-hover: #fff9e6;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+/* DARK MODE */
+[data-theme='dark'] {
+  --white: #212121;      
+  --text-main: #ffffff;   
+  --text-secondary: #b5b5b5; 
+  --bg-grey: #2f2f2f;    
+  --border-grey: #444444; 
+  --input-bg: #2f2f2f;   
+  --input-text: #ffffff;
+  --modal-bg: #212121;  
+  --table-hover: #2f2f2f;
+  --shadow-color: rgba(255, 255, 255, 0.1);
 }
 
 * {
@@ -27,24 +48,41 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: var(--text-main);
+  background-color: var(--white);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p {
-  margin: 0;
-  padding: 0;
+h1, h2, h3, h4, h5, h6, p, span, li, div {
+  color: inherit; 
+  transition: color 0.3s ease;
 }
 
-ul,
-ol {
+ul, ol {
   margin: 0;
   padding: 0;
   list-style: none;
+}
+
+input {
+  background-color: var(--input-bg) !important;
+  color: var(--input-text) !important;
+  border-color: var(--border-grey);
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+input::placeholder {
+  color: var(--text-secondary);
+  opacity: 1;
+}
+
+.ReactModal__Content {
+  background-color: var(--modal-bg) !important;
+  color: var(--text-main) !important;
+  border: 1px solid var(--border-grey) !important;
+}
+
+li {
+  border-bottom-color: var(--border-grey);
 }
 
 @media (min-width: 1280px) {
@@ -55,15 +93,21 @@ ol {
   .logged-in #root {
     background: none !important;
   }
+  [data-theme='dark'] #root {
+     background-image: none !important;
+  }
 }
 
 @media (min-width: 767px) and (max-width: 1279px) {
   #root {
     background: url('/src/assets/tablet-bg.png') no-repeat right bottom;
     background-size: cover;
-    background-position-y: 30px; /* header yüksekliği kadar aşağıdan başlat */
+    background-position-y: 30px;
   }
   .logged-in #root {
     background: none !important;
+  }
+  [data-theme='dark'] #root {
+     background-image: none !important;
   }
 }

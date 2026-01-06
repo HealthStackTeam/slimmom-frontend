@@ -5,7 +5,7 @@
   max-width: 1280px;
   margin: 0 auto;
   min-height: 100%;
-  background: white;
+  background: var(--background-main);
 }
 
 .mainContent {
@@ -17,7 +17,7 @@
   height: 48px;
   border-radius: 50%;
   background: #f57c00;
-  color: white;
+  color: var(--text-main);
   border: none;
   font-size: 28px;
   font-weight: bold;
@@ -37,7 +37,7 @@
 }
 
 .floatingButton:hover {
-  background: white;
+  background: var(--text-main);
   color: #f57c00;
   transform: scale(1.1);
   box-shadow: 0 8px 20px rgba(245, 124, 0, 0.6);

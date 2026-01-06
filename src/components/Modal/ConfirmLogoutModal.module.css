@@ -53,7 +53,7 @@
 }
 
 .modalTitle {
-  color: #212121;
+  color: var(--text-main);
   font-size: 22px;
   font-weight: 700;
   margin: 0;
@@ -62,7 +62,7 @@
 }
 
 .modalText {
-  color: #3b3a3a;
+  color: var(--text-main);
   line-height: 1.5;
   font-size: 16px;
   margin: 0;
