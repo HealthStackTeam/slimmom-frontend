@@ -7,6 +7,7 @@ import CalculatorCalorieForm from '../components/CalculatorСalorieForm/Calculat
 import DailyCalorieIntake from '../components/DailyCalorieIntake/DailyCalorieIntake';
 import RightSideBar from '../components/RightSideBar/RightSideBar';
 import DailyCaloriesForm from '../components/DailyCaloriesForm/DailyCaloriesForm';
+import styles from './CommonPage.module.css';
 
 const MainPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -20,7 +21,7 @@ const MainPage = () => {
     setIsModalOpen(false);
   };
   return (
-    <div>
+    <div className={styles['page-container']}>
       <div>
         <CalculatorCalorieForm onSuccess={openModal} />
       </div>

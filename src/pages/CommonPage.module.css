@@ -1,0 +1,11 @@
+.page-container {
+  /* Mobile styles */
+  padding: 0 20px;
+}
+
+@media (min-width: 768px) {
+  .page-container {
+    /* Tablet styles */
+    padding: 0 32px;
+  }
+}

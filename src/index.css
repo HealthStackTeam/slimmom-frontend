@@ -89,27 +89,28 @@ li {
 
 @media (min-width: 1280px) {
   #root {
-    background: url('/src/assets/desktop-bg.jpg') no-repeat right bottom;
+    background: url('/src/assets/background.png') no-repeat right center;
     background-size: auto;
   }
   .logged-in #root {
     background: none !important;
   }
-  [data-theme='dark'] #root {
+  /* [data-theme='dark'] #root {
      background-image: none !important;
-  }
+  } */
 }
 
 @media (min-width: 767px) and (max-width: 1279px) {
   #root {
-    background: url('/src/assets/tablet-bg.png') no-repeat right bottom;
+    background: url('/src/assets/background.png') no-repeat;
     background-size: cover;
-    background-position-y: 30px;
+    background-position-y: 50px;
+    background-position-x: center;
   }
   .logged-in #root {
     background: none !important;
   }
-  [data-theme='dark'] #root {
-     background-image: none !important;
-  }
+  /* [data-theme='dark'] #root {
+     background-image: url('/src/assets/tablet-bg.png') no-repeat right bottom;
+  } */
 }
