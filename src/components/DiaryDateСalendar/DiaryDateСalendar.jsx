@@ -9,17 +9,19 @@ const DiaryDateCalendar = ({ selectedDate, setSelectedDate }) => {
 
   // Dynamically load Flatpickr theme CSS based on app theme
   useEffect(() => {
+    // Remove previous theme link if exists
     const prevThemeLink = document.getElementById('flatpickr-theme');
     if (prevThemeLink) {
       prevThemeLink.parentNode.removeChild(prevThemeLink);
     }
+    // Add new theme link
     const link = document.createElement('link');
     link.rel = 'stylesheet';
     link.id = 'flatpickr-theme';
     link.href =
       theme === 'dark'
-        ? 'https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/dark.css'
-        : 'https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/confetti.css';
+        ? '/node_modules/flatpickr/dist/themes/dark.css'
+        : '/node_modules/flatpickr/dist/themes/confetti.css';
     document.head.appendChild(link);
   }, [theme]);
   const initialDate = useMemo(() => new Date(), []);
