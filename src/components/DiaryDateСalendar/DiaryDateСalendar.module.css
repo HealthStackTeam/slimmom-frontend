@@ -51,83 +51,8 @@
 }
 
 /* Flatpickr Override Stilleri */
-:global(.flatpickr-calendar) {
-  margin-left: 250px;
-  margin-top: 300px;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-  border: 1px solid #e5e7eb;
-  font-family: Verdana, sans-serif;
-}
-
-:global(.flatpickr-day) {
-  border-radius: 6px;
-  border: none;
-  height: 40px;
-  line-height: 40px;
-  color: #FC842D;
-  font-weight: 500;
-}
-
-:global(.flatpickr-day:hover) {
-  background: #f3f4f6;
-  border: none;
-}
-
-:global(.flatpickr-day.selected) {
-  background: #FC842D;
-  color: white;
-  border: none;
-}
-
-:global(.flatpickr-day.today) {
-  border: 2px solid #FC842D;
-  background: transparent;
-  color: #FC842D;
-}
-
-:global(.flatpickr-day.today:hover) {
-  background: #f3f4f6;
-}
-
-:global(.flatpickr-months) {
-  padding: 8px;
-}
-:global(.flatpickr-prev-month) {
-  left: 0;
-  top:5px !important;
-}
-:global(.flatpickr-next-month) {
-  right: 0;
-  top:5px !important;
-}
-:global(.flatpickr-month) {
-  color: #111827;
-  background-color: #FC842D !important; 
-  font-weight: 600;
-}
-:global(.flatpickr-monthDropdown-months){
-  background-color: #FC842D !important; 
-}
-:global(.flatpickr-monthDropdown-month){
-  background-color: #FC842D !important; 
-}
-:global(.flatpickr-weekdays) {
-  background-color: #FC842D !important; 
-}
-:global(.flatpickr-weekday) {
-  color: #6b7280;
-  font-weight: 600;
-  font-size: 0.9rem;
-  background-color: #FC842D !important; 
-}
-
-:global(.flatpickr-current-month input.cur-year) {
-  background-color: #FC842D !important;
-  color: white !important;
-  border-radius: 4px;
-}
+/* Flatpickr layout overrides only, color/theme handled by Flatpickr theme */
+/* Margin overrides for calendar position below */
 
 
 @media (min-width: 320px ) {

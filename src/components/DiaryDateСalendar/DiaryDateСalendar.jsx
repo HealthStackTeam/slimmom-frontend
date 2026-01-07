@@ -1,10 +1,27 @@
 import Flatpickr from 'react-flatpickr';
 import { Calendar } from 'lucide-react';
 import { useEffect, useMemo } from 'react';
-import 'flatpickr/dist/themes/material_blue.css';
 import styles from './DiaryDateСalendar.module.css';
+import { useTheme } from '../../context/ThemeContext';
 
 const DiaryDateCalendar = ({ selectedDate, setSelectedDate }) => {
+  const { theme } = useTheme();
+
+  // Dynamically load Flatpickr theme CSS based on app theme
+  useEffect(() => {
+    const prevThemeLink = document.getElementById('flatpickr-theme');
+    if (prevThemeLink) {
+      prevThemeLink.parentNode.removeChild(prevThemeLink);
+    }
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.id = 'flatpickr-theme';
+    link.href =
+      theme === 'dark'
+        ? 'https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/dark.css'
+        : 'https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/confetti.css';
+    document.head.appendChild(link);
+  }, [theme]);
   const initialDate = useMemo(() => new Date(), []);
 
   const formatDate = (date) => {
