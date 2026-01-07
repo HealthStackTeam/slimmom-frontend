@@ -20,8 +20,8 @@ const DiaryDateCalendar = ({ selectedDate, setSelectedDate }) => {
     link.id = 'flatpickr-theme';
     link.href =
       theme === 'dark'
-        ? '/node_modules/flatpickr/dist/themes/dark.css'
-        : '/node_modules/flatpickr/dist/themes/confetti.css';
+        ? '/src/assets/flatpickr-themes/dark.css'
+        : '/src/assets/flatpickr-themes/confetti.css';
     document.head.appendChild(link);
   }, [theme]);
   const initialDate = useMemo(() => new Date(), []);
@@ -40,10 +40,10 @@ const DiaryDateCalendar = ({ selectedDate, setSelectedDate }) => {
     }
   }, [selectedDate, setSelectedDate, initialDate]);
 
- const handleDateChange = (dates) => {
-  const newDate = dates[0];
-  setSelectedDate(formatDate(newDate)); // formatDate ile string'e çeviriyorsan, Flatpickr'a Date objesi ver!
-};
+  const handleDateChange = (dates) => {
+    const newDate = dates[0];
+    setSelectedDate(formatDate(newDate)); // formatDate ile string'e çeviriyorsan, Flatpickr'a Date objesi ver!
+  };
 
   // Kullanıcıya DD.MM.YYYY göster
   const getDisplayDate = (dateStr) => {
