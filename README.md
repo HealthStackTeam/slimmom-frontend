@@ -57,6 +57,28 @@ SlimMom empowers you to take control of your nutrition with science-backed calcu
 
 ---
 
+## 🛠️ Technologies Used
+
+- **React** (with Hooks)
+- **Redux Toolkit** & **React-Redux**
+- **Redux Persist**
+- **React Router DOM**
+- **Axios**
+- **Formik** & **Yup**
+- **Flatpickr** & **react-flatpickr**
+- **React Hot Toast**
+- **React Modal**
+- **React Icons** & **Lucide React**
+- **React Responsive**
+- **React Spinners**
+- **Vite** (build tool)
+- **ESLint** & **Prettier**
+- **Modern Normalize**
+
+---
+
+---
+
 ## 👩‍💻 Developers
 
 - [Lütfi Çağlayan Usta](https://github.com/lutficaglayanusta)
