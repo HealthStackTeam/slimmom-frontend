@@ -77,8 +77,6 @@ SlimMom empowers you to take control of your nutrition with science-backed calcu
 
 ---
 
----
-
 ## 👩‍💻 Developers
 
 - [Lütfi Çağlayan Usta](https://github.com/lutficaglayanusta)
