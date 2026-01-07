@@ -79,12 +79,14 @@ SlimMom empowers you to take control of your nutrition with science-backed calcu
 
 ## 👩‍💻 Developers
 
-- [Lütfi Çağlayan Usta](https://github.com/lutficaglayanusta)
-- [Ozan Can Cuyar](https://github.com/ozncncyr)
-- [Fatih Genç](https://github.com/gencoflu61)
-- [Yeşim Bozkurt](https://github.com/yesimbozkurt)
-- [İlker Şelimen](https://github.com/ilkerthedev)
-- [Çağla Karabudak Akın](https://github.com/caglaakin)
-- [Abdullah Furkan Toy](https://github.com/okazaki55)
-- [Miraç Şengül](https://github.com/miracsengul)
-- [Burak Ezer](https://github.com/burakezer92)
+| **Name**             |                    **GitHub Profile**                     |
+| -------------------- | :-------------------------------------------------------: |
+| Lütfi Çağlayan Usta  | [lutficaglayanusta](https://github.com/lutficaglayanusta) |
+| Ozan Can Cuyar       |          [ozncncyr](https://github.com/ozncncyr)          |
+| Fatih Genç           |        [gencoflu61](https://github.com/gencoflu61)        |
+| Yeşim Bozkurt        |      [yesimbozkurt](https://github.com/yesimbozkurt)      |
+| İlker Şelimen        |       [ilkerthedev](https://github.com/ilkerthedev)       |
+| Çağla Karabudak Akın |         [caglaakin](https://github.com/caglaakin)         |
+| Abdullah Furkan Toy  |         [okazaki55](https://github.com/okazaki55)         |
+| Miraç Şengül         |       [miracsengul](https://github.com/miracsengul)       |
+| Burak Ezer           |       [burakezer92](https://github.com/burakezer92)       |
