@@ -1,19 +1,19 @@
-import { createSlice } from "@reduxjs/toolkit";
-import {fetchDiary,addProduct, deleteProduct } from "./operations";
+import { createSlice } from '@reduxjs/toolkit';
+import { fetchDiary, addProduct, deleteProduct } from './operations';
 
 const initialState = {
   products: [],
 };
 
 const diarySlice = createSlice({
-  name: "diary",
+  name: 'diary',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
       // fetch diary entries
       .addCase(fetchDiary.fulfilled, (state, action) => {
-        // backend: { data: [...] } 
+        // backend: { data: [...] }
         state.products = action.payload;
       })
       // add product to diary
@@ -24,12 +24,14 @@ const diarySlice = createSlice({
             return;
           }
         }
-        state.products.push(action.payload.data); 
+        state.products.push(action.payload.data);
       })
       // delete product from diary
       .addCase(deleteProduct.fulfilled, (state, action) => {
-        const index = state.products.indexOf(action.payload);
-        state.products.splice(index, 1);
+        // action.meta.arg silinen ürünün id'si
+        state.products = state.products.filter(
+          (prod) => prod._id !== action.meta.arg,
+        );
       });
   },
 });

@@ -3,12 +3,12 @@ import styles from './DiaryProductsList.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectDiaryProducts } from '../../redux/diary/selectors';
 import { deleteProduct } from '../../redux/diary/operations';
-import toast from 'react-hot-toast'; 
+import toast from 'react-hot-toast';
 
 const DiaryProductsList = () => {
   const products = useSelector(selectDiaryProducts);
   const dispatch = useDispatch();
-  
+
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [productToDelete, setProductToDelete] = useState(null);
   const [productNameToDelete, setProductNameToDelete] = useState('');
@@ -21,9 +21,8 @@ const DiaryProductsList = () => {
 
   const handleConfirmDelete = () => {
     if (productToDelete) {
-      
       const deletedProductName = productNameToDelete;
-      
+
       dispatch(deleteProduct(productToDelete))
         .then((result) => {
           if (result.meta.requestStatus === 'fulfilled') {
@@ -38,7 +37,14 @@ const DiaryProductsList = () => {
                 fontSize: '14px',
               },
             });
-          } 
+            // Silme sonrası products array'ini göster
+            setTimeout(() => {
+              const updatedProducts = selectDiaryProducts({
+                diary: { products },
+              });
+              console.log('Güncel ürün listesi:', updatedProducts);
+            }, 500);
+          }
         })
         .catch((error) => {
           console.error('Delete error:', error);
@@ -55,7 +61,7 @@ const DiaryProductsList = () => {
           });
         });
     }
-    
+
     setShowConfirmModal(false);
     setProductToDelete(null);
     setProductNameToDelete('');
@@ -92,15 +98,15 @@ const DiaryProductsList = () => {
                   </td>
                 </tr>
               ) : (
-                products.map(({_id, weight, product}) => (
+                products.map(({ _id, weight, product }) => (
                   <tr key={_id}>
-                    <td>
-                      {product.title}
-                    </td>
+                    <td>{product.title}</td>
                     <td>{weight}g</td>
-                    <td>{calculateTotalCalories(product.calories, weight)} kcal</td>
                     <td>
-                      <button 
+                      {calculateTotalCalories(product.calories, weight)} kcal
+                    </td>
+                    <td>
+                      <button
                         onClick={() => handleDeleteClick(_id, product.title)}
                         className={styles.deleteButton}
                         aria-label={`Delete ${product.title}`}
@@ -122,16 +128,17 @@ const DiaryProductsList = () => {
             <div className={styles.modalContent}>
               <h3 className={styles.modalTitle}>Delete Product</h3>
               <p className={styles.modalMessage}>
-                Are you sure you want to delete "<strong>{productNameToDelete}</strong>"?
+                Are you sure you want to delete "
+                <strong>{productNameToDelete}</strong>"?
               </p>
               <div className={styles.modalButtons}>
-                <button 
+                <button
                   className={styles.cancelButton}
                   onClick={handleCancelDelete}
                 >
                   Cancel
                 </button>
-                <button 
+                <button
                   className={styles.confirmButton}
                   onClick={handleConfirmDelete}
                 >
