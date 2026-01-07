@@ -20,8 +20,8 @@ const DiaryDateCalendar = ({ selectedDate, setSelectedDate }) => {
     link.id = 'flatpickr-theme';
     link.href =
       theme === 'dark'
-        ? '/src/assets/flatpickr-themes/dark.css'
-        : '/src/assets/flatpickr-themes/confetti.css';
+        ? '/flatpickr-themes/dark.css'
+        : '/flatpickr-themes/confetti.css';
     document.head.appendChild(link);
   }, [theme]);
   const initialDate = useMemo(() => new Date(), []);
