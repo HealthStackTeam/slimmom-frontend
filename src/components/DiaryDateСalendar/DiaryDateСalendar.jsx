@@ -40,11 +40,10 @@ const DiaryDateCalendar = ({ selectedDate, setSelectedDate }) => {
     }
   }, [selectedDate, setSelectedDate, initialDate]);
 
-  const handleDateChange = (dates) => {
-    const newDate = dates[0];
-    const date = formatDate(newDate);
-    setSelectedDate(date);
-  };
+ const handleDateChange = (dates) => {
+  const newDate = dates[0];
+  setSelectedDate(formatDate(newDate)); // formatDate ile string'e çeviriyorsan, Flatpickr'a Date objesi ver!
+};
 
   // Kullanıcıya DD.MM.YYYY göster
   const getDisplayDate = (dateStr) => {
@@ -61,7 +60,7 @@ const DiaryDateCalendar = ({ selectedDate, setSelectedDate }) => {
           : getDisplayDate(formatDate(initialDate))}
       </div>
       <Flatpickr
-        value={selectedDate}
+        value={selectedDate ? new Date(selectedDate) : new Date()}
         onChange={handleDateChange}
         options={{
           dateFormat: 'd/m/Y',
